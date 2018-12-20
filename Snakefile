@@ -9,6 +9,8 @@ rule targets:
 
 rule download_reactome:
     output:
-        directory("evaluation_data/{reactomeId}")
-    shell:
-        "echo 'abs'"
+        directory("evaluation_data/{reactome_id}")
+    run:
+        gsd.reactome.download_reactome_sub_tree(human_tax_id,
+                                                wildcards.reactome_id,
+                                                output[0])

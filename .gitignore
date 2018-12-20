@@ -104,3 +104,7 @@ venv.bak/
 .mypy_cache/
 __data
 .idea
+
+#Snamemake
+.snakemake
+.snakemake_timestamp

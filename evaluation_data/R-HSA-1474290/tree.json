@@ -1,0 +1,510 @@
+{
+  "stId": "R-HSA-1474290",
+  "name": "Collagen formation",
+  "species": "Homo sapiens",
+  "type": "Pathway",
+  "diagram": true,
+  "children": [
+    {
+      "stId": "R-HSA-2022090",
+      "name": "Assembly of collagen fibrils and other multimeric structures",
+      "species": "Homo sapiens",
+      "type": "Pathway",
+      "diagram": true,
+      "children": [
+        {
+          "stId": "R-HSA-2214320",
+          "name": "Anchoring fibril formation",
+          "species": "Homo sapiens",
+          "type": "Pathway",
+          "diagram": false,
+          "children": [
+            {
+              "stId": "R-HSA-2214330",
+              "name": "Cleavage of collagen VII NC2 region by BMP1",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2396234",
+              "name": "Collagen type VII binds laminin-322 and collagen IV",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2214324",
+              "name": "Collagen type VII dimerization",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2213195",
+              "name": "Formation of anchoring fibrils",
+              "species": "Homo sapiens",
+              "type": "Polymerisation"
+            }
+          ]
+        },
+        {
+          "stId": "R-HSA-2213210",
+          "name": "Collagen IX is cross-linked to the surface of collagen type II fibrils",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-2299620",
+          "name": "Collagen XI cross-links with collagen II",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-2243919",
+          "name": "Crosslinking of collagen fibrils",
+          "species": "Homo sapiens",
+          "type": "Pathway",
+          "diagram": false,
+          "children": [
+            {
+              "stId": "R-HSA-2559639",
+              "name": "Collagen type IV sulfilimine cross-linking by peroxidasin",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2002466",
+              "name": "Formation of allysine by LOX",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2395257",
+              "name": "Formation of dehydro-hydroxylysino-norleucine cross-links",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2243931",
+              "name": "Formation of dehydro-lysinonorleucine cross-links",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2243926",
+              "name": "Formation of histidino-hydroxylysinonorleucine cross-links",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2395340",
+              "name": "Formation of hydroxyallysine by LOX",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2395302",
+              "name": "Formation of hydroxylysino-5-ketonorleucine cross-links",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2395223",
+              "name": "Formation of hydroxylysyl-pyridinoline cross-links",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2395324",
+              "name": "Formation of hydroxylysyl-pyrrole cross-links",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2395314",
+              "name": "Formation of lysino-5-ketonorleucine cross-links",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2395322",
+              "name": "Formation of lysyl-pyridinoline cross-links",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2250301",
+              "name": "Formation of lysyl-pyrrole cross-links",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-2022141",
+              "name": "Prolysyl oxidase activation",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            }
+          ]
+        },
+        {
+          "stId": "R-HSA-2213201",
+          "name": "Formation of collagen fibres",
+          "species": "Homo sapiens",
+          "type": "Polymerisation"
+        },
+        {
+          "stId": "R-HSA-1474266",
+          "name": "Formation of collagen fibrils",
+          "species": "Homo sapiens",
+          "type": "Polymerisation"
+        },
+        {
+          "stId": "R-HSA-2213207",
+          "name": "Formation of collagen networks",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-2213192",
+          "name": "Hemidesmosome formation",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-2213200",
+          "name": "Release of endostatin-like peptides",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-2213208",
+          "name": "Type X collagen associates with collagen type II fibrils",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-2213205",
+          "name": "Type XII and XIV collagens associate with type I and type II fibrils.",
+          "species": "Homo sapiens",
+          "type": "BlackBoxEvent"
+        }
+      ]
+    },
+    {
+      "stId": "R-HSA-1650814",
+      "name": "Collagen biosynthesis and modifying enzymes",
+      "species": "Homo sapiens",
+      "type": "Pathway",
+      "diagram": true,
+      "children": [
+        {
+          "stId": "R-HSA-8948228",
+          "name": "COLGALT1,COLGALT2 bind Lysyl hydroxylated collagen propeptides",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-8948231",
+          "name": "COLGALT1,COLGALT2:Galactosyl-hydroxylysyl collagen propeptides dissociates",
+          "species": "Homo sapiens",
+          "type": "BlackBoxEvent"
+        },
+        {
+          "stId": "R-HSA-8948216",
+          "name": "Collagen chain trimerization",
+          "species": "Homo sapiens",
+          "type": "Pathway",
+          "diagram": true,
+          "children": [
+            {
+              "stId": "R-HSA-8944214",
+              "name": "Association of procollagen type I",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944263",
+              "name": "Association of procollagen type II",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944240",
+              "name": "Association of procollagen type III",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944265",
+              "name": "Association of procollagen type IV",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944229",
+              "name": "Association of procollagen type IX",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944223",
+              "name": "Association of procollagen type V",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944247",
+              "name": "Association of procollagen type VI",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944255",
+              "name": "Association of procollagen type VII",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944218",
+              "name": "Association of procollagen type VIII",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944262",
+              "name": "Association of procollagen type X",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944266",
+              "name": "Association of procollagen type XI",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944232",
+              "name": "Association of procollagen type XII",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944261",
+              "name": "Association of procollagen type XIII",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944236",
+              "name": "Association of procollagen type XIV",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944233",
+              "name": "Association of procollagen type XIX",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944216",
+              "name": "Association of procollagen type XV",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944219",
+              "name": "Association of procollagen type XVI",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944225",
+              "name": "Association of procollagen type XVII",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944230",
+              "name": "Association of procollagen type XVIII",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944215",
+              "name": "Association of procollagen type XX",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944246",
+              "name": "Association of procollagen type XXI",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944227",
+              "name": "Association of procollagen type XXII",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944220",
+              "name": "Association of procollagen type XXIII",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944257",
+              "name": "Association of procollagen type XXIV",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944250",
+              "name": "Association of procollagen type XXV",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944254",
+              "name": "Association of procollagen type XXVI",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            },
+            {
+              "stId": "R-HSA-8944242",
+              "name": "Association of procollagen type XXVII",
+              "species": "Homo sapiens",
+              "type": "Reaction"
+            }
+          ]
+        },
+        {
+          "stId": "R-HSA-1980233",
+          "name": "Collagen prolyl 3-hydroxylase converts 4-Hyp collagen to 3,4-Hyp collagen",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-1614460",
+          "name": "Dimerization of procollagen type VI",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-1981128",
+          "name": "Galactosylation of collagen propeptide hydroxylysines by PLOD3",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-1981120",
+          "name": "Galactosylation of collagen propeptide hydroxylysines by procollagen galactosyltransferases 1, 2.",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-1981157",
+          "name": "Glucosylation of collagen propeptide hydroxylysines",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-8948232",
+          "name": "Lysyl hydroxylated collagen propeptides dissociate from Lysyl hydroxylases",
+          "species": "Homo sapiens",
+          "type": "BlackBoxEvent"
+        },
+        {
+          "stId": "R-HSA-8948230",
+          "name": "P3HB binds 4-Hyp-collagen propeptides",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-2002460",
+          "name": "P4HB binds Collagen chains",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-8948234",
+          "name": "P4HB:4-Hyp collagen propeptides dissociates",
+          "species": "Homo sapiens",
+          "type": "BlackBoxEvent"
+        },
+        {
+          "stId": "R-HSA-8948219",
+          "name": "PLOD3 binds Lysyl hydroxylated collagen propeptides",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-8948222",
+          "name": "PLOD3:Fe2+ dimer:Galactosyl-hydroxylysyl collagen propeptides dissociates",
+          "species": "Homo sapiens",
+          "type": "BlackBoxEvent"
+        },
+        {
+          "stId": "R-HSA-8948224",
+          "name": "PLOD3:Fe2+ dimer:Glucosyl-galactosyl-hydroxylysyl collagen propeptides dissociates",
+          "species": "Homo sapiens",
+          "type": "BlackBoxEvent"
+        },
+        {
+          "stId": "R-HSA-1981104",
+          "name": "Procollagen lysyl hydroxylases convert collagen lysines to 5-hydroxylysines",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-2022073",
+          "name": "Procollagen triple helix formation",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-8948226",
+          "name": "Prolyl 3-hydroxylases:Fe2+:3,4-Hyp collagen propeptides dissociates",
+          "species": "Homo sapiens",
+          "type": "BlackBoxEvent"
+        },
+        {
+          "stId": "R-HSA-1650808",
+          "name": "Prolyl 4-hydroxylase converts collagen prolines to 4-hydroxyprolines",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-2002440",
+          "name": "Removal of fibrillar collagen C-propeptides",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-2002428",
+          "name": "Removal of fibrillar collagen N-propeptides",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        },
+        {
+          "stId": "R-HSA-2089971",
+          "name": "Secretion of collagens",
+          "species": "Homo sapiens",
+          "type": "BlackBoxEvent"
+        },
+        {
+          "stId": "R-HSA-2152276",
+          "name": "Secretion of transmembrane collagens",
+          "species": "Homo sapiens",
+          "type": "BlackBoxEvent"
+        },
+        {
+          "stId": "R-HSA-1614461",
+          "name": "Tetramerization of procollagen VI",
+          "species": "Homo sapiens",
+          "type": "Reaction"
+        }
+      ]
+    }
+  ]
+}

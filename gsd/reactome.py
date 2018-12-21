@@ -1,9 +1,9 @@
 import json
 import sys
-import os.path
-
 import urllib.request
 from functools import reduce
+from typing import Tuple, List
+from anytree import Node
 
 from gsd import flat_list
 
@@ -97,7 +97,14 @@ def dump_gene_sets(reactome_node):
     return gene_set + reduce(lambda a, b: a + b, [dump_gene_sets(node) for node in reactome_node['children']])
 
 
-def download_reactome_sub_tree(tax_id: int, reactome_id: str, out_dir: str):
+def reactome_to_anytree(node):
+    if 'children' not in node:
+        return Node(name=node['name'])
+
+    return Node(name=node['name'], children=[reactome_to_anytree(child) for child in node['children']])
+
+
+def download_reactome_sub_tree(tax_id: int, reactome_id: str) -> Tuple[Node, List]:
     reactome_tree = get_event_hierarchy(tax_id)
 
     reactome_pseudo_tree = {'stId': "FAKE", 'name': "PseudoRoot", 'children': reactome_tree}
@@ -108,8 +115,4 @@ def download_reactome_sub_tree(tax_id: int, reactome_id: str, out_dir: str):
     unique_ids = set([gene_set['externalId'] for gene_set in gene_sets])
     unique_gene_sets = [gene_set for gene_set in gene_sets if gene_set['externalId'] in unique_ids]
 
-    os.makedirs(out_dir, exist_ok=True)
-    with open(os.path.join(out_dir, 'tree.json'), "w") as tree_file:
-        json.dump(sub_tree, indent=2, fp=tree_file)
-    with open(os.path.join(out_dir, 'gene_sets.json'), "w") as gene_set_file:
-        json.dump(unique_gene_sets, indent=2, fp=gene_set_file)
+    return reactome_to_anytree(sub_tree), unique_gene_sets

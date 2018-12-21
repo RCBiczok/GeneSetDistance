@@ -72,7 +72,7 @@ def extract_genes_from(node: Node, gene_sets, cell_types_with_genes):
     return [parent_gene_set] + children_gene_sets
 
 
-def etract_immuno_cell_data(immune_cell_data_dir, gene_sym_hsapiens) -> Tuple[Node, List]:
+def etract_immuno_cell_data(immune_cell_data_dir: str, gene_sym_hsapiens) -> Tuple[Node, List]:
     generated_immune_marker_genes = read_table(os.path.join(immune_cell_data_dir, "signatures_all.txt"))
     generated_immune_marker_genes = generated_immune_marker_genes.join(
         gene_sym_hsapiens.set_index("external_gene_name"), on="gene_symbol").dropna()

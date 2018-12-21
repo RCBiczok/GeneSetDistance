@@ -1,5 +1,9 @@
+import gsd
 import gsd.reactome
+import gsd.immune_cells
 import gsd.annotation
+
+from pandas import read_table
 
 human_tax_id = 9606
 reactome_sub_tree_ids = ['R-HSA-8982491', 'R-HSA-1474290']
@@ -8,9 +12,7 @@ rule all:
     input:
         "evaluation_data/R-HSA-8982491",
         "evaluation_data/R-HSA-1474290",
-        "annotation_data/entrezgene2gene_sym.tsv",
-        "annotation_data/entrezgene2go.tsv",
-        "annotation_data/go.tsv"
+        "evaluation_data/immune_cells"
 
 rule download_reactome_sub_tree:
     output:
@@ -18,8 +20,19 @@ rule download_reactome_sub_tree:
         for reactome_id in reactome_sub_tree_ids]
     run:
         for reactome_id in reactome_sub_tree_ids:
-            gsd.reactome.download_reactome_sub_tree(human_tax_id, reactome_id,
-                                                    "evaluation_data/%s" % reactome_id)
+            node, gene_sets = gsd.reactome.download_reactome_sub_tree(human_tax_id, reactome_id)
+            gsd.persist_reference_data(node, gene_sets, "evaluation_data/%s" % reactome_id)
+
+rule etract_immuno_cell_data:
+    input:
+        raw_data = directory("raw_data/immune_cells"),
+        entrezgene2gene_sym = "annotation_data/entrezgene2gene_sym.tsv"
+    output:
+        dir = directory("evaluation_data/immune_cells")
+    run:
+        gene_sym_hsapiens = read_table(input.entrezgene2gene_sym)
+        node, gene_sets = gsd.immune_cells.etract_immuno_cell_data(input.raw_data, gene_sym_hsapiens)
+        gsd.persist_reference_data(node, gene_sets, output.dir)
 
 rule download_entrezgene2gene_sym_anno:
     output:

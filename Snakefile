@@ -33,5 +33,5 @@ rule download_go_term_anno:
         anno_file = "annotation_data/go_term.tsv"
     run:
         gsd.annotation.download_biomart_anno(
-            ['entrezgene', 'name_1006', 'go_id', 'definition_1006', 'go_linkage_type', 'namespace_1003'],
+            ['entrezgene', 'name_1006', 'go_id', 'definition_1006', 'namespace_1003'],
             output.anno_file)

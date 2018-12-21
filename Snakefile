@@ -9,7 +9,8 @@ rule all:
         "evaluation_data/R-HSA-8982491",
         "evaluation_data/R-HSA-1474290",
         "annotation_data/entrezgene2gene_sym.tsv",
-        "annotation_data/go_term.tsv"
+        "annotation_data/entrezgene2go.tsv",
+        "annotation_data/go.tsv"
 
 rule download_reactome_sub_tree:
     output:
@@ -28,10 +29,18 @@ rule download_entrezgene2gene_sym_anno:
             ["external_gene_name", "entrezgene"],
             output.anno_file)
 
-rule download_go_term_anno:
+rule download_entrezgene2go_anno:
     output:
-        anno_file = "annotation_data/go_term.tsv"
+        anno_file = "annotation_data/entrezgene2go.tsv"
     run:
         gsd.annotation.download_biomart_anno(
-            ['entrezgene', 'name_1006', 'go_id', 'definition_1006', 'namespace_1003'],
+            ['entrezgene', 'go_id'],
+            output.anno_file)
+
+rule download_go_anno:
+    output:
+        anno_file = "annotation_data/go.tsv"
+    run:
+        gsd.annotation.download_biomart_anno(
+            ['go_id', 'name_1006', 'definition_1006', 'go_linkage_type', 'namespace_1003'],
             output.anno_file)

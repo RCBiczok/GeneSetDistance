@@ -5,6 +5,8 @@ import os.path
 import urllib.request
 from functools import reduce
 
+from gsd import flat_list
+
 
 def get_json_from(url):
     with urllib.request.urlopen(url) as con:
@@ -38,10 +40,6 @@ def get_node_by_reactome_id(reactome_node, reactome_id):
                 return match
 
     return None
-
-
-def flat_list(l):
-    return [item for sublist in l for item in sublist]
 
 
 def extract_reactome_data(reactome_id):
@@ -82,7 +80,7 @@ def extract_reactome_data(reactome_id):
 
     reactome_summary = reduce(lambda a, b: a + " --- " + b, [x['text'] for x in reactome_summation])
 
-    geneset_info = {'name': reactome_name,
+    geneset_info = {'stId': reactome_name,
                     'externalId': reactome_info['stId'],
                     'externalSource': "Reactome",
                     'calculated': False,

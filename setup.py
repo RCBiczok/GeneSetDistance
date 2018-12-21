@@ -8,7 +8,8 @@ setup(
     install_requires=[
         'scipy',
         'pandas',
-        'biomart'
+        'biomart',
+        'anytree'
     ],
     setup_requires=["pytest-runner"],
     tests_require=["pytest"]

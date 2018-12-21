@@ -9,3 +9,7 @@ class GeneSet:
 
     def __repr__(self):
         return "<GeneSet(name='%s', external_id='%s')>" % (self.name, self.external_id)
+
+
+def flat_list(l):
+    return [item for sublist in l for item in sublist]

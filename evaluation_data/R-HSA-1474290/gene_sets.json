@@ -1,6 +1,6 @@
 [
   {
-    "name": "Collagen formation",
+    "stId": "Collagen formation",
     "externalId": "R-HSA-1474290",
     "externalSource": "Reactome",
     "calculated": false,
@@ -189,7 +189,7 @@
     ]
   },
   {
-    "name": "Assembly of collagen fibrils and other multimeric structures",
+    "stId": "Assembly of collagen fibrils and other multimeric structures",
     "externalId": "R-HSA-2022090",
     "externalSource": "Reactome",
     "calculated": false,
@@ -320,7 +320,7 @@
     ]
   },
   {
-    "name": "Anchoring fibril formation",
+    "stId": "Anchoring fibril formation",
     "externalId": "R-HSA-2214320",
     "externalSource": "Reactome",
     "calculated": false,
@@ -361,7 +361,7 @@
     ]
   },
   {
-    "name": "Cleavage of collagen VII NC2 region by BMP1",
+    "stId": "Cleavage of collagen VII NC2 region by BMP1",
     "externalId": "R-HSA-2214330",
     "externalSource": "Reactome",
     "calculated": false,
@@ -380,7 +380,7 @@
     ]
   },
   {
-    "name": "Collagen type VII binds laminin-322 and collagen IV",
+    "stId": "Collagen type VII binds laminin-322 and collagen IV",
     "externalId": "R-HSA-2396234",
     "externalSource": "Reactome",
     "calculated": false,
@@ -415,7 +415,7 @@
     ]
   },
   {
-    "name": "Collagen type VII dimerization",
+    "stId": "Collagen type VII dimerization",
     "externalId": "R-HSA-2214324",
     "externalSource": "Reactome",
     "calculated": false,
@@ -428,7 +428,7 @@
     ]
   },
   {
-    "name": "Formation of anchoring fibrils",
+    "stId": "Formation of anchoring fibrils",
     "externalId": "R-HSA-2213195",
     "externalSource": "Reactome",
     "calculated": false,
@@ -441,7 +441,7 @@
     ]
   },
   {
-    "name": "Collagen IX is cross-linked to the surface of collagen type II fibrils",
+    "stId": "Collagen IX is cross-linked to the surface of collagen type II fibrils",
     "externalId": "R-HSA-2213210",
     "externalSource": "Reactome",
     "calculated": false,
@@ -460,7 +460,7 @@
     ]
   },
   {
-    "name": "Collagen XI cross-links with collagen II",
+    "stId": "Collagen XI cross-links with collagen II",
     "externalId": "R-HSA-2299620",
     "externalSource": "Reactome",
     "calculated": false,
@@ -477,7 +477,7 @@
     ]
   },
   {
-    "name": "Crosslinking of collagen fibrils",
+    "stId": "Crosslinking of collagen fibrils",
     "externalId": "R-HSA-2243919",
     "externalSource": "Reactome",
     "calculated": false,
@@ -524,7 +524,7 @@
     ]
   },
   {
-    "name": "Collagen type IV sulfilimine cross-linking by peroxidasin",
+    "stId": "Collagen type IV sulfilimine cross-linking by peroxidasin",
     "externalId": "R-HSA-2559639",
     "externalSource": "Reactome",
     "calculated": false,
@@ -549,7 +549,7 @@
     ]
   },
   {
-    "name": "Formation of allysine by LOX",
+    "stId": "Formation of allysine by LOX",
     "externalId": "R-HSA-2002466",
     "externalSource": "Reactome",
     "calculated": false,
@@ -574,7 +574,7 @@
     ]
   },
   {
-    "name": "Formation of dehydro-hydroxylysino-norleucine cross-links",
+    "stId": "Formation of dehydro-hydroxylysino-norleucine cross-links",
     "externalId": "R-HSA-2395257",
     "externalSource": "Reactome",
     "calculated": false,
@@ -589,7 +589,7 @@
     ]
   },
   {
-    "name": "Formation of dehydro-lysinonorleucine cross-links",
+    "stId": "Formation of dehydro-lysinonorleucine cross-links",
     "externalId": "R-HSA-2243931",
     "externalSource": "Reactome",
     "calculated": false,
@@ -604,7 +604,7 @@
     ]
   },
   {
-    "name": "Formation of histidino-hydroxylysinonorleucine cross-links",
+    "stId": "Formation of histidino-hydroxylysinonorleucine cross-links",
     "externalId": "R-HSA-2243926",
     "externalSource": "Reactome",
     "calculated": false,
@@ -619,7 +619,7 @@
     ]
   },
   {
-    "name": "Formation of hydroxyallysine by LOX",
+    "stId": "Formation of hydroxyallysine by LOX",
     "externalId": "R-HSA-2395340",
     "externalSource": "Reactome",
     "calculated": false,
@@ -644,7 +644,7 @@
     ]
   },
   {
-    "name": "Formation of hydroxylysino-5-ketonorleucine cross-links",
+    "stId": "Formation of hydroxylysino-5-ketonorleucine cross-links",
     "externalId": "R-HSA-2395302",
     "externalSource": "Reactome",
     "calculated": false,
@@ -659,7 +659,7 @@
     ]
   },
   {
-    "name": "Formation of hydroxylysyl-pyridinoline cross-links",
+    "stId": "Formation of hydroxylysyl-pyridinoline cross-links",
     "externalId": "R-HSA-2395223",
     "externalSource": "Reactome",
     "calculated": false,
@@ -674,7 +674,7 @@
     ]
   },
   {
-    "name": "Formation of hydroxylysyl-pyrrole cross-links",
+    "stId": "Formation of hydroxylysyl-pyrrole cross-links",
     "externalId": "R-HSA-2395324",
     "externalSource": "Reactome",
     "calculated": false,
@@ -689,7 +689,7 @@
     ]
   },
   {
-    "name": "Formation of lysino-5-ketonorleucine cross-links",
+    "stId": "Formation of lysino-5-ketonorleucine cross-links",
     "externalId": "R-HSA-2395314",
     "externalSource": "Reactome",
     "calculated": false,
@@ -704,7 +704,7 @@
     ]
   },
   {
-    "name": "Formation of lysyl-pyridinoline cross-links",
+    "stId": "Formation of lysyl-pyridinoline cross-links",
     "externalId": "R-HSA-2395322",
     "externalSource": "Reactome",
     "calculated": false,
@@ -719,7 +719,7 @@
     ]
   },
   {
-    "name": "Formation of lysyl-pyrrole cross-links",
+    "stId": "Formation of lysyl-pyrrole cross-links",
     "externalId": "R-HSA-2250301",
     "externalSource": "Reactome",
     "calculated": false,
@@ -734,7 +734,7 @@
     ]
   },
   {
-    "name": "Prolysyl oxidase activation",
+    "stId": "Prolysyl oxidase activation",
     "externalId": "R-HSA-2022141",
     "externalSource": "Reactome",
     "calculated": false,
@@ -763,7 +763,7 @@
     ]
   },
   {
-    "name": "Formation of collagen fibres",
+    "stId": "Formation of collagen fibres",
     "externalId": "R-HSA-2213201",
     "externalSource": "Reactome",
     "calculated": false,
@@ -796,7 +796,7 @@
     ]
   },
   {
-    "name": "Formation of collagen fibrils",
+    "stId": "Formation of collagen fibrils",
     "externalId": "R-HSA-1474266",
     "externalSource": "Reactome",
     "calculated": false,
@@ -829,7 +829,7 @@
     ]
   },
   {
-    "name": "Formation of collagen networks",
+    "stId": "Formation of collagen networks",
     "externalId": "R-HSA-2213207",
     "externalSource": "Reactome",
     "calculated": false,
@@ -868,7 +868,7 @@
     ]
   },
   {
-    "name": "Hemidesmosome formation",
+    "stId": "Hemidesmosome formation",
     "externalId": "R-HSA-2213192",
     "externalSource": "Reactome",
     "calculated": false,
@@ -897,7 +897,7 @@
     ]
   },
   {
-    "name": "Release of endostatin-like peptides",
+    "stId": "Release of endostatin-like peptides",
     "externalId": "R-HSA-2213200",
     "externalSource": "Reactome",
     "calculated": false,
@@ -930,7 +930,7 @@
     ]
   },
   {
-    "name": "Type X collagen associates with collagen type II fibrils",
+    "stId": "Type X collagen associates with collagen type II fibrils",
     "externalId": "R-HSA-2213208",
     "externalSource": "Reactome",
     "calculated": false,
@@ -945,7 +945,7 @@
     ]
   },
   {
-    "name": "Type XII and XIV collagens associate with type I and type II fibrils.",
+    "stId": "Type XII and XIV collagens associate with type I and type II fibrils.",
     "externalId": "R-HSA-2213205",
     "externalSource": "Reactome",
     "calculated": false,
@@ -966,7 +966,7 @@
     ]
   },
   {
-    "name": "Collagen biosynthesis and modifying enzymes",
+    "stId": "Collagen biosynthesis and modifying enzymes",
     "externalId": "R-HSA-1650814",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1111,7 +1111,7 @@
     ]
   },
   {
-    "name": "COLGALT1,COLGALT2 bind Lysyl hydroxylated collagen propeptides",
+    "stId": "COLGALT1,COLGALT2 bind Lysyl hydroxylated collagen propeptides",
     "externalId": "R-HSA-8948228",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1214,7 +1214,7 @@
     ]
   },
   {
-    "name": "COLGALT1,COLGALT2:Galactosyl-hydroxylysyl collagen propeptides dissociates",
+    "stId": "COLGALT1,COLGALT2:Galactosyl-hydroxylysyl collagen propeptides dissociates",
     "externalId": "R-HSA-8948231",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1317,7 +1317,7 @@
     ]
   },
   {
-    "name": "Collagen chain trimerization",
+    "stId": "Collagen chain trimerization",
     "externalId": "R-HSA-8948216",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1416,7 +1416,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type I",
+    "stId": "Association of procollagen type I",
     "externalId": "R-HSA-8944214",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1431,7 +1431,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type II",
+    "stId": "Association of procollagen type II",
     "externalId": "R-HSA-8944263",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1444,7 +1444,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type III",
+    "stId": "Association of procollagen type III",
     "externalId": "R-HSA-8944240",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1457,7 +1457,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type IV",
+    "stId": "Association of procollagen type IV",
     "externalId": "R-HSA-8944265",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1480,7 +1480,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type IX",
+    "stId": "Association of procollagen type IX",
     "externalId": "R-HSA-8944229",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1497,7 +1497,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type V",
+    "stId": "Association of procollagen type V",
     "externalId": "R-HSA-8944223",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1514,7 +1514,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type VI",
+    "stId": "Association of procollagen type VI",
     "externalId": "R-HSA-8944247",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1535,7 +1535,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type VII",
+    "stId": "Association of procollagen type VII",
     "externalId": "R-HSA-8944255",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1548,7 +1548,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type VIII",
+    "stId": "Association of procollagen type VIII",
     "externalId": "R-HSA-8944218",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1563,7 +1563,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type X",
+    "stId": "Association of procollagen type X",
     "externalId": "R-HSA-8944262",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1576,7 +1576,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XI",
+    "stId": "Association of procollagen type XI",
     "externalId": "R-HSA-8944266",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1593,7 +1593,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XII",
+    "stId": "Association of procollagen type XII",
     "externalId": "R-HSA-8944232",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1606,7 +1606,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XIII",
+    "stId": "Association of procollagen type XIII",
     "externalId": "R-HSA-8944261",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1619,7 +1619,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XIV",
+    "stId": "Association of procollagen type XIV",
     "externalId": "R-HSA-8944236",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1632,7 +1632,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XIX",
+    "stId": "Association of procollagen type XIX",
     "externalId": "R-HSA-8944233",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1645,7 +1645,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XV",
+    "stId": "Association of procollagen type XV",
     "externalId": "R-HSA-8944216",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1658,7 +1658,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XVI",
+    "stId": "Association of procollagen type XVI",
     "externalId": "R-HSA-8944219",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1671,7 +1671,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XVII",
+    "stId": "Association of procollagen type XVII",
     "externalId": "R-HSA-8944225",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1684,7 +1684,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XVIII",
+    "stId": "Association of procollagen type XVIII",
     "externalId": "R-HSA-8944230",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1699,7 +1699,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XX",
+    "stId": "Association of procollagen type XX",
     "externalId": "R-HSA-8944215",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1712,7 +1712,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XXI",
+    "stId": "Association of procollagen type XXI",
     "externalId": "R-HSA-8944246",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1727,7 +1727,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XXII",
+    "stId": "Association of procollagen type XXII",
     "externalId": "R-HSA-8944227",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1742,7 +1742,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XXIII",
+    "stId": "Association of procollagen type XXIII",
     "externalId": "R-HSA-8944220",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1755,7 +1755,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XXIV",
+    "stId": "Association of procollagen type XXIV",
     "externalId": "R-HSA-8944257",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1768,7 +1768,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XXV",
+    "stId": "Association of procollagen type XXV",
     "externalId": "R-HSA-8944250",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1783,7 +1783,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XXVI",
+    "stId": "Association of procollagen type XXVI",
     "externalId": "R-HSA-8944254",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1796,7 +1796,7 @@
     ]
   },
   {
-    "name": "Association of procollagen type XXVII",
+    "stId": "Association of procollagen type XXVII",
     "externalId": "R-HSA-8944242",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1809,7 +1809,7 @@
     ]
   },
   {
-    "name": "Collagen prolyl 3-hydroxylase converts 4-Hyp collagen to 3,4-Hyp collagen",
+    "stId": "Collagen prolyl 3-hydroxylase converts 4-Hyp collagen to 3,4-Hyp collagen",
     "externalId": "R-HSA-1980233",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1918,7 +1918,7 @@
     ]
   },
   {
-    "name": "Dimerization of procollagen type VI",
+    "stId": "Dimerization of procollagen type VI",
     "externalId": "R-HSA-1614460",
     "externalSource": "Reactome",
     "calculated": false,
@@ -1939,7 +1939,7 @@
     ]
   },
   {
-    "name": "Galactosylation of collagen propeptide hydroxylysines by PLOD3",
+    "stId": "Galactosylation of collagen propeptide hydroxylysines by PLOD3",
     "externalId": "R-HSA-1981128",
     "externalSource": "Reactome",
     "calculated": false,
@@ -2040,7 +2040,7 @@
     ]
   },
   {
-    "name": "Galactosylation of collagen propeptide hydroxylysines by procollagen galactosyltransferases 1, 2.",
+    "stId": "Galactosylation of collagen propeptide hydroxylysines by procollagen galactosyltransferases 1, 2.",
     "externalId": "R-HSA-1981120",
     "externalSource": "Reactome",
     "calculated": false,
@@ -2143,7 +2143,7 @@
     ]
   },
   {
-    "name": "Glucosylation of collagen propeptide hydroxylysines",
+    "stId": "Glucosylation of collagen propeptide hydroxylysines",
     "externalId": "R-HSA-1981157",
     "externalSource": "Reactome",
     "calculated": false,
@@ -2244,7 +2244,7 @@
     ]
   },
   {
-    "name": "Lysyl hydroxylated collagen propeptides dissociate from Lysyl hydroxylases",
+    "stId": "Lysyl hydroxylated collagen propeptides dissociate from Lysyl hydroxylases",
     "externalId": "R-HSA-8948232",
     "externalSource": "Reactome",
     "calculated": false,
@@ -2349,7 +2349,7 @@
     ]
   },
   {
-    "name": "P3HB binds 4-Hyp-collagen propeptides",
+    "stId": "P3HB binds 4-Hyp-collagen propeptides",
     "externalId": "R-HSA-8948230",
     "externalSource": "Reactome",
     "calculated": false,
@@ -2458,7 +2458,7 @@
     ]
   },
   {
-    "name": "P4HB binds Collagen chains",
+    "stId": "P4HB binds Collagen chains",
     "externalId": "R-HSA-2002460",
     "externalSource": "Reactome",
     "calculated": false,
@@ -2559,7 +2559,7 @@
     ]
   },
   {
-    "name": "P4HB:4-Hyp collagen propeptides dissociates",
+    "stId": "P4HB:4-Hyp collagen propeptides dissociates",
     "externalId": "R-HSA-8948234",
     "externalSource": "Reactome",
     "calculated": false,
@@ -2660,7 +2660,7 @@
     ]
   },
   {
-    "name": "PLOD3 binds Lysyl hydroxylated collagen propeptides",
+    "stId": "PLOD3 binds Lysyl hydroxylated collagen propeptides",
     "externalId": "R-HSA-8948219",
     "externalSource": "Reactome",
     "calculated": false,
@@ -2761,7 +2761,7 @@
     ]
   },
   {
-    "name": "PLOD3:Fe2+ dimer:Galactosyl-hydroxylysyl collagen propeptides dissociates",
+    "stId": "PLOD3:Fe2+ dimer:Galactosyl-hydroxylysyl collagen propeptides dissociates",
     "externalId": "R-HSA-8948222",
     "externalSource": "Reactome",
     "calculated": false,
@@ -2862,7 +2862,7 @@
     ]
   },
   {
-    "name": "PLOD3:Fe2+ dimer:Glucosyl-galactosyl-hydroxylysyl collagen propeptides dissociates",
+    "stId": "PLOD3:Fe2+ dimer:Glucosyl-galactosyl-hydroxylysyl collagen propeptides dissociates",
     "externalId": "R-HSA-8948224",
     "externalSource": "Reactome",
     "calculated": false,
@@ -2963,7 +2963,7 @@
     ]
   },
   {
-    "name": "Procollagen lysyl hydroxylases convert collagen lysines to 5-hydroxylysines",
+    "stId": "Procollagen lysyl hydroxylases convert collagen lysines to 5-hydroxylysines",
     "externalId": "R-HSA-1981104",
     "externalSource": "Reactome",
     "calculated": false,
@@ -3068,7 +3068,7 @@
     ]
   },
   {
-    "name": "Procollagen triple helix formation",
+    "stId": "Procollagen triple helix formation",
     "externalId": "R-HSA-2022073",
     "externalSource": "Reactome",
     "calculated": false,
@@ -3175,7 +3175,7 @@
     ]
   },
   {
-    "name": "Prolyl 3-hydroxylases:Fe2+:3,4-Hyp collagen propeptides dissociates",
+    "stId": "Prolyl 3-hydroxylases:Fe2+:3,4-Hyp collagen propeptides dissociates",
     "externalId": "R-HSA-8948226",
     "externalSource": "Reactome",
     "calculated": false,
@@ -3284,7 +3284,7 @@
     ]
   },
   {
-    "name": "Prolyl 4-hydroxylase converts collagen prolines to 4-hydroxyprolines",
+    "stId": "Prolyl 4-hydroxylase converts collagen prolines to 4-hydroxyprolines",
     "externalId": "R-HSA-1650808",
     "externalSource": "Reactome",
     "calculated": false,
@@ -3391,7 +3391,7 @@
     ]
   },
   {
-    "name": "Removal of fibrillar collagen C-propeptides",
+    "stId": "Removal of fibrillar collagen C-propeptides",
     "externalId": "R-HSA-2002440",
     "externalSource": "Reactome",
     "calculated": false,
@@ -3434,7 +3434,7 @@
     ]
   },
   {
-    "name": "Removal of fibrillar collagen N-propeptides",
+    "stId": "Removal of fibrillar collagen N-propeptides",
     "externalId": "R-HSA-2002428",
     "externalSource": "Reactome",
     "calculated": false,
@@ -3475,7 +3475,7 @@
     ]
   },
   {
-    "name": "Secretion of collagens",
+    "stId": "Secretion of collagens",
     "externalId": "R-HSA-2089971",
     "externalSource": "Reactome",
     "calculated": false,
@@ -3570,7 +3570,7 @@
     ]
   },
   {
-    "name": "Secretion of transmembrane collagens",
+    "stId": "Secretion of transmembrane collagens",
     "externalId": "R-HSA-2152276",
     "externalSource": "Reactome",
     "calculated": false,
@@ -3591,7 +3591,7 @@
     ]
   },
   {
-    "name": "Tetramerization of procollagen VI",
+    "stId": "Tetramerization of procollagen VI",
     "externalId": "R-HSA-1614461",
     "externalSource": "Reactome",
     "calculated": false,

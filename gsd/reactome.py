@@ -97,14 +97,15 @@ def dump_gene_sets(reactome_node):
     return gene_set + reduce(lambda a, b: a + b, [dump_gene_sets(node) for node in reactome_node['children']])
 
 
-def reactome_to_anytree(node):
-    if 'children' not in node:
-        return Node(name=node['name'])
+def reactome_to_anytree(node, parent=None):
+    n = Node(name=node['name'], parent=parent)
+    if 'children' in node:
+        for child in node['children']:
+            reactome_to_anytree(child, n)
+    return n
 
-    return Node(name=node['name'], children=[reactome_to_anytree(child) for child in node['children']])
 
-
-def download_reactome_sub_tree(tax_id: int, reactome_id: str) -> Tuple[Node, List]:
+def download(tax_id: int, reactome_id: str) -> Tuple[Node, List]:
     reactome_tree = get_event_hierarchy(tax_id)
 
     reactome_pseudo_tree = {'stId': "FAKE", 'name': "PseudoRoot", 'children': reactome_tree}

@@ -20,7 +20,7 @@ rule download_reactome_sub_tree:
         for reactome_id in reactome_sub_tree_ids]
     run:
         for reactome_id in reactome_sub_tree_ids:
-            node, gene_sets = gsd.reactome.download_reactome_sub_tree(human_tax_id, reactome_id)
+            node, gene_sets = gsd.reactome.download(human_tax_id, reactome_id)
             gsd.persist_reference_data(node, gene_sets, "evaluation_data/%s" % reactome_id)
 
 rule etract_immuno_cell_data:
@@ -31,7 +31,7 @@ rule etract_immuno_cell_data:
         dir = directory("evaluation_data/immune_cells")
     run:
         gene_sym_hsapiens = read_table(input.entrezgene2gene_sym)
-        node, gene_sets = gsd.immune_cells.etract_immuno_cell_data(input.raw_data, gene_sym_hsapiens)
+        node, gene_sets = gsd.immune_cells.extract_from_raw_data(input.raw_data, gene_sym_hsapiens)
         gsd.persist_reference_data(node, gene_sets, output.dir)
 
 rule download_entrezgene2gene_sym_anno:

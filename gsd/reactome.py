@@ -42,7 +42,7 @@ def get_node_by_reactome_id(reactome_node, reactome_id):
     return None
 
 
-def extract_reactome_data(reactome_id):
+def extract_reactome_gene_set(reactome_id):
     reference_entities = get_reactome_reference_entities(reactome_id)
 
     gene_products = [elem for elem in reference_entities if elem["className"] == "ReferenceGeneProduct"]
@@ -91,7 +91,7 @@ def extract_reactome_data(reactome_id):
 
 
 def dump_gene_sets(reactome_node):
-    gene_set = [extract_reactome_data(reactome_node['stId'])]
+    gene_set = [extract_reactome_gene_set(reactome_node['stId'])]
     if 'children' not in reactome_node:
         return gene_set
     return gene_set + reduce(lambda a, b: a + b, [dump_gene_sets(node) for node in reactome_node['children']])

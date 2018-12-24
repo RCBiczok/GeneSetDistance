@@ -3,7 +3,7 @@ from typing import List
 
 from pandas import DataFrame
 
-from gsd import GeneSet
+from gsd.gene_sets import GeneSet
 
 
 class DistanceMeasure:

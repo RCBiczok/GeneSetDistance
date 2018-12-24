@@ -6,6 +6,7 @@ from typing import Tuple, List
 from anytree import Node
 
 from gsd import flat_list
+from gsd.gene_sets import GeneSet
 
 
 def get_json_from(url):
@@ -42,7 +43,7 @@ def get_node_by_reactome_id(reactome_node, reactome_id):
     return None
 
 
-def extract_reactome_gene_set(reactome_id):
+def extract_reactome_gene_set(reactome_id) -> GeneSet:
     reference_entities = get_reactome_reference_entities(reactome_id)
 
     gene_products = [elem for elem in reference_entities if elem["className"] == "ReferenceGeneProduct"]
@@ -80,17 +81,16 @@ def extract_reactome_gene_set(reactome_id):
 
     reactome_summary = reduce(lambda a, b: a + " --- " + b, [x['text'] for x in reactome_summation])
 
-    geneset_info = {'stId': reactome_name,
-                    'externalId': reactome_info['stId'],
-                    'externalSource': "Reactome",
-                    'calculated': False,
-                    'summary': reactome_summary,
-                    'genes': reactome_genes,
-                    'gene_symbols': symbol_list}
-    return geneset_info
+    return GeneSet(reactome_name,
+                   reactome_info['stId'],
+                   reactome_summary,
+                   "Reactome",
+                   False,
+                   reactome_genes,
+                   symbol_list)
 
 
-def dump_gene_sets(reactome_node):
+def dump_gene_sets(reactome_node) -> List[GeneSet]:
     gene_set = [extract_reactome_gene_set(reactome_node['stId'])]
     if 'children' not in reactome_node:
         return gene_set
@@ -113,7 +113,7 @@ def download(tax_id: int, reactome_id: str) -> Tuple[Node, List]:
     sub_tree = get_node_by_reactome_id(reactome_pseudo_tree, reactome_id)
 
     gene_sets = dump_gene_sets(sub_tree)
-    unique_ids = set([gene_set['externalId'] for gene_set in gene_sets])
-    unique_gene_sets = [gene_set for gene_set in gene_sets if gene_set['externalId'] in unique_ids]
+    unique_ids = set([gene_set.external_id for gene_set in gene_sets])
+    unique_gene_sets = [gene_set for gene_set in gene_sets if gene_set.external_id in unique_ids]
 
     return reactome_to_anytree(sub_tree), unique_gene_sets

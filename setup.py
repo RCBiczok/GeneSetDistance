@@ -9,7 +9,8 @@ setup(
         'scipy',
         'pandas',
         'biomart',
-        'anytree'
+        'anytree',
+        'jsonpickle'
     ],
     setup_requires=["pytest-runner"],
     tests_require=["pytest"]

@@ -1,26 +1,10 @@
 from typing import List
-
 from pandas import DataFrame, read_table
 
 BIOMART_GO_ID = "go_id"
 BIOMART_GO_NAME = "name_1006"
 BIOMART_GO_DEFINITION = "definition_1006"
 BIOMART_GO_NAMESPACE = "namespace_1003"
-
-
-class GeneSet:
-    def __init__(self,
-                 name: str,
-                 external_id: str, external_source: str, summary: str, entregene_ids, gene_symbols):
-        self.name = name
-        self.external_id = external_id
-        self.external_source = external_source
-        self.summary = summary
-        self.entregene_ids = entregene_ids
-        self.gene_symbols = gene_symbols
-
-    def __repr__(self):
-        return "<GeneSet(name='%s', external_id='%s')>" % (self.name, self.external_id)
 
 
 class GOCategory:
@@ -45,6 +29,27 @@ class GOInfo:
     def __repr__(self):
         return "<GOInfo(molecular_function=%s, cellular_component=%s, biological_process=%s)>" % \
                (self.molecular_function, self.cellular_component, self.biological_process)
+
+
+class GeneSet:
+    def __init__(self,
+                 name: str,
+                 external_id: str,
+                 external_source: str,
+                 summary: str,
+                 calculated: bool,
+                 entregene_ids: List[float],
+                 gene_symbols: List[str]):
+        self.name = name
+        self.external_id = external_id
+        self.external_source = external_source
+        self.summary = summary
+        self.calculated = calculated
+        self.entregene_ids = entregene_ids
+        self.gene_symbols = gene_symbols
+
+    def __repr__(self):
+        return "<GeneSet(name='%s', n_external_id='%s')>" % (self.name, len(self.external_id))
 
 
 def read_go_anno_df(entrezgene2go_file: str, go_file: str) -> DataFrame:

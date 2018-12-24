@@ -1,11 +1,12 @@
 import os.path
 from functools import reduce
-from typing import TypeVar, Iterable, Set, Tuple, List
+from typing import TypeVar, Iterable, Set, Tuple, List, Dict
 
 from anytree import Node
 from pandas import read_excel, read_table
 
 from gsd import flat_list
+from gsd.gene_sets import GeneSet
 
 T = TypeVar('T')
 
@@ -41,33 +42,34 @@ def filter_missing_sub_trees(node: Node, gene_set_names: Set[str]):
     return node_cpy
 
 
-def to_gene_set(generated_immune_marker_genes, cell_type):
+def to_gene_set(generated_immune_marker_genes, cell_type) -> GeneSet:
     tbl_slice = generated_immune_marker_genes[generated_immune_marker_genes.cell_type == cell_type]
-    return {'name': cell_type,
-            'externalId': cell_type,
-            'externalSource': 'Literature Review',
-            'calculated': False,
-            'summary': None,
-            'genes': list(set(tbl_slice['entrezgene'])),
-            'gene_symbol': list(set(tbl_slice['gene_symbol']))}
+
+    return GeneSet(cell_type,
+                   cell_type,
+                   'Literature Review',
+                   "",
+                   False,
+                   list(set(tbl_slice['entrezgene'])),
+                   list(set(tbl_slice['gene_symbol'])))
 
 
-def extract_genes_from(node: Node, gene_sets, cell_types_with_genes):
+def extract_genes_from(node: Node, gene_sets: Dict[str, GeneSet], cell_types_with_genes) -> List[GeneSet]:
     children_gene_sets = flat_list([extract_genes_from(children, gene_sets, cell_types_with_genes)
                                     for children in node.children])
     if node.name in cell_types_with_genes:
         return [gene_sets[node.name]] + children_gene_sets
 
-    genes = flat_list([children_gene_set['genes'] for children_gene_set in children_gene_sets])
-    gene_symbol = flat_list([children_gene_set['gene_symbol'] for children_gene_set in children_gene_sets])
+    genes = flat_list([children_gene_set.entregene_ids for children_gene_set in children_gene_sets])
+    gene_symbol = flat_list([children_gene_set.gene_symbols for children_gene_set in children_gene_sets])
 
-    parent_gene_set = {'name': node.name,
-                       'externalId': node.name,
-                       'externalSource': 'Literature Review',
-                       'calculated': True,
-                       'summary': None,
-                       'genes': list(set(genes)),
-                       'gene_symbol': list(set(gene_symbol))}
+    parent_gene_set = GeneSet(node.name,
+                              node.name,
+                              'Literature Review',
+                              "",
+                              True,
+                              list(set(genes)),
+                              list(set(gene_symbol)))
 
     return [parent_gene_set] + children_gene_sets
 
@@ -82,9 +84,9 @@ def extract_from_raw_data(immune_cell_data_dir: str, gene_sym_hsapiens) -> Tuple
     immune_cell_tree = filter_missing_sub_trees(immune_cell_tree, cell_types_with_genes)
 
     gene_sets = [to_gene_set(generated_immune_marker_genes, cell_type) for cell_type in cell_types_with_genes]
-    gene_sets = [gene_set for gene_set in gene_sets if len(gene_set['genes']) > 0]
+    gene_sets = [gene_set for gene_set in gene_sets if len(gene_set.entregene_ids) > 0]
 
     all_gene_sets = extract_genes_from(immune_cell_tree,
-                                       {gene_set['name']: gene_set for gene_set in gene_sets},
+                                       {gene_set.name: gene_set for gene_set in gene_sets},
                                        cell_types_with_genes)
     return immune_cell_tree, all_gene_sets

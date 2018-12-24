@@ -1,27 +1,13 @@
 from typing import List
-
 from pandas import DataFrame, read_csv, read_table
 from pandas.compat import cStringIO
-
 from biomart import BiomartServer, BiomartDataset
-
-
-def query_df(ds: BiomartDataset, params: dict) -> DataFrame:
-    response = ds.search(params=params)
-    return read_csv(cStringIO(response.text), sep='\t', names=params['attributes'], dtype=str)
-
-
-def download_biomart_anno(attributes: List[str], out_file: str):
-    server = BiomartServer("http://www.ensembl.org/biomart")
-    ds = server.datasets["hsapiens_gene_ensembl"]
-    df = query_df(ds, {'attributes': attributes}).dropna()
-    df.to_csv(out_file, sep="\t", index=False)
-
 
 BIOMART_GO_ID = "go_id"
 BIOMART_GO_NAME = "name_1006"
 BIOMART_GO_DEFINITION = "definition_1006"
 BIOMART_GO_NAMESPACE = "namespace_1003"
+BIOMART_GO_LINKAGE_TYPE = 'go_linkage_type'
 
 
 class GOCategory:
@@ -46,6 +32,17 @@ class GOInfo:
     def __repr__(self):
         return "<GOInfo(molecular_function=%s, cellular_component=%s, biological_process=%s)>" % \
                (self.molecular_function, self.cellular_component, self.biological_process)
+
+def query_df(ds: BiomartDataset, params: dict) -> DataFrame:
+    response = ds.search(params=params)
+    return read_csv(cStringIO(response.text), sep='\t', names=params['attributes'], dtype=str)
+
+
+def download_biomart_anno(attributes: List[str], out_file: str):
+    server = BiomartServer("http://www.ensembl.org/biomart")
+    ds = server.datasets["hsapiens_gene_ensembl"]
+    df = query_df(ds, {'attributes': attributes}).dropna()
+    df.to_csv(out_file, sep="\t", index=False)
 
 
 def read_go_anno_df(entrezgene2go_file: str, go_file: str) -> DataFrame:

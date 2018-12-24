@@ -55,5 +55,9 @@ rule download_go_anno:
         anno_file = "annotation_data/go.tsv"
     run:
         gsd.annotation.download_biomart_anno(
-            ['go_id', 'name_1006', 'definition_1006', 'go_linkage_type', 'namespace_1003'],
+            [gsd.annotation.BIOMART_GO_ID,
+             gsd.annotation.BIOMART_GO_NAME,
+             gsd.annotation.BIOMART_GO_DEFINITION,
+             gsd.annotation.BIOMART_GO_LINKAGE_TYPE,
+             gsd.annotation.BIOMART_GO_NAMESPACE],
             output.anno_file)

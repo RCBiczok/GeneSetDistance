@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Set
 from pandas import DataFrame, read_table
 
 BIOMART_GO_ID = "go_id"
@@ -38,8 +38,8 @@ class GeneSet:
                  external_source: str,
                  summary: str,
                  calculated: bool,
-                 entregene_ids: List[float],
-                 gene_symbols: List[str]):
+                 entregene_ids: Set[float],
+                 gene_symbols: Set[str]):
         self.name = name
         self.external_id = external_id
         self.external_source = external_source

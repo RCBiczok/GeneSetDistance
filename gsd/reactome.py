@@ -53,7 +53,7 @@ def extract_reactome_gene_set(reactome_id) -> GeneSet:
                           ident.startswith(entrezgene_prefix)]
                          for gene_product in gene_products]
 
-    symbol_list = [gene_product["name"][0] for gene_product in gene_products]
+    symbol_list = {gene_product["name"][0] for gene_product in gene_products}
 
     if any([len(ids) > 1 for ids in entregene_id_list]):
         print("%s has multiple entregene IDs for the same gene" % reactome_id, file=sys.stderr)
@@ -66,7 +66,7 @@ def extract_reactome_gene_set(reactome_id) -> GeneSet:
     if len(reactome_genes) != len(set(reactome_genes)):
         print("%s contains redundant entrezegene IDs" % reactome_id, file=sys.stderr)
 
-    reactome_genes = list(set(reactome_genes))
+    reactome_genes = set(reactome_genes)
 
     reactome_info = get_reactome_information(reactome_id)
 

@@ -50,8 +50,8 @@ def to_gene_set(generated_immune_marker_genes, cell_type) -> GeneSet:
                    'Literature Review',
                    "",
                    False,
-                   list(set(tbl_slice['entrezgene'])),
-                   list(set(tbl_slice['gene_symbol'])))
+                   set(tbl_slice['entrezgene']),
+                   set(tbl_slice['gene_symbol']))
 
 
 def extract_genes_from(node: Node, gene_sets: Dict[str, GeneSet], cell_types_with_genes) -> List[GeneSet]:
@@ -68,8 +68,8 @@ def extract_genes_from(node: Node, gene_sets: Dict[str, GeneSet], cell_types_wit
                               'Literature Review',
                               "",
                               True,
-                              list(set(genes)),
-                              list(set(gene_symbol)))
+                              set(genes),
+                              set(gene_symbol))
 
     return [parent_gene_set] + children_gene_sets
 

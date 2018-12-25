@@ -1,7 +1,8 @@
-from typing import List
+from typing import List, Set
 from pandas import DataFrame, read_csv, read_table
 from pandas.compat import cStringIO
 from biomart import BiomartServer, BiomartDataset
+from enum import Enum, unique
 
 BIOMART_GO_ID = "go_id"
 BIOMART_GO_NAME = "name_1006"
@@ -21,7 +22,7 @@ class GOCategory:
 
 
 class GOInfo:
-    def __init__(self, genes: List[int], go_anno: DataFrame):
+    def __init__(self, genes: Set[int], go_anno: DataFrame):
         self.molecular_function = GOCategory(go_anno[(go_anno['entrezgene'].isin(genes))
                                                      & (go_anno[BIOMART_GO_NAMESPACE] == "molecular_function")])
         self.cellular_component = GOCategory(go_anno[(go_anno['entrezgene'].isin(genes))
@@ -32,6 +33,20 @@ class GOInfo:
     def __repr__(self):
         return "<GOInfo(molecular_function=%s, cellular_component=%s, biological_process=%s)>" % \
                (self.molecular_function, self.cellular_component, self.biological_process)
+
+
+@unique
+class GOType(Enum):
+    MOLECULAR_FUNCTION = "MF"
+    CELLULAR_COMPONENT = "CC"
+    BIOLOGICAL_PROCESS = "BP"
+
+    def select_category(self, go_info: GOInfo) -> GOCategory:
+        if self.value == "MF":
+            return go_info.molecular_function
+        elif self.value == "CC":
+            return go_info.cellular_component
+        return go_info.biological_process
 
 
 def query_df(ds: BiomartDataset, params: dict) -> DataFrame:

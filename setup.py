@@ -12,7 +12,8 @@ setup(
         'anytree',
         'jsonpickle',
         'numpy',
-        'sklearn'
+        'sklearn',
+        'rpy2'
     ],
     setup_requires=["pytest-runner"],
     tests_require=["pytest"]

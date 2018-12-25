@@ -1,4 +1,5 @@
 from typing import Set
+import jsonpickle
 
 
 class GeneSet:
@@ -20,3 +21,9 @@ class GeneSet:
 
     def __repr__(self):
         return "<GeneSet(name='%s', n_entrez_gene_ids='%s')>" % (self.name, len(self.entrez_gene_ids))
+
+
+def load(gene_sets_file) -> GeneSet:
+    with open(gene_sets_file) as f:
+        json_str = f.read()
+        return jsonpickle.decode(json_str)

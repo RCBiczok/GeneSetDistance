@@ -60,7 +60,7 @@ def extract_genes_from(node: Node, gene_sets: Dict[str, GeneSet], cell_types_wit
     if node.name in cell_types_with_genes:
         return [gene_sets[node.name]] + children_gene_sets
 
-    genes = flat_list([children_gene_set.entregene_ids for children_gene_set in children_gene_sets])
+    genes = flat_list([children_gene_set.entrez_gene_ids for children_gene_set in children_gene_sets])
     gene_symbol = flat_list([children_gene_set.gene_symbols for children_gene_set in children_gene_sets])
 
     parent_gene_set = GeneSet(node.name,
@@ -84,7 +84,7 @@ def extract_from_raw_data(immune_cell_data_dir: str, gene_sym_hsapiens) -> Tuple
     immune_cell_tree = filter_missing_sub_trees(immune_cell_tree, cell_types_with_genes)
 
     gene_sets = [to_gene_set(generated_immune_marker_genes, cell_type) for cell_type in cell_types_with_genes]
-    gene_sets = [gene_set for gene_set in gene_sets if len(gene_set.entregene_ids) > 0]
+    gene_sets = [gene_set for gene_set in gene_sets if len(gene_set.entrez_gene_ids) > 0]
 
     all_gene_sets = extract_genes_from(immune_cell_tree,
                                        {gene_set.name: gene_set for gene_set in gene_sets},

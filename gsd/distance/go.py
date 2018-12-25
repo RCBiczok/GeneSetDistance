@@ -11,7 +11,7 @@ org_hs_en_db = importr("org.Hs.eg.db")
 go_sem_sim = importr("GOSemSim")
 
 
-class GOSimMetric(DistanceMetric):
+class GOSimDistanceMetric(DistanceMetric):
     def __init__(self, go_anno: DataFrame, go_type: GOType, measure="Wang", combine="BMA"):
         self.go_anno = go_anno
         self.go_type = go_type

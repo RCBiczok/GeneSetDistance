@@ -33,6 +33,7 @@ class GOInfo:
         return "<GOInfo(molecular_function=%s, cellular_component=%s, biological_process=%s)>" % \
                (self.molecular_function, self.cellular_component, self.biological_process)
 
+
 def query_df(ds: BiomartDataset, params: dict) -> DataFrame:
     response = ds.search(params=params)
     return read_csv(cStringIO(response.text), sep='\t', names=params['attributes'], dtype=str)

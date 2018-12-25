@@ -1,12 +1,11 @@
+import numpy as np
 from abc import abstractmethod
 from typing import List
-
-from pandas import DataFrame
 
 from gsd.gene_sets import GeneSet
 
 
-class DistanceMeasure:
+class DistanceMetric:
     def __repr__(self):
         return "%s(name=%s)" % (self.__class__.__name__, self.display_name)
 
@@ -16,8 +15,7 @@ class DistanceMeasure:
         """Returns a user-friendly name of this distance measure"""
         raise KeyError("Not implemented")
 
-    @property
     @abstractmethod
-    def calc(self: List[GeneSet]) -> DataFrame:
+    def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
         """Calculates a matrix of pairwise distances for the given gene sets"""
         raise KeyError("Not implemented")

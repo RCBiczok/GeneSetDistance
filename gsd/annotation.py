@@ -49,6 +49,12 @@ class GOType(Enum):
         return go_info.biological_process
 
 
+def read_go_anno_df(entrezgene2go_file: str, go_file: str) -> DataFrame:
+    entrezgene2go_df = read_table(entrezgene2go_file)
+    go_df = read_table(go_file)
+    return entrezgene2go_df.join(go_df.set_index("go_id"), on="go_id")
+
+
 def query_df(ds: BiomartDataset, params: dict) -> DataFrame:
     response = ds.search(params=params)
     return read_csv(cStringIO(response.text), sep='\t', names=params['attributes'], dtype=str)
@@ -60,8 +66,3 @@ def download_biomart_anno(attributes: List[str], out_file: str):
     df = query_df(ds, {'attributes': attributes}).dropna()
     df.to_csv(out_file, sep="\t", index=False)
 
-
-def read_go_anno_df(entrezgene2go_file: str, go_file: str) -> DataFrame:
-    entrezgene2go_df = read_table(entrezgene2go_file)
-    go_df = read_table(go_file)
-    return entrezgene2go_df.join(go_df.set_index("go_id"), on="go_id")

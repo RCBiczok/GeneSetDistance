@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, TypeVar, Callable
 from scipy.spatial.distance import pdist
 import numpy as np
 
@@ -32,6 +32,20 @@ class JaccardDistanceMetric(DistanceMetric):
         return pdist(np.array(vector_list), 'jaccard')
 
 
+T = TypeVar('T')
+
+
+def calc_pairwise_distances(obj_list: List[T], dist_fun: Callable[[T, T], float]) -> np.ndarray:
+    result = np.ndarray(shape=(calc_n_comparisons(obj_list),), dtype=float)
+    idx = 0
+
+    for i in range(0, len(obj_list) - 1):
+        for j in range(i + 1, len(obj_list)):
+            result[idx] = dist_fun(obj_list[i], obj_list[j])
+            idx += 1
+    return result
+
+
 class KappaDistanceMetric(DistanceMetric):
     @property
     def display_name(self) -> str:
@@ -39,12 +53,4 @@ class KappaDistanceMetric(DistanceMetric):
 
     def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
         vector_list = to_binary_matrix(gene_sets)
-
-        result = np.ndarray(shape=(calc_n_comparisons(gene_sets),), dtype=float)
-        idx = 0
-
-        for i in range(0, len(gene_sets) - 1):
-            for j in range(i+1, len(gene_sets)):
-                result[idx] = 1-cohen_kappa_score(vector_list[i], vector_list[j])
-                idx += 1
-        return result
+        return calc_pairwise_distances(vector_list, lambda a, b: 1 - cohen_kappa_score(a, b))

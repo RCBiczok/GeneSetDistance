@@ -4,7 +4,8 @@ from pandas import DataFrame
 from rpy2.robjects.packages import importr
 
 from gsd.annotation import GOInfo, GOType
-from gsd.distance import DistanceMetric, calc_n_comparisons
+from gsd.distance import DistanceMetric
+from gsd.distance.general import calc_pairwise_distances
 from gsd.gene_sets import GeneSet
 
 org_hs_en_db = importr("org.Hs.eg.db")
@@ -25,15 +26,10 @@ class GOSimDistanceMetric(DistanceMetric):
 
     def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
         go_sets = [GOInfo(genes=gene_set.entrez_gene_ids, go_anno=self.go_anno) for gene_set in gene_sets]
-        result = np.ndarray(shape=(calc_n_comparisons(gene_sets),), dtype=float)
-        idx = 0
 
-        for i in range(0, len(gene_sets) - 1):
-            for j in range(i + 1, len(gene_sets)):
-                result[idx] = 1 - go_sem_sim.mgoSim(list(self.go_type.select_category(go_sets[i]).ids),
-                                                    list(self.go_type.select_category(go_sets[j]).ids),
-                                                    self.hs_go_data,
-                                                    measure=self.measure,
-                                                    combine=self.combine)[0]
-                idx += 1
-        return result
+        return calc_pairwise_distances(go_sets,
+                                       lambda a, b: 1 - go_sem_sim.mgoSim(list(self.go_type.select_category(a).ids),
+                                                                          list(self.go_type.select_category(b).ids),
+                                                                          self.hs_go_data,
+                                                                          measure=self.measure,
+                                                                          combine=self.combine)[0])

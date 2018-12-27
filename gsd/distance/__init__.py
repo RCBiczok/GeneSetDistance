@@ -1,6 +1,6 @@
 import numpy as np
 from abc import abstractmethod
-from typing import List
+from typing import List, TypeVar
 
 from gsd import flat_list
 from gsd.gene_sets import GeneSet
@@ -28,6 +28,9 @@ def to_binary_matrix(gene_sets: List[GeneSet]):
     return [[ref_gene in gene_set.entrez_gene_ids for ref_gene in all_genes] for gene_set in gene_sets]
 
 
-def calc_n_comparisons(gene_sets: List[GeneSet]) -> int:
+T = TypeVar('T')
+
+
+def calc_n_comparisons(gene_sets: List[T]) -> int:
     n = len(gene_sets) - 1
     return int(n * (n + 1) / 2)

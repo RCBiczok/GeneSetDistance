@@ -1,18 +1,28 @@
+import nltk
+from pandas import read_table
+from pathlib import Path
+
 import gsd
 import gsd.reactome
 import gsd.immune_cells
 import gsd.annotation
 
-from pandas import read_table
-
 human_tax_id = 9606
 reactome_sub_tree_ids = ['R-HSA-8982491', 'R-HSA-1474290']
+stopwords_file = "%s/nltk_data/corpora/stopwords" % str(Path.home())
 
 rule all:
     input:
         "evaluation_data/R-HSA-8982491",
         "evaluation_data/R-HSA-1474290",
-        "evaluation_data/immune_cells"
+        "evaluation_data/immune_cells",
+        stopwords_file
+
+rule download_stopwords:
+    output:
+        directory(stopwords_file)
+    run:
+        nltk.download("stopwords")
 
 rule download_reactome_sub_tree:
     output:

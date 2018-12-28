@@ -79,12 +79,12 @@ def extract_reactome_gene_set(reactome_id) -> GeneSet:
     if len(reactome_summation) == 0:
         print("%s has no summary" % reactome_id, file=sys.stderr)
 
-    reactome_summary = reduce(lambda a, b: a + " --- " + b, [x['text'] for x in reactome_summation])
+    reactome_summary = reduce(lambda a, b: a + " <br><br><br> " + b, [x['text'] for x in reactome_summation])
 
     return GeneSet(reactome_name,
                    reactome_info['stId'],
-                   reactome_summary,
                    "Reactome",
+                   reactome_summary,
                    False,
                    reactome_genes,
                    symbol_list)

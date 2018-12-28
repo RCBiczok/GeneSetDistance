@@ -2,21 +2,24 @@
 
 from gensim.models import KeyedVectors
 
-from gsd.distance.nlp import NLPCosineDistance, extract_gene_symbols, filter_stop_words
+from gsd.distance.nlp import NLPCosineDistance, extract_gene_symbols, \
+    extract_words_from_gene_set_summary
 from tests import has_equal_elements
 from tests.gsd.distance import gene_sets
 
 w2v_model = KeyedVectors.load_word2vec_format("../__data/nlp/PubMed-Wilbur-2018/pubmed_s100w10_min.bin", binary=True)
 
 
-def test_filter_stop_words():
-    assert has_equal_elements(filter_stop_words("in the graceful universe".split()), ['graceful', 'universe'])
-
-
 def test_extract_gene_symbols():
     gene_set = gene_sets[0]
     assert has_equal_elements(set(extract_gene_symbols(gene_set, w2v_model)),
                               {'gys1', 'gys2', 'gyg2'})
+
+
+def test_extract_words_from_gene_set_summary():
+    summary_words = extract_words_from_gene_set_summary(gene_sets[0], w2v_model)
+    assert has_equal_elements(summary_words[:3],
+                              ['lysyl', 'hydroxylase', 'lh'])
 
 
 def test_cosine_distance_over_gene_symbols():

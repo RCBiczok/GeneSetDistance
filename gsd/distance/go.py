@@ -24,7 +24,7 @@ class GOSimDistanceMetric(DistanceMetric):
 
     def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
         def calc_dist(a: GeneSet, b: GeneSet):
-            return 1 - go_sem_sim.mgoSim(list(self.go_type.select_category().ids),
+            return 1 - go_sem_sim.mgoSim(list(self.go_type.select_category(a.go_info).ids),
                                          list(self.go_type.select_category(b.go_info).ids),
                                          self.hs_go_data,
                                          measure=self.measure,

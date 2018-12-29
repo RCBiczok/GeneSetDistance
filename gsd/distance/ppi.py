@@ -21,13 +21,12 @@ class DirectPPIDistanceMetric(JaccardDistanceMetric):
 
     def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
         def extend_gene_set(gene_set: GeneSet) -> GeneSet:
-            directly_connected_genes = self.ppi_data.loc[self.ppi_data['FromId']
-                                                             .isin(gene_set.general_info.entrez_gene_ids),
-                                                         "ToId"].tolist()
+            directly_connected_genes = self.ppi_data.loc[
+                self.ppi_data['FromId'].isin(gene_set.general_info.entrez_gene_ids),
+                "ToId"].tolist()
 
-            gene_set_copy = copy.copy(gene_set)
-            gene_set_copy.general_info.entrez_gene_ids = set(list(gene_set.general_info.entrez_gene_ids) +
-                                                             directly_connected_genes),
+            gene_set_copy = copy.deepcopy(gene_set)
+            gene_set_copy.general_info.entrez_gene_ids |= set(directly_connected_genes)
 
             return gene_set_copy
 

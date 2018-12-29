@@ -28,17 +28,17 @@ def _filter_by_vocabulary(words: List[str], w2v_model: Word2VecKeyedVectors) -> 
 # Data Extraction
 
 def extract_gene_symbols(gene_set: GeneSet, w2v_model: Word2VecKeyedVectors) -> List[str]:
-    return _filter_by_vocabulary([gene_sym.lower() for gene_sym in gene_set.gene_symbols], w2v_model)
+    return _filter_by_vocabulary([gene_sym.lower() for gene_sym in gene_set.general_info.gene_symbols], w2v_model)
 
 
 def extract_words_from_gene_set_summary(gene_set: GeneSet, w2v_model: Word2VecKeyedVectors) -> List[str]:
-    raw_list = _extract_words_from_text(gene_set.summary)
+    raw_list = _extract_words_from_text(gene_set.general_info.summary)
     list_without_stopwords = _filter_stop_words(raw_list)
     return _filter_by_vocabulary(list_without_stopwords, w2v_model)
 
 
 def extract_words_from_go(gene_set: GeneSet, w2v_model: Word2VecKeyedVectors) -> List[str]:
-    raw_list = _extract_words_from_text(gene_set.summary)
+    raw_list = _extract_words_from_text(gene_set.general_info.summary)
     list_without_stopwords = _filter_stop_words(raw_list)
     return _filter_by_vocabulary(list_without_stopwords, w2v_model)
 

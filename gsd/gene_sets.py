@@ -1,15 +1,18 @@
-from typing import Set
+from typing import Set, List
 import jsonpickle
+from pandas import DataFrame
+
+from gsd.annotation import GOInfo
 
 
-class GeneSet:
+class GeneSetInfo:
     def __init__(self,
                  name: str,
                  external_id: str,
                  external_source: str,
                  summary: str,
                  calculated: bool,
-                 entrez_gene_ids: Set[float],
+                 entrez_gene_ids: Set[int],
                  gene_symbols: Set[str]):
         self.name = name
         self.external_id = external_id
@@ -20,10 +23,27 @@ class GeneSet:
         self.gene_symbols = gene_symbols
 
     def __repr__(self):
-        return "<GeneSet(name='%s', n_entrez_gene_ids='%s')>" % (self.name, len(self.entrez_gene_ids))
+        return "<GeneralInfo(name='%s', n_entrez_gene_ids='%s')>" % (self.name, len(self.entrez_gene_ids))
 
 
-def load(gene_sets_file) -> GeneSet:
+class GeneSet:
+    def __init__(self,
+                 general_info: GeneSetInfo,
+                 go_info: GOInfo):
+        self.general_info = general_info
+        self.go_info = go_info
+
+    def __repr__(self):
+        return "<AnnotatedGeneSet(general_info='%s', go_info='%s')>" % (self.general_info, self.go_info)
+
+
+def annotate_with_go(gene_set_info_list: List[GeneSetInfo], go_anno: DataFrame) -> [GeneSet]:
+    return [GeneSet(gene_set_info,
+                    GOInfo(genes=gene_set_info.entrez_gene_ids, go_anno=go_anno))
+            for gene_set_info in gene_set_info_list]
+
+
+def load(gene_sets_file: str, go_anno: DataFrame) -> [GeneSet]:
     with open(gene_sets_file) as f:
         json_str = f.read()
-        return jsonpickle.decode(json_str)
+        return annotate_with_go(jsonpickle.decode(json_str), go_anno)

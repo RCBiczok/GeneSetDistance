@@ -6,45 +6,45 @@ from typing import Tuple, List
 from anytree import Node
 
 from gsd import flat_list
-from gsd.gene_sets import GeneSet
+from gsd.gene_sets import GeneSetInfo
 
 
-def get_json_from(url):
+def _get_json_from(url):
     with urllib.request.urlopen(url) as con:
         data = json.loads(con.read().decode())
     return data
 
 
-def get_event_hierarchy(tax_id):
+def _get_event_hierarchy(tax_id):
     url = 'https://reactome.org/ContentService/data/eventsHierarchy/%s' % tax_id
-    return get_json_from(url)
+    return _get_json_from(url)
 
 
-def get_reactome_information(reactome_id):
+def _get_reactome_information(reactome_id):
     url = 'https://reactome.org/ContentService/data/query/%s' % reactome_id
-    return get_json_from(url)
+    return _get_json_from(url)
 
 
-def get_reactome_reference_entities(reactome_id):
+def _get_reactome_reference_entities(reactome_id):
     url = 'https://www.reactome.org/ContentService/data/participants/%s/referenceEntities' % reactome_id
-    return get_json_from(url)
+    return _get_json_from(url)
 
 
-def get_node_by_reactome_id(reactome_node, reactome_id):
+def _get_node_by_reactome_id(reactome_node, reactome_id):
     if reactome_node["stId"] == reactome_id:
         return reactome_node
 
     if 'children' in reactome_node:
         for child in reactome_node['children']:
-            match = get_node_by_reactome_id(child, reactome_id)
+            match = _get_node_by_reactome_id(child, reactome_id)
             if match is not None:
                 return match
 
     return None
 
 
-def extract_reactome_gene_set(reactome_id) -> GeneSet:
-    reference_entities = get_reactome_reference_entities(reactome_id)
+def _extract_reactome_gene_set(reactome_id) -> GeneSetInfo:
+    reference_entities = _get_reactome_reference_entities(reactome_id)
 
     gene_products = [elem for elem in reference_entities if elem["className"] == "ReferenceGeneProduct"]
 
@@ -68,7 +68,7 @@ def extract_reactome_gene_set(reactome_id) -> GeneSet:
 
     reactome_genes = set(reactome_genes)
 
-    reactome_info = get_reactome_information(reactome_id)
+    reactome_info = _get_reactome_information(reactome_id)
 
     reactome_name = reactome_info['displayName']
     reactome_summation = reactome_info['summation']
@@ -81,39 +81,39 @@ def extract_reactome_gene_set(reactome_id) -> GeneSet:
 
     reactome_summary = reduce(lambda a, b: a + " <br><br><br> " + b, [x['text'] for x in reactome_summation])
 
-    return GeneSet(reactome_name,
-                   reactome_info['stId'],
+    return GeneSetInfo(reactome_name,
+                       reactome_info['stId'],
                    "Reactome",
-                   reactome_summary,
-                   False,
-                   reactome_genes,
-                   symbol_list)
+                       reactome_summary,
+                       False,
+                       reactome_genes,
+                       symbol_list)
 
 
-def dump_gene_sets(reactome_node) -> List[GeneSet]:
-    gene_set = [extract_reactome_gene_set(reactome_node['stId'])]
+def _dump_gene_sets(reactome_node) -> List[GeneSetInfo]:
+    gene_set = [_extract_reactome_gene_set(reactome_node['stId'])]
     if 'children' not in reactome_node:
         return gene_set
-    return gene_set + reduce(lambda a, b: a + b, [dump_gene_sets(node) for node in reactome_node['children']])
+    return gene_set + reduce(lambda a, b: a + b, [_dump_gene_sets(node) for node in reactome_node['children']])
 
 
-def reactome_to_anytree(node, parent=None):
+def _reactome_to_anytree(node, parent=None):
     n = Node(name=node['name'], parent=parent)
     if 'children' in node:
         for child in node['children']:
-            reactome_to_anytree(child, n)
+            _reactome_to_anytree(child, n)
     return n
 
 
 def download(tax_id: int, reactome_id: str) -> Tuple[Node, List]:
-    reactome_tree = get_event_hierarchy(tax_id)
+    reactome_tree = _get_event_hierarchy(tax_id)
 
     reactome_pseudo_tree = {'stId': "FAKE", 'name': "PseudoRoot", 'children': reactome_tree}
 
-    sub_tree = get_node_by_reactome_id(reactome_pseudo_tree, reactome_id)
+    sub_tree = _get_node_by_reactome_id(reactome_pseudo_tree, reactome_id)
 
-    gene_sets = dump_gene_sets(sub_tree)
+    gene_sets = _dump_gene_sets(sub_tree)
     unique_ids = set([gene_set.external_id for gene_set in gene_sets])
     unique_gene_sets = [gene_set for gene_set in gene_sets if gene_set.external_id in unique_ids]
 
-    return reactome_to_anytree(sub_tree), unique_gene_sets
+    return _reactome_to_anytree(sub_tree), unique_gene_sets

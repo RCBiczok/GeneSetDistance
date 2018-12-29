@@ -65,4 +65,3 @@ def download_biomart_anno(attributes: List[str], out_file: str):
     ds = server.datasets["hsapiens_gene_ensembl"]
     df = query_df(ds, {'attributes': attributes}).dropna()
     df.to_csv(out_file, sep="\t", index=False)
-

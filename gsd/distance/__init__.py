@@ -23,9 +23,9 @@ class DistanceMetric:
 
 
 def to_binary_matrix(gene_sets: List[GeneSet]):
-    all_genes = set(flat_list([gene_set.entrez_gene_ids for gene_set in gene_sets]))
+    all_genes = set(flat_list([gene_set.general_info.entrez_gene_ids for gene_set in gene_sets]))
 
-    return [[ref_gene in gene_set.entrez_gene_ids for ref_gene in all_genes] for gene_set in gene_sets]
+    return [[ref_gene in gene_set.general_info.entrez_gene_ids for ref_gene in all_genes] for gene_set in gene_sets]
 
 
 T = TypeVar('T')

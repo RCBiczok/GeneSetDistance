@@ -4,6 +4,7 @@ import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import shortest_path
 from statistics import median
+import copy
 
 from gsd.distance import DistanceMetric
 from gsd.distance.general import JaccardDistanceMetric, calc_pairwise_distances
@@ -20,15 +21,15 @@ class DirectPPIDistanceMetric(JaccardDistanceMetric):
 
     def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
         def extend_gene_set(gene_set: GeneSet) -> GeneSet:
-            directly_connected_genes = self.ppi_data.loc[self.ppi_data['FromId'].isin(gene_set.entrez_gene_ids),
+            directly_connected_genes = self.ppi_data.loc[self.ppi_data['FromId']
+                                                             .isin(gene_set.general_info.entrez_gene_ids),
                                                          "ToId"].tolist()
-            return GeneSet(gene_set.name,
-                           gene_set.external_id,
-                           gene_set.external_source,
-                           gene_set.summary,
-                           gene_set.calculated,
-                           set(list(gene_set.entrez_gene_ids) + directly_connected_genes),
-                           gene_set.gene_symbols)
+
+            gene_set_copy = copy.copy(gene_set)
+            gene_set_copy.general_info.entrez_gene_ids = set(list(gene_set.general_info.entrez_gene_ids) +
+                                                             directly_connected_genes),
+
+            return gene_set_copy
 
         return super().calc([extend_gene_set(gene_set) for gene_set in gene_sets])
 
@@ -51,9 +52,9 @@ class ShortestPathPPI(DistanceMetric):
         return "Shortest Path PPI"
 
     def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
-        def calc_path_distance(gene_set_a, gene_set_b):
-            indices_a = [self.nodes_mapping[gene_id] for gene_id in gene_set_a.entrez_gene_ids]
-            indices_b = [self.nodes_mapping[gene_id] for gene_id in gene_set_b.entrez_gene_ids]
+        def calc_path_distance(gene_set_a: GeneSet, gene_set_b: GeneSet):
+            indices_a = [self.nodes_mapping[gene_id] for gene_id in gene_set_a.general_info.entrez_gene_ids]
+            indices_b = [self.nodes_mapping[gene_id] for gene_id in gene_set_b.general_info.entrez_gene_ids]
 
             dist_matrix = shortest_path(csgraph=self.graph, directed=False, indices=indices_a)
             # return median([min([row[idx_b] for idx_b in indices_b]) for row in dist_matrix])

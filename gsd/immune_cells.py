@@ -3,10 +3,10 @@ from functools import reduce
 from typing import TypeVar, Iterable, Set, Tuple, List, Dict
 
 from anytree import Node
-from pandas import read_excel, read_table
+from pandas import read_excel, read_table, DataFrame
 
 from gsd import flat_list
-from gsd.gene_sets import GeneSet
+from gsd.gene_sets import GeneSetInfo
 
 T = TypeVar('T')
 
@@ -42,19 +42,19 @@ def filter_missing_sub_trees(node: Node, gene_set_names: Set[str]):
     return node_cpy
 
 
-def to_gene_set(generated_immune_marker_genes, cell_type) -> GeneSet:
+def to_gene_set(generated_immune_marker_genes, cell_type) -> GeneSetInfo:
     tbl_slice = generated_immune_marker_genes[generated_immune_marker_genes.cell_type == cell_type]
 
-    return GeneSet(cell_type,
-                   cell_type,
-                   'Literature Review',
-                   "",
-                   False,
-                   set(tbl_slice['entrezgene']),
-                   set(tbl_slice['gene_symbol']))
+    return GeneSetInfo(cell_type,
+                       cell_type,
+                       'Literature Review',
+                       "",
+                       False,
+                       set(tbl_slice['entrezgene']),
+                       set(tbl_slice['gene_symbol']))
 
 
-def extract_genes_from(node: Node, gene_sets: Dict[str, GeneSet], cell_types_with_genes) -> List[GeneSet]:
+def extract_genes_from(node: Node, gene_sets: Dict[str, GeneSetInfo], cell_types_with_genes) -> List[GeneSetInfo]:
     children_gene_sets = flat_list([extract_genes_from(children, gene_sets, cell_types_with_genes)
                                     for children in node.children])
     if node.name in cell_types_with_genes:
@@ -63,18 +63,18 @@ def extract_genes_from(node: Node, gene_sets: Dict[str, GeneSet], cell_types_wit
     genes = flat_list([children_gene_set.entrez_gene_ids for children_gene_set in children_gene_sets])
     gene_symbol = flat_list([children_gene_set.gene_symbols for children_gene_set in children_gene_sets])
 
-    parent_gene_set = GeneSet(node.name,
-                              node.name,
-                              'Literature Review',
-                              "",
-                              True,
-                              set(genes),
-                              set(gene_symbol))
+    parent_gene_set = GeneSetInfo(node.name,
+                                  node.name,
+                                  'Literature Review',
+                                  "",
+                                  True,
+                                  set(genes),
+                                  set(gene_symbol))
 
     return [parent_gene_set] + children_gene_sets
 
 
-def extract_from_raw_data(immune_cell_data_dir: str, gene_sym_hsapiens) -> Tuple[Node, List]:
+def extract_from_raw_data(immune_cell_data_dir: str, gene_sym_hsapiens: DataFrame) -> Tuple[Node, List]:
     generated_immune_marker_genes = read_table(os.path.join(immune_cell_data_dir, "signatures_all.txt"))
     generated_immune_marker_genes = generated_immune_marker_genes.join(
         gene_sym_hsapiens.set_index("external_gene_name"), on="gene_symbol").dropna()

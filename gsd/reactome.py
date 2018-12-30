@@ -83,7 +83,7 @@ def _extract_reactome_gene_set(reactome_id) -> GeneSetInfo:
 
     return GeneSetInfo(reactome_name,
                        reactome_info['stId'],
-                   "Reactome",
+                       "Reactome",
                        reactome_summary,
                        False,
                        reactome_genes,

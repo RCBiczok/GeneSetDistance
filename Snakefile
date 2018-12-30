@@ -3,37 +3,93 @@ from pandas import read_table
 from pathlib import Path
 
 import gsd
+import gsd.distance
 import gsd.reactome
 import gsd.immune_cells
 import gsd.annotation
+import gsd.gene_sets
+from gsd.distance.general import MinkowskiNormDistanceMetric, JaccardDistanceMetric, KappaDistanceMetric
 
-human_tax_id = 9606
-reactome_sub_tree_ids = ['R-HSA-8982491', 'R-HSA-1474290']
-stopwords_file = "%s/nltk_data/corpora/stopwords" % str(Path.home())
+## General Variables
+
+HUMAN_TAX_ID = 9606
+STOPWORD_FILE = "%s/nltk_data/corpora/stopwords" % str(Path.home())
+
+## Variables for annotations
+
+ENTREZGENE_2_GO_FILE = 'annotation_data/entrezgene2go.tsv'
+GO_FILE = 'annotation_data/go.tsv'
+
+ANNOTATION_FILES = [ENTREZGENE_2_GO_FILE,
+                    GO_FILE,
+                    'annotation_data/entrezgene2gene_sym.tsv']
+
+## Variables for evaluation data
+
+REACTOME_TARGETS = ['R-HSA-8982491', 'R-HSA-1474290']
+EVALUATION_TARGETS = REACTOME_TARGETS + ['immune_cells']
+EVALUATION_DATA_DIRS = ["evaluation_data/%s" % target_name for target_name in EVALUATION_TARGETS]
+
+EVALUATION_INPUT_DATA = ANNOTATION_FILES + EVALUATION_DATA_DIRS
+
+## Used distances
+
+DIST_MINKOWSKI_P2 = "Minkowski_P2"
+
+EVALUATION_METRICS = [DIST_MINKOWSKI_P2]
+
+TARGET_OUTPUT = expand("experiment_data/{metrics}/{evaluation_target}.json",
+                       metrics=EVALUATION_METRICS,
+                       evaluation_target=EVALUATION_TARGETS)
 
 rule all:
     input:
-        "evaluation_data/R-HSA-8982491",
-        "evaluation_data/R-HSA-1474290",
-        "evaluation_data/immune_cells",
-        stopwords_file
+        TARGET_OUTPUT,
+        STOPWORD_FILE
+
+
+###
+# Distance Measure Experiment
+###
+
+rule calc_minkowski_p2:
+    input: EVALUATION_INPUT_DATA
+    output:
+        expand("experiment_data/{metrics}/{evaluation_target}.json",
+               metrics=[DIST_MINKOWSKI_P2],
+               evaluation_target=EVALUATION_TARGETS)
+    run:
+        go_anno = gsd.annotation.read_go_anno_df(ENTREZGENE_2_GO_FILE, GO_FILE)
+
+        dist = MinkowskiNormDistanceMetric()
+
+        for evaluation_target in EVALUATION_TARGETS:
+            gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % evaluation_target, go_anno)
+            gsd.distance.execute_and_persist_evaluation(
+                        dist,
+                        gene_sets,
+                        evaluation_target,
+                        "experiment_data/%s" % DIST_MINKOWSKI_P2)
+
+###
+# Data Download & initialization
+###
 
 rule download_stopwords:
     output:
-        directory(stopwords_file)
+        directory(STOPWORD_FILE)
     run:
         nltk.download("stopwords")
 
 rule download_reactome_sub_tree:
     output:
-        [directory("evaluation_data/%s" % reactome_id)
-        for reactome_id in reactome_sub_tree_ids]
+        [directory("evaluation_data/%s" % reactome_id) for reactome_id in REACTOME_TARGETS]
     run:
-        for reactome_id in reactome_sub_tree_ids:
-            node, gene_sets = gsd.reactome.download(human_tax_id, reactome_id)
+        for reactome_id in REACTOME_TARGETS:
+            node, gene_sets = gsd.reactome.download(HUMAN_TAX_ID, reactome_id)
             gsd.persist_reference_data(node, gene_sets, "evaluation_data/%s" % reactome_id)
 
-rule etract_immuno_cell_data:
+rule extract_immuno_cell_data:
     input:
         raw_data = directory("raw_data/immune_cells"),
         entrezgene2gene_sym = "annotation_data/entrezgene2gene_sym.tsv"

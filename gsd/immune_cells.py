@@ -6,7 +6,7 @@ from anytree import Node
 from pandas import read_excel, read_table, DataFrame
 
 from gsd import flat_list
-from gsd.gene_sets import GeneSetInfo
+from gsd.gene_sets import GeneSetInfo, GeneSet, annotate_with_go
 
 T = TypeVar('T')
 
@@ -74,7 +74,8 @@ def extract_genes_from(node: Node, gene_sets: Dict[str, GeneSetInfo], cell_types
     return [parent_gene_set] + children_gene_sets
 
 
-def extract_from_raw_data(immune_cell_data_dir: str, gene_sym_hsapiens: DataFrame) -> Tuple[Node, List]:
+def extract_from_raw_data(immune_cell_data_dir: str, gene_sym_hsapiens: DataFrame, go_anno: DataFrame) \
+        -> Tuple[Node, List[GeneSet]]:
     generated_immune_marker_genes = read_table(os.path.join(immune_cell_data_dir, "signatures_all.txt"))
     generated_immune_marker_genes = generated_immune_marker_genes.join(
         gene_sym_hsapiens.set_index("external_gene_name"), on="gene_symbol").dropna()
@@ -89,4 +90,4 @@ def extract_from_raw_data(immune_cell_data_dir: str, gene_sym_hsapiens: DataFram
     all_gene_sets = extract_genes_from(immune_cell_tree,
                                        {gene_set.name: gene_set for gene_set in gene_sets},
                                        cell_types_with_genes)
-    return immune_cell_tree, all_gene_sets
+    return immune_cell_tree, annotate_with_go(all_gene_sets, go_anno)

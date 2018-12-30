@@ -4,9 +4,10 @@ import urllib.request
 from functools import reduce
 from typing import Tuple, List
 from anytree import Node
+from pandas import DataFrame
 
 from gsd import flat_list
-from gsd.gene_sets import GeneSetInfo
+from gsd.gene_sets import GeneSetInfo, annotate_with_go, GeneSet
 
 
 def _get_json_from(url):
@@ -105,7 +106,7 @@ def _reactome_to_anytree(node, parent=None):
     return n
 
 
-def download(tax_id: int, reactome_id: str) -> Tuple[Node, List]:
+def download(tax_id: int, reactome_id: str, go_anno: DataFrame) -> Tuple[Node, List[GeneSet]]:
     reactome_tree = _get_event_hierarchy(tax_id)
 
     reactome_pseudo_tree = {'stId': "FAKE", 'name': "PseudoRoot", 'children': reactome_tree}
@@ -116,4 +117,4 @@ def download(tax_id: int, reactome_id: str) -> Tuple[Node, List]:
     unique_ids = set([gene_set.external_id for gene_set in gene_sets])
     unique_gene_sets = [gene_set for gene_set in gene_sets if gene_set.external_id in unique_ids]
 
-    return _reactome_to_anytree(sub_tree), unique_gene_sets
+    return _reactome_to_anytree(sub_tree), annotate_with_go(unique_gene_sets, go_anno)

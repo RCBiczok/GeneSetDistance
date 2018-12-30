@@ -43,7 +43,7 @@ def annotate_with_go(gene_set_info_list: List[GeneSetInfo], go_anno: DataFrame) 
             for gene_set_info in gene_set_info_list]
 
 
-def load(gene_sets_file: str, go_anno: DataFrame) -> [GeneSet]:
+def load(gene_sets_file: str) -> [GeneSet]:
     with open(gene_sets_file) as f:
         json_str = f.read()
-        return annotate_with_go(jsonpickle.decode(json_str), go_anno)
+        return jsonpickle.decode(json_str)

@@ -15,7 +15,7 @@ class GOCategory:
     def __init__(self, df: DataFrame):
         self.ids = set(df[BIOMART_GO_ID].tolist())
         self.names = set(df[BIOMART_GO_NAME].tolist())
-        self.definitions = set(df[BIOMART_GO_NAME].tolist())
+        self.definitions = set(df[BIOMART_GO_DEFINITION].tolist())
 
     def __repr__(self):
         return "<GOCategory(n_ids=%d)>" % len(self.ids)

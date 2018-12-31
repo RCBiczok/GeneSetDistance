@@ -5,6 +5,7 @@ import numpy as np
 from gsd.distance import DistanceMetric, to_binary_matrix, calc_n_comparisons
 from gsd.gene_sets import GeneSet
 from sklearn.metrics import cohen_kappa_score
+from tqdm import tqdm
 
 
 class MinkowskiNormDistanceMetric(DistanceMetric):
@@ -39,7 +40,7 @@ def calc_pairwise_distances(obj_list: List[T], dist_fun: Callable[[T, T], float]
     result = np.ndarray(shape=(calc_n_comparisons(obj_list),), dtype=float)
     idx = 0
 
-    for i in range(0, len(obj_list) - 1):
+    for i in tqdm(range(0, len(obj_list) - 1)):
         for j in range(i + 1, len(obj_list)):
             result[idx] = dist_fun(obj_list[i], obj_list[j])
             idx += 1

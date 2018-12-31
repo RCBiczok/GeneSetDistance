@@ -4,7 +4,7 @@ import time
 import jsonpickle
 import numpy as np
 from abc import abstractmethod
-from typing import List, TypeVar
+from typing import List, TypeVar, Iterable
 
 from gsd import flat_list
 from gsd.gene_sets import GeneSet
@@ -34,7 +34,7 @@ class EvaluationResult:
     def __init__(self,
                  name: str,
                  exec_time: float,
-                 results: np.ndarray):
+                 results: Iterable[float]):
         self.name = name
         self.exec_time = exec_time
         self.results = results
@@ -65,6 +65,6 @@ def execute_and_persist_evaluation(
     d = metric.calc(gene_sets)
     time_end = time.time()
 
-    result = EvaluationResult(metric.display_name, time_end - time_begin, d)
+    result = EvaluationResult(metric.display_name, time_end - time_begin, d.tolist())
     with open(os.path.join(out_dir, '%s.json' % target_name), "w") as gene_set_file:
         gene_set_file.write(jsonpickle.encode(result))

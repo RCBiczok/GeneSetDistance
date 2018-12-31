@@ -1,5 +1,6 @@
 import re
 from functools import reduce
+from pprint import pprint
 from typing import List, Callable
 
 import numpy as np
@@ -72,10 +73,13 @@ def extract_words_from_gene_symbols_and_summary_and_go_info(
 # Distance similarities
 
 def cosine_distance_of(words_a: List[str], words_b: List[str], w2v_model: Word2VecKeyedVectors) -> float:
-    gene_syms_vec_a = reduce(lambda x, y: x + y, [w2v_model[word] for word in words_a])
-    gene_syms_vec_b = reduce(lambda x, y: x + y, [w2v_model[word] for word in words_b])
+    vectors_a = [w2v_model[word] for word in words_a]
+    vectors_b = [w2v_model[word] for word in words_b]
 
-    return cosine(gene_syms_vec_a, gene_syms_vec_b)
+    if len(vectors_a) == 0 or len(vectors_b) == 0:
+        return np.inf
+
+    return cosine(reduce(lambda x, y: x + y, vectors_a), reduce(lambda x, y: x + y, vectors_b))
 
 
 def wm_distance_of(words_a: List[str], words_b: List[str], w2v_model: Word2VecKeyedVectors) -> float:

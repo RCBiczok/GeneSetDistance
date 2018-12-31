@@ -107,3 +107,33 @@ class NLPDistance(DistanceMetric):
             return self.comparator(gene_syms_a, gene_syms_b)
 
         return calc_pairwise_distances(gene_sets, calc_path_distance)
+
+
+NLP_DISTS = [{
+    'folder': "Cosine_dist_over_gene_sym",
+    'distance_factory': lambda w2v_model: NLPDistance("Cosine distance over gene symbols",
+                                                      lambda x, y: cosine_distance_of(x, y, w2v_model),
+                                                      lambda x: extract_gene_symbols(x, w2v_model))
+}, {
+    'folder': "Cosine_dist_over_go_bp_desc",
+    'distance_factory': lambda w2v_model: NLPDistance("Cosine distance over GO BP description",
+                                                      lambda x, y: cosine_distance_of(x, y, w2v_model),
+                                                      lambda x: extract_words_from_go_descriptions(
+                                                          x, w2v_model, [GOType.BIOLOGICAL_PROCESS]))
+}, {
+    'folder': "WM_dist_over_gene_sym",
+    'distance_factory': lambda w2v_model: NLPDistance("WM distance over gene symbols",
+                                                      lambda x, y: wm_distance_of(x, y, w2v_model),
+                                                      lambda x: extract_gene_symbols(x, w2v_model))
+}]
+
+
+# {
+#    'folder': "WM_dist_over_go_bp_desc",
+#    'distance_factory': lambda w2v_model: NLPDistance("WM distance over GO BP description",
+#                                                      lambda x, y: wm_distance_of(x, y, w2v_model),
+#                                                      lambda x: extract_words_from_go_descriptions(
+#                                                          x, w2v_model, [GOType.BIOLOGICAL_PROCESS]))
+# }
+
+NLP_DISTS_TITLES = [entry['folder'] for entry in NLP_DISTS]

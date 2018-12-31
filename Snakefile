@@ -8,10 +8,11 @@ import gsd.reactome
 import gsd.immune_cells
 import gsd.annotation
 import gsd.gene_sets
-from gsd.distance.general import MinkowskiNormDistanceMetric, JaccardDistanceMetric, KappaDistanceMetric
-from gsd.distance.nlp import NLPDistance, extract_gene_symbols, \
-    extract_words_from_gene_set_summary, extract_words_from_go_descriptions, cosine_distance_of, \
-    extract_words_from_go_names, extract_words_from_gene_symbols_and_summary_and_go_info, wm_distance_of
+
+from gsd.distance.general import GENERAL_DISTS, GENERAL_DISTS_TITLES
+from gsd.distance.nlp import NLP_DISTS, NLP_DISTS_TITLES
+#from gsd.distance.go import GO_DISTS, GO_DISTS_TITLES
+from gsd.distance.ppi import PPI_DISTS, PPI_DISTS_TITLES
 
 ## General Variables
 
@@ -27,12 +28,10 @@ EVALUATION_DATA_DIRS = ["evaluation_data/%s" % target_name for target_name in EV
 
 ## Used distances
 
-DIST_MINKOWSKI_P2 = "Minkowski_P2"
 COSINE_DISTANCE_OVER_GENE_SYM = "CosineDistanceOverGeneSym"
 
-
-
-EVALUATION_METRICS = [DIST_MINKOWSKI_P2, COSINE_DISTANCE_OVER_GENE_SYM]
+#EVALUATION_METRICS = GENERAL_DISTS_TITLES + NLP_DISTS_TITLES + GO_DISTS_TITLES + PPI_DISTS_TITLES
+EVALUATION_METRICS = GENERAL_DISTS_TITLES + NLP_DISTS_TITLES + PPI_DISTS_TITLES
 
 TARGET_OUTPUT = expand("experiment_data/{metrics}/{evaluation_target}.json",
                        metrics=EVALUATION_METRICS,
@@ -46,44 +45,79 @@ rule all:
 # Distance Measure Experiment
 ###
 
-rule calc_minkowski_p2:
+rule calc_general_dists:
     input: EVALUATION_DATA_DIRS
     output:
         expand("experiment_data/{metrics}/{evaluation_target}.json",
-               metrics=[DIST_MINKOWSKI_P2],
+               metrics=GENERAL_DISTS_TITLES,
                evaluation_target=EVALUATION_TARGETS)
     run:
-        dist = MinkowskiNormDistanceMetric()
-
-        for evaluation_target in EVALUATION_TARGETS:
-            gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % evaluation_target)
-            gsd.distance.execute_and_persist_evaluation(
-                        dist,
+        for dist_info in GENERAL_DISTS:
+            for evaluation_target in EVALUATION_TARGETS:
+                gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % evaluation_target)
+                gsd.distance.execute_and_persist_evaluation(
+                        dist_info['distance'],
                         gene_sets,
                         evaluation_target,
-                        "experiment_data/%s" % DIST_MINKOWSKI_P2)
+                        "experiment_data/%s" % dist_info['folder'])
 
-rule calc_cosine_distance_over_gene_symbols:
+#rule calc_go_dists:
+#    input: EVALUATION_DATA_DIRS
+#    output:
+#        expand("experiment_data/{metrics}/{evaluation_target}.json",
+#               metrics=GO_DISTS_TITLES,
+#               evaluation_target=EVALUATION_TARGETS)
+#    run:
+#        for dist_info in GO_DISTS:
+#            for evaluation_target in EVALUATION_TARGETS:
+#                gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % evaluation_target)
+#                gsd.distance.execute_and_persist_evaluation(
+#                        dist_info['distance'],
+#                        gene_sets,
+#                        evaluation_target,
+#                        "experiment_data/%s" % dist_info['folder'])
+
+rule calc_nlp_dists:
     input: EVALUATION_DATA_DIRS, STOPWORD_FILE
     output:
         expand("experiment_data/{metrics}/{evaluation_target}.json",
-               metrics=[COSINE_DISTANCE_OVER_GENE_SYM],
+               metrics=NLP_DISTS_TITLES,
                evaluation_target=EVALUATION_TARGETS)
     run:
         from gensim.models import KeyedVectors
+        #TODO embeddings are loaded no
         w2v_model = KeyedVectors.load_word2vec_format("__data/nlp/PubMed-Wilbur-2018/pubmed_s100w10_min.bin",
                                                       binary=True)
-        dist = NLPDistance("Cosine distance over gene symbols",
-                           lambda x, y: cosine_distance_of(x, y, w2v_model),
-                           lambda x: extract_gene_symbols(x, w2v_model))
 
-        for evaluation_target in EVALUATION_TARGETS:
-            gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % evaluation_target)
-            gsd.distance.execute_and_persist_evaluation(
-                        dist,
+        for dist_info in NLP_DISTS:
+            for evaluation_target in EVALUATION_TARGETS:
+                gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % evaluation_target)
+                gsd.distance.execute_and_persist_evaluation(
+                        dist_info['distance_factory'](w2v_model),
                         gene_sets,
                         evaluation_target,
-                        "experiment_data/%s" % COSINE_DISTANCE_OVER_GENE_SYM)
+                        "experiment_data/%s" % dist_info['folder'])
+
+rule calc_ppi_dists:
+    input: EVALUATION_DATA_DIRS
+    output:
+        expand("experiment_data/{metrics}/{evaluation_target}.json",
+               metrics=PPI_DISTS_TITLES,
+               evaluation_target=EVALUATION_TARGETS)
+    run:
+        from gsd.distance.ppi import load_ppi_mitab
+        #TODO embeddings are loaded no
+        ppi_data = load_ppi_mitab("__data/ppi/BioGrid/BIOGRID-ALL-3.5.166.mitab.txt", HUMAN_TAX_ID)
+
+
+        for dist_info in PPI_DISTS:
+            for evaluation_target in EVALUATION_TARGETS:
+                gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % evaluation_target)
+                gsd.distance.execute_and_persist_evaluation(
+                        dist_info['distance_factory'](ppi_data),
+                        gene_sets,
+                        evaluation_target,
+                        "experiment_data/%s" % dist_info['folder'])
 
 ###
 # Data Download & initialization

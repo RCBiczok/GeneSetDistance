@@ -1,10 +1,11 @@
 from typing import List
 import numpy as np
-from rpy2.robjects.packages import importr
 
 from gsd.annotation import GOType
 from gsd.distance import DistanceMetric, calc_pairwise_distances
 from gsd.gene_sets import GeneSet
+
+from rpy2.robjects.packages import importr
 
 org_hs_en_db = importr("org.Hs.eg.db")
 go_sem_sim = importr("GOSemSim")
@@ -19,7 +20,8 @@ class GOSimDistanceMetric(DistanceMetric):
 
     @property
     def display_name(self) -> str:
-        return "GO-based distance (measure=%s, combine=%s)" % (self.measure, self.combine)
+        return "GO-based distance (go_type=%s, measure=%s, combine=%s)" \
+               % (self.go_type.name, self.measure, self.combine)
 
     def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
         def calc_dist(a: GeneSet, b: GeneSet):
@@ -30,3 +32,16 @@ class GOSimDistanceMetric(DistanceMetric):
                                          combine=self.combine)[0]
 
         return calc_pairwise_distances(gene_sets, calc_dist)
+
+
+GO_DISTS = [{
+    'folder': "GO_SIM_BP_Wang_BMA",
+    'distance': GOSimDistanceMetric(GOType.BIOLOGICAL_PROCESS, "Wang", "BMA")
+}]
+
+# {
+#     'folder': "GO_SIM_BP_Resnik_BMA",
+#     'distance': GOSimDistanceMetric(GOType.BIOLOGICAL_PROCESS, "Resnik", "BMA")
+# }
+
+GO_DISTS_TITLES = [entry['folder'] for entry in GO_DISTS]

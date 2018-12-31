@@ -1,6 +1,5 @@
 import re
 from functools import reduce
-from pprint import pprint
 from typing import List, Callable
 
 import numpy as np
@@ -9,8 +8,7 @@ from scipy.spatial.distance import cosine
 
 from gsd import flat_list
 from gsd.annotation import GOType
-from gsd.distance import DistanceMetric
-from gsd.distance.general import calc_pairwise_distances
+from gsd.distance import DistanceMetric, calc_pairwise_distances
 from gsd.gene_sets import GeneSet
 import nltk.corpus
 

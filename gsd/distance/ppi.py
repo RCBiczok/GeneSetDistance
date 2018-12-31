@@ -6,8 +6,8 @@ from scipy.sparse.csgraph import shortest_path
 from statistics import median
 import copy
 
-from gsd.distance import DistanceMetric
-from gsd.distance.general import JaccardDistanceMetric, calc_pairwise_distances
+from gsd.distance import DistanceMetric, calc_pairwise_distances
+from gsd.distance.general import JaccardDistanceMetric
 from gsd.gene_sets import GeneSet
 
 

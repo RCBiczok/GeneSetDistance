@@ -4,7 +4,9 @@ import time
 import jsonpickle
 import numpy as np
 from abc import abstractmethod
-from typing import List, TypeVar, Iterable
+from typing import List, TypeVar, Iterable, Callable
+
+from tqdm import tqdm
 
 from gsd import flat_list
 from gsd.gene_sets import GeneSet
@@ -68,3 +70,14 @@ def execute_and_persist_evaluation(
     result = EvaluationResult(metric.display_name, time_end - time_begin, d.tolist())
     with open(os.path.join(out_dir, '%s.json' % target_name), "w") as gene_set_file:
         gene_set_file.write(jsonpickle.encode(result))
+
+
+def calc_pairwise_distances(obj_list: List[T], dist_fun: Callable[[T, T], float]) -> np.ndarray:
+    result = np.ndarray(shape=(calc_n_comparisons(obj_list),), dtype=float)
+    idx = 0
+
+    for i in tqdm(range(0, len(obj_list) - 1)):
+        for j in range(i + 1, len(obj_list)):
+            result[idx] = dist_fun(obj_list[i], obj_list[j])
+            idx += 1
+    return result

@@ -3,8 +3,7 @@ import numpy as np
 from rpy2.robjects.packages import importr
 
 from gsd.annotation import GOType
-from gsd.distance import DistanceMetric
-from gsd.distance.general import calc_pairwise_distances
+from gsd.distance import DistanceMetric, calc_pairwise_distances
 from gsd.gene_sets import GeneSet
 
 org_hs_en_db = importr("org.Hs.eg.db")

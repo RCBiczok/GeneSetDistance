@@ -1,11 +1,10 @@
-from typing import List, TypeVar, Callable
+from typing import List
 from scipy.spatial.distance import pdist
 import numpy as np
 
-from gsd.distance import DistanceMetric, to_binary_matrix, calc_n_comparisons
+from gsd.distance import DistanceMetric, to_binary_matrix, calc_pairwise_distances
 from gsd.gene_sets import GeneSet
 from sklearn.metrics import cohen_kappa_score
-from tqdm import tqdm
 
 
 class MinkowskiNormDistanceMetric(DistanceMetric):
@@ -31,20 +30,6 @@ class JaccardDistanceMetric(DistanceMetric):
         vector_list = to_binary_matrix(gene_sets)
 
         return pdist(np.array(vector_list), 'jaccard')
-
-
-T = TypeVar('T')
-
-
-def calc_pairwise_distances(obj_list: List[T], dist_fun: Callable[[T, T], float]) -> np.ndarray:
-    result = np.ndarray(shape=(calc_n_comparisons(obj_list),), dtype=float)
-    idx = 0
-
-    for i in tqdm(range(0, len(obj_list) - 1)):
-        for j in range(i + 1, len(obj_list)):
-            result[idx] = dist_fun(obj_list[i], obj_list[j])
-            idx += 1
-    return result
 
 
 class KappaDistanceMetric(DistanceMetric):

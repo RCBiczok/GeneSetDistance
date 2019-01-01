@@ -20,8 +20,8 @@ STOPWORD_FILE = "%s/nltk_data/corpora/stopwords" % str(Path.home())
 
 ## Variables for evaluation data
 
-REACTOME_TARGETS = ['R-HSA-8982491', 'R-HSA-1474290']
-#EVALUATION_TARGETS = REACTOME_TARGETS + ['immune_cells']
+REACTOME_TARGETS = ['reactome/R-HSA-8982491', 'reactome/R-HSA-1474290']
+#EVALUATION_TARGETS = REACTOME_TARGETS + ['immune_cells/all']
 EVALUATION_TARGETS = REACTOME_TARGETS
 EVALUATION_DATA_DIRS = ["evaluation_data/%s" % target_name for target_name in EVALUATION_TARGETS]
 
@@ -54,17 +54,18 @@ rule all:
 ###
 
 rule calc_general_dists:
-    input: EVALUATION_DATA_DIRS
-    output: file="experiment_data/general/{metric}/{evaluation_target}.json"
+    input: file="evaluation_data/{target_category}/{evaluation_target}/gene_sets.json"
+    output: file="experiment_data/general/{metric}/{target_category}/{evaluation_target}.json"
     run:
         dist = GENERAL_DISTS[wildcards.metric]
-        gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % wildcards.evaluation_target)
+        gene_sets = gsd.gene_sets.load_gene_sets(input.file )
         gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
 
 
 rule calc_nlp_dists:
-    input: EVALUATION_DATA_DIRS, STOPWORD_FILE
-    output: file="experiment_data/nlp/{metric}/{evaluation_target}.json"
+    input: file="evaluation_data/{target_category}/{evaluation_target}/gene_sets.json",
+           stopwords_file=STOPWORD_FILE
+    output: file="experiment_data/nlp/{metric}/{target_category}/{evaluation_target}.json"
     run:
         from gensim.models import KeyedVectors
 
@@ -76,12 +77,12 @@ rule calc_nlp_dists:
         dist = NLP_DISTS[wildcards.metric](w2v_model)
         print("Perform calculation for: %s" % dist.display_name)
 
-        gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % wildcards.evaluation_target)
+        gene_sets = gsd.gene_sets.load_gene_sets(input.file)
         gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
 
 rule calc_ppi_dists:
-    input: EVALUATION_DATA_DIRS
-    output: file="experiment_data/ppi/{metric}/{evaluation_target}.json"
+    input: file="evaluation_data/{target_category}/{evaluation_target}/gene_sets.json"
+    output: file="experiment_data/ppi/{metric}/{target_category}/{evaluation_target}.json"
     run:
         from gsd.distance.ppi import load_ppi_mitab
 
@@ -92,7 +93,7 @@ rule calc_ppi_dists:
         dist = PPI_DISTS[wildcards.metric](ppi_data)
         print("Perform calculation for: %s" % dist.display_name)
 
-        gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % wildcards.evaluation_target)
+        gene_sets = gsd.gene_sets.load_gene_sets(input.file)
         gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
 
 #rule calc_go_dists:
@@ -127,26 +128,27 @@ rule download_reactome_sub_tree:
         entrezgene2go = 'annotation_data/entrezgene2go.tsv',
         go = 'annotation_data/go.tsv'
     output:
-        [directory("evaluation_data/%s" % reactome_id) for reactome_id in REACTOME_TARGETS]
+        gene_set_file = "evaluation_data/reactome/{evaluation_target}/gene_sets.json",
+        tree_file = "evaluation_data/reactome/{evaluation_target}/tree.json"
     run:
         go_anno = gsd.annotation.read_go_anno_df(input.entrezgene2go, input.go)
-        for reactome_id in REACTOME_TARGETS:
-            node, gene_sets = gsd.reactome.download(HUMAN_TAX_ID, reactome_id, go_anno)
-            gsd.persist_reference_data(node, gene_sets, "evaluation_data/%s" % reactome_id)
+        node, gene_sets = gsd.reactome.download(HUMAN_TAX_ID, wildcards.evaluation_target, go_anno)
+        gsd.persist_reference_data(node, gene_sets, output.tree_file, output.gene_set_file)
 
-rule extract_immuno_cell_data:
+rule extract_all_immuno_cell_data:
     input:
         raw_data = directory("raw_data/immune_cells"),
         entrezgene2gene_sym = "annotation_data/entrezgene2gene_sym.tsv",
         entrezgene2go = 'annotation_data/entrezgene2go.tsv',
         go = 'annotation_data/go.tsv'
     output:
-        dir = directory("evaluation_data/immune_cells")
+        gene_set_file = "evaluation_data/immune_cells/all/gene_sets.json",
+        tree_file = "evaluation_data/immune_cells/all/tree.json"
     run:
         gene_sym_hsapiens = read_table(input.entrezgene2gene_sym)
         go_anno = gsd.annotation.read_go_anno_df(input.entrezgene2go, input.go)
         node, gene_sets = gsd.immune_cells.extract_from_raw_data(input.raw_data, gene_sym_hsapiens, go_anno)
-        gsd.persist_reference_data(node, gene_sets, output.dir)
+        gsd.persist_reference_data(node, gene_sets, output.tree_file, output.gene_set_file)
 
 rule download_entrezgene2gene_sym_anno:
     output:

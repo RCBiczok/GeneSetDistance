@@ -1,0 +1,126 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "name": "((1,6)-alpha-glucosyl)poly((1,4)-alpha-glucosyl)glycogenin => poly{(1,4)-alpha-glucosyl} glycogenin + alpha-D-glucose"
+        },
+        {
+          "name": "GAA hydrolyzes lysosomal glycogen"
+        },
+        {
+          "name": "PGM:Mg2+ isomerise G1P to G6P"
+        },
+        {
+          "name": "PGYB b dimer:AMP complex <=> PGYB dimer, b form + 2 AMP"
+        },
+        {
+          "name": "PGYB dimer, b form + 2 AMP <=> PGYB b dimer:AMP complex"
+        },
+        {
+          "name": "PGYM b dimer:AMP complex <=> PGYM dimer, b form + 2 AMP"
+        },
+        {
+          "name": "PGYM dimer, b form + 2 AMP <=> PGYM b dimer:AMP complex"
+        },
+        {
+          "name": "glycogen phosphorylase (PYGB) dimer b + 2 ATP => glycogen phosphorylase (PYGB) dimer a + 2 ADP"
+        },
+        {
+          "name": "glycogen phosphorylase (PYGL) dimer b + 2 ATP => glycogen phosphorylase (PYGL) dimer a + 2 ADP"
+        },
+        {
+          "name": "glycogen phosphorylase (PYGM) dimer b + 2 ATP => glycogen phosphorylase (PYGM) dimer a + 2 ADP"
+        },
+        {
+          "name": "glycogen-glycogenin-1 + n orthophosphate => limit dextrin-glycogenin-1 + n D-glucose 1-phosphate [PYGM,PYGB]"
+        },
+        {
+          "name": "glycogen-glycogenin-2 + n orthophosphate => limit dextrin-glycogenin-2 + n D-glucose 1-phosphate [PYGL]"
+        },
+        {
+          "name": "limit dextrin-glycogenin => ((1,6)-alpha-glucosyl)poly((1,4)-alpha-glucosyl) glycogenin"
+        },
+        {
+          "name": "poly((1,4)-alpha-glucosyl) glycogenin-2 + n orthophosphate => glycogenin-2 + n D-glucose 1-phosphate [PYGL]"
+        },
+        {
+          "name": "poly((1,4)-alpha-glycosyl) glycogenin-1 + n orthophosphate => glycogenin-1 + n D-glucose 1-phosphate [PYGM,PYGB]"
+        }
+      ],
+      "name": "Glycogen breakdown (glycogenolysis)"
+    },
+    {
+      "children": [
+        {
+          "name": "Autoglucosylation of GYG1 complexed with GYS1-a"
+        },
+        {
+          "name": "Autoglucosylation of GYG1 complexed with GYS1-b"
+        },
+        {
+          "name": "Autoglucosylation of GYG2 complexed with GYS2-a"
+        },
+        {
+          "name": "Autoglucosylation of GYG2 complexed with GYS2-b"
+        },
+        {
+          "name": "EPM2A dimer binds PPP1R3C:phosphoglycogen-GYG1 complex"
+        },
+        {
+          "name": "EPM2A dimer binds PPP1R3C:phosphoglycogen-GYG2 complex"
+        },
+        {
+          "name": "EPM2A dimer dephosphorylates phosphoglycogen-GYG1"
+        },
+        {
+          "name": "EPM2A dimer dephosphorylates phosphoglycogen-GYG2"
+        },
+        {
+          "name": "GBE1 catalyzes branch formation in polyGlc-GYG1 complexed with GYS1-a"
+        },
+        {
+          "name": "GBE1 catalyzes branch formation in polyGlc-GYG1 complexed with GYS1-b"
+        },
+        {
+          "name": "GBE1 catalyzes branch formation in polyGlc-GYG2 complexed with GYS2-a"
+        },
+        {
+          "name": "GYS1 catalyzes the incorporation of phosphoglucose into glycogen-GYG1"
+        },
+        {
+          "name": "GYS1 catalyzes the polyglucosylation of oligoGlc-GYG1"
+        },
+        {
+          "name": "GYS2 catalyzes the incorporation of phosphoglucose into glycogen-GYG2"
+        },
+        {
+          "name": "GYS2 catalyzes the polyglucosylation of oligoGlc-GYG2"
+        },
+        {
+          "name": "NHLRC1 mediated ubiquitination of EPM2A (laforin) and PPP1RC3 (PTG) associated with glycogen-GYG2"
+        },
+        {
+          "name": "NHLRC1 mediated ubiquitination of EPM2A and PPP1RC3 associated with glycogen-GYG1"
+        },
+        {
+          "name": "PGM:Mg2+ isomerise G6P to G1P"
+        },
+        {
+          "name": "PPP1R3C binds to glycogen:GYG1:GYS1"
+        },
+        {
+          "name": "PPP1R3C binds to glycogen:GYG2:GYS2"
+        },
+        {
+          "name": "Phosphorylated GYS1 catalyzes the polyglucosylation of oligoGlc-GYG1"
+        },
+        {
+          "name": "UTP + D-glucose 1-phosphate <=> pyrophosphate + UDP-glucose"
+        }
+      ],
+      "name": "Glycogen synthesis"
+    }
+  ],
+  "name": "Glycogen metabolism"
+}

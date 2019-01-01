@@ -1,7 +1,9 @@
 from typing import Set, List
 import jsonpickle
+from anytree import Node
 from pandas import DataFrame
 
+from anytree.importer import JsonImporter
 from gsd.annotation import GOInfo
 
 
@@ -43,7 +45,14 @@ def annotate_with_go(gene_set_info_list: List[GeneSetInfo], go_anno: DataFrame) 
             for gene_set_info in gene_set_info_list]
 
 
-def load(gene_sets_file: str) -> [GeneSet]:
+def load_gene_sets(gene_sets_file: str) -> [GeneSet]:
     with open(gene_sets_file) as f:
         json_str = f.read()
         return jsonpickle.decode(json_str)
+
+
+def load_tree(tree_file: str) -> Node:
+    importer = JsonImporter()
+    with open(tree_file) as f:
+        json_str = f.read()
+        return importer.import_(json_str)

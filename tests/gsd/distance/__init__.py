@@ -1,9 +1,7 @@
 import gsd.annotation
-
 from gsd.gene_sets import GeneSetInfo, annotate_with_go
 
 go_anno = gsd.annotation.read_go_anno_df("../annotation_data/entrezgene2go.tsv", "../annotation_data/go.tsv")
-
 
 gene_sets_info_list = [
     GeneSetInfo(name="SetA",

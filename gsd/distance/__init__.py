@@ -6,6 +6,9 @@ import numpy as np
 from abc import abstractmethod
 from typing import List, TypeVar, Iterable, Callable
 
+from anytree import Node, PostOrderIter
+from scipy.sparse import csr_matrix
+from scipy.sparse.csgraph import shortest_path
 from tqdm import tqdm
 
 from gsd import flat_list
@@ -80,3 +83,35 @@ def calc_pairwise_distances(obj_list: List[T], dist_fun: Callable[[T, T], float]
             result[idx] = dist_fun(obj_list[i], obj_list[j])
             idx += 1
     return result
+
+
+class PairwiseTreePathDistanceMetric(DistanceMetric):
+    def __init__(self, root: Node):
+        self.root = root
+
+    @property
+    def display_name(self) -> str:
+        return "Pairwise path length in reference tree"
+
+    @abstractmethod
+    def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
+        nodes = set([gene_set.general_info.name for gene_set in gene_sets])
+        nodes_mapping = dict(zip(nodes, range(0, len(nodes))))
+        dist_matrix = np.zeros((len(nodes_mapping), len(nodes_mapping)))
+
+        for node in PostOrderIter(self.root):
+            if node.parent is None:
+                continue
+            from_idx = nodes_mapping[node.name]
+            to_idx = nodes_mapping[node.parent.name]
+            dist_matrix[from_idx][to_idx] = 1
+
+        graph = csr_matrix(dist_matrix)
+        dist_matrix = shortest_path(csgraph=graph, directed=False, indices=range(0, len(gene_sets)))
+
+        def calc_path_distance(node_name_a: str, node_name_b: str):
+            i = nodes_mapping[node_name_a]
+            j = nodes_mapping[node_name_b]
+            return dist_matrix[i][j]
+
+        return calc_pairwise_distances([gene_set.general_info.name for gene_set in gene_sets], calc_path_distance)

@@ -53,6 +53,8 @@ GO_EVALUATION_OUTPUT = expand("experiment_data/go/{metric}/{evaluation_target}.j
                                metric=GO_DISTS.keys(),
                                evaluation_target=EVALUATION_TARGETS)
 
+TREE_PATH_OUTPUT = expand("experiment_data/tree_path/{evaluation_target}.json",
+                          evaluation_target=EVALUATION_TARGETS)
 
 ###
 # Default rule
@@ -63,7 +65,8 @@ rule all:
         GENERAL_EVALUATION_OUTPUT,
         NLP_EVALUATION_OUTPUT,
         PPI_EVALUATION_OUTPUT,
-        GO_EVALUATION_OUTPUT
+        GO_EVALUATION_OUTPUT,
+        TREE_PATH_OUTPUT
 
 ###
 # Distance Measure Experiment
@@ -122,6 +125,19 @@ rule calc_go_dists:
         dist_info = GO_DISTS[wildcards.metric]
         dist =  GOSimDistanceMetric(dist_info['type'], dist_info['measure'], dist_info['combine'])
         gene_sets = gsd.gene_sets.load_gene_sets(input.file)
+        gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
+
+
+rule calc_tree_path_dists:
+    input:
+        gene_sets_file="evaluation_data/{target_category}/{evaluation_target}/gene_sets.json",
+        tree_file="evaluation_data/{target_category}/{evaluation_target}/tree.json"
+    output:
+        file="experiment_data/tree_path/{target_category}/{evaluation_target}.json"
+    run:
+        root = gsd.gene_sets.load_tree(input.tree_file)
+        gene_sets = gsd.gene_sets.load_gene_sets(input.gene_sets_file)
+        dist =  gsd.distance.PairwiseTreePathDistanceMetric(root)
         gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
 
 ###

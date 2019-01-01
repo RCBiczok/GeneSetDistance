@@ -59,16 +59,15 @@ def calc_n_comparisons(gene_sets: List[T]) -> int:
 def execute_and_persist_evaluation(
         metric: DistanceMetric,
         gene_sets: List[GeneSet],
-        target_name: str,
-        out_dir: str):
-    os.makedirs(out_dir, exist_ok=True)
+        out_file: str):
+    os.makedirs(os.path.dirname(out_file), exist_ok=True)
 
     time_begin = time.time()
     d = metric.calc(gene_sets)
     time_end = time.time()
 
     result = EvaluationResult(metric.display_name, time_end - time_begin, d.tolist())
-    with open(os.path.join(out_dir, '%s.json' % target_name), "w") as gene_set_file:
+    with open(out_file, "w") as gene_set_file:
         gene_set_file.write(jsonpickle.encode(result))
 
 

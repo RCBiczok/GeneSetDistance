@@ -42,18 +42,9 @@ class KappaDistanceMetric(DistanceMetric):
         return calc_pairwise_distances(vector_list, lambda a, b: 1 - cohen_kappa_score(a, b))
 
 
-GENERAL_DISTS = [{
-    'folder': "Minkowski_P1",
-    'distance': MinkowskiNormDistanceMetric(1)
-}, {
-    'folder': "Minkowski_P2",
-    'distance': MinkowskiNormDistanceMetric(2)
-}, {
-    'folder': "Jaccard_Distance",
-    'distance': JaccardDistanceMetric()
-}, {
-    'folder': "Kappa_Statistic",
-    'distance': KappaDistanceMetric()
-}]
-
-GENERAL_DISTS_TITLES = [entry['folder'] for entry in GENERAL_DISTS]
+GENERAL_DISTS = {
+    'Minkowski_P1': MinkowskiNormDistanceMetric(1),
+    'Minkowski_P2': MinkowskiNormDistanceMetric(2),
+    'Jaccard_Distance': JaccardDistanceMetric(),
+    'Kappa_Statistic': KappaDistanceMetric()
+}

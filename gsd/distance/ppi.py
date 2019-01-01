@@ -74,14 +74,11 @@ def load_ppi_mitab(ppi_file: str, tax_id) -> DataFrame:
     return ppi_data[(ppi_data['FromTaxID'] == tax_id) & (ppi_data['ToTaxID'] == tax_id)]
 
 
-PPI_DISTS = [{
-    'folder': "Direct_PPI",
-    'distance_factory': lambda ppi_data: DirectPPIDistanceMetric(ppi_data)
-}]
+PPI_DISTS = {
+    'Direct_PPI': lambda ppi_data: DirectPPIDistanceMetric(ppi_data)
+}
 
-# {
-#    'folder': "Shortest_path_PPI",
-#    'distance_factory': lambda ppi_data: ShortestPathPPI(ppi_data)
-# }
 
-PPI_DISTS_TITLES = [entry['folder'] for entry in PPI_DISTS]
+# 'Shortest_path_PPI': lambda ppi_data: ShortestPathPPI(ppi_data)
+
+PPI_DISTS_TITLES = PPI_DISTS.keys()

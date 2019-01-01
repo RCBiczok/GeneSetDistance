@@ -9,10 +9,9 @@ import gsd.immune_cells
 import gsd.annotation
 import gsd.gene_sets
 
-from gsd.distance.general import GENERAL_DISTS, GENERAL_DISTS_TITLES
-from gsd.distance.nlp import NLP_DISTS, NLP_DISTS_TITLES
-#from gsd.distance.go import GO_DISTS, GO_DISTS_TITLES
-from gsd.distance.ppi import PPI_DISTS, PPI_DISTS_TITLES
+from gsd.distance.general import GENERAL_DISTS
+from gsd.distance.nlp import NLP_DISTS
+from gsd.distance.ppi import PPI_DISTS
 
 ## General Variables
 
@@ -28,18 +27,27 @@ EVALUATION_DATA_DIRS = ["evaluation_data/%s" % target_name for target_name in EV
 
 ## Used distances
 
-COSINE_DISTANCE_OVER_GENE_SYM = "CosineDistanceOverGeneSym"
+GENERAL_EVALUATION_OUTPUT = expand("experiment_data/general/{metric}/{evaluation_target}.json",
+                                   metric=GENERAL_DISTS.keys(),
+                                   evaluation_target=EVALUATION_TARGETS)
 
-#EVALUATION_METRICS = GENERAL_DISTS_TITLES + NLP_DISTS_TITLES + GO_DISTS_TITLES + PPI_DISTS_TITLES
-EVALUATION_METRICS = GENERAL_DISTS_TITLES + NLP_DISTS_TITLES + PPI_DISTS_TITLES
+NLP_EVALUATION_OUTPUT = expand("experiment_data/nlp/{metric}/{evaluation_target}.json",
+                               metric=NLP_DISTS.keys(),
+                               evaluation_target=EVALUATION_TARGETS)
 
-TARGET_OUTPUT = expand("experiment_data/{metrics}/{evaluation_target}.json",
-                       metrics=EVALUATION_METRICS,
-                       evaluation_target=EVALUATION_TARGETS)
+PPI_EVALUATION_OUTPUT = expand("experiment_data/ppi/{metric}/{evaluation_target}.json",
+                               metric=PPI_DISTS.keys(),
+                               evaluation_target=EVALUATION_TARGETS)
+
+###
+# Default rule
+###
 
 rule all:
     input:
-        TARGET_OUTPUT,
+        GENERAL_EVALUATION_OUTPUT,
+        NLP_EVALUATION_OUTPUT,
+        PPI_EVALUATION_OUTPUT
 
 ###
 # Distance Measure Experiment
@@ -47,19 +55,45 @@ rule all:
 
 rule calc_general_dists:
     input: EVALUATION_DATA_DIRS
-    output:
-        expand("experiment_data/{metrics}/{evaluation_target}.json",
-               metrics=GENERAL_DISTS_TITLES,
-               evaluation_target=EVALUATION_TARGETS)
+    output: file="experiment_data/general/{metric}/{evaluation_target}.json"
     run:
-        for dist_info in GENERAL_DISTS:
-            for evaluation_target in EVALUATION_TARGETS:
-                gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % evaluation_target)
-                gsd.distance.execute_and_persist_evaluation(
-                        dist_info['distance'],
-                        gene_sets,
-                        evaluation_target,
-                        "experiment_data/%s" % dist_info['folder'])
+        dist = GENERAL_DISTS[wildcards.metric]
+        gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % wildcards.evaluation_target)
+        gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
+
+
+rule calc_nlp_dists:
+    input: EVALUATION_DATA_DIRS, STOPWORD_FILE
+    output: file="experiment_data/nlp/{metric}/{evaluation_target}.json"
+    run:
+        from gensim.models import KeyedVectors
+
+        #TODO embeddings are loaded no
+        print("loading w2v model")
+        w2v_model = KeyedVectors.load_word2vec_format("__data/nlp/PubMed-Wilbur-2018/pubmed_s100w10_min.bin",
+                                                      binary=True)
+
+        dist = NLP_DISTS[wildcards.metric](w2v_model)
+        print("Perform calculation for: %s" % dist.display_name)
+
+        gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % wildcards.evaluation_target)
+        gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
+
+rule calc_ppi_dists:
+    input: EVALUATION_DATA_DIRS
+    output: file="experiment_data/ppi/{metric}/{evaluation_target}.json"
+    run:
+        from gsd.distance.ppi import load_ppi_mitab
+
+        #TODO embeddings are loaded no
+        print("loading PPI data")
+        ppi_data = load_ppi_mitab("__data/ppi/BioGrid/BIOGRID-ALL-3.5.166.mitab.txt", HUMAN_TAX_ID)
+
+        dist = PPI_DISTS[wildcards.metric](ppi_data)
+        print("Perform calculation for: %s" % dist.display_name)
+
+        gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % wildcards.evaluation_target)
+        gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
 
 #rule calc_go_dists:
 #    input: EVALUATION_DATA_DIRS
@@ -77,47 +111,6 @@ rule calc_general_dists:
 #                        evaluation_target,
 #                        "experiment_data/%s" % dist_info['folder'])
 
-rule calc_nlp_dists:
-    input: EVALUATION_DATA_DIRS, STOPWORD_FILE
-    output:
-        expand("experiment_data/{metrics}/{evaluation_target}.json",
-               metrics=NLP_DISTS_TITLES,
-               evaluation_target=EVALUATION_TARGETS)
-    run:
-        from gensim.models import KeyedVectors
-        #TODO embeddings are loaded no
-        w2v_model = KeyedVectors.load_word2vec_format("__data/nlp/PubMed-Wilbur-2018/pubmed_s100w10_min.bin",
-                                                      binary=True)
-
-        for dist_info in NLP_DISTS:
-            for evaluation_target in EVALUATION_TARGETS:
-                gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % evaluation_target)
-                gsd.distance.execute_and_persist_evaluation(
-                        dist_info['distance_factory'](w2v_model),
-                        gene_sets,
-                        evaluation_target,
-                        "experiment_data/%s" % dist_info['folder'])
-
-rule calc_ppi_dists:
-    input: EVALUATION_DATA_DIRS
-    output:
-        expand("experiment_data/{metrics}/{evaluation_target}.json",
-               metrics=PPI_DISTS_TITLES,
-               evaluation_target=EVALUATION_TARGETS)
-    run:
-        from gsd.distance.ppi import load_ppi_mitab
-        #TODO embeddings are loaded no
-        ppi_data = load_ppi_mitab("__data/ppi/BioGrid/BIOGRID-ALL-3.5.166.mitab.txt", HUMAN_TAX_ID)
-
-
-        for dist_info in PPI_DISTS:
-            for evaluation_target in EVALUATION_TARGETS:
-                gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % evaluation_target)
-                gsd.distance.execute_and_persist_evaluation(
-                        dist_info['distance_factory'](ppi_data),
-                        gene_sets,
-                        evaluation_target,
-                        "experiment_data/%s" % dist_info['folder'])
 
 ###
 # Data Download & initialization

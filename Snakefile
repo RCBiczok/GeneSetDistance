@@ -3,6 +3,7 @@ from pandas import read_table
 from pathlib import Path
 
 import gsd
+import gsd.annotation
 import gsd.distance
 import gsd.reactome
 import gsd.immune_cells
@@ -39,6 +40,20 @@ PPI_EVALUATION_OUTPUT = expand("experiment_data/ppi/{metric}/{evaluation_target}
                                metric=PPI_DISTS.keys(),
                                evaluation_target=EVALUATION_TARGETS)
 
+GO_DISTS = {
+    'GO_SIM_BP_Wang_BMA': {'type': gsd.annotation.GOType.BIOLOGICAL_PROCESS, 'measure': "Wang", 'combine': "BMA"}
+}
+
+# {
+#     'folder': "GO_SIM_BP_Resnik_BMA",
+#     'distance': GOSimDistanceMetric(GOType.BIOLOGICAL_PROCESS, "Resnik", "BMA")
+# }
+
+GO_EVALUATION_OUTPUT = expand("experiment_data/go/{metric}/{evaluation_target}.json",
+                               metric=GO_DISTS.keys(),
+                               evaluation_target=EVALUATION_TARGETS)
+
+
 ###
 # Default rule
 ###
@@ -47,7 +62,8 @@ rule all:
     input:
         GENERAL_EVALUATION_OUTPUT,
         NLP_EVALUATION_OUTPUT,
-        PPI_EVALUATION_OUTPUT
+        PPI_EVALUATION_OUTPUT,
+        GO_EVALUATION_OUTPUT
 
 ###
 # Distance Measure Experiment
@@ -96,22 +112,17 @@ rule calc_ppi_dists:
         gene_sets = gsd.gene_sets.load_gene_sets(input.file)
         gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
 
-#rule calc_go_dists:
-#    input: EVALUATION_DATA_DIRS
-#    output:
-#        expand("experiment_data/{metrics}/{evaluation_target}.json",
-#               metrics=GO_DISTS_TITLES,
-#               evaluation_target=EVALUATION_TARGETS)
-#    run:
-#        for dist_info in GO_DISTS:
-#            for evaluation_target in EVALUATION_TARGETS:
-#                gene_sets = gsd.gene_sets.load("evaluation_data/%s/gene_sets.json" % evaluation_target)
-#                gsd.distance.execute_and_persist_evaluation(
-#                        dist_info['distance'],
-#                        gene_sets,
-#                        evaluation_target,
-#                        "experiment_data/%s" % dist_info['folder'])
 
+rule calc_go_dists:
+    input: file="evaluation_data/{target_category}/{evaluation_target}/gene_sets.json"
+    output: file="experiment_data/go/{metric}/{target_category}/{evaluation_target}.json"
+    run:
+        from gsd.distance.go import GOSimDistanceMetric
+
+        dist_info = GO_DISTS[wildcards.metric]
+        dist =  GOSimDistanceMetric(dist_info['type'], dist_info['measure'], dist_info['combine'])
+        gene_sets = gsd.gene_sets.load_gene_sets(input.file)
+        gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
 
 ###
 # Data Download & initialization

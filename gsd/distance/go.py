@@ -32,16 +32,3 @@ class GOSimDistanceMetric(DistanceMetric):
                                          combine=self.combine)[0]
 
         return calc_pairwise_distances(gene_sets, calc_dist)
-
-
-GO_DISTS = [{
-    'folder': "GO_SIM_BP_Wang_BMA",
-    'distance': GOSimDistanceMetric(GOType.BIOLOGICAL_PROCESS, "Wang", "BMA")
-}]
-
-# {
-#     'folder': "GO_SIM_BP_Resnik_BMA",
-#     'distance': GOSimDistanceMetric(GOType.BIOLOGICAL_PROCESS, "Resnik", "BMA")
-# }
-
-GO_DISTS_TITLES = [entry['folder'] for entry in GO_DISTS]

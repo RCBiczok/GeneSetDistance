@@ -6,6 +6,8 @@ from scipy.sparse.csgraph import shortest_path
 from statistics import median
 import copy
 
+from tqdm import tqdm
+
 from gsd.distance import DistanceMetric, calc_pairwise_distances
 from gsd.distance.general import JaccardDistanceMetric
 from gsd.gene_sets import GeneSet
@@ -39,12 +41,12 @@ class ShortestPathPPI(DistanceMetric):
         self.nodes_mapping = dict(zip(nodes, range(0, len(nodes))))
         dist_matrix = np.zeros((len(self.nodes_mapping), len(self.nodes_mapping)))
 
-        for index, row in ppi_data.iterrows():
+        for index, row in tqdm(ppi_data.iterrows(), total=ppi_data.shape[0]):
             from_idx = self.nodes_mapping[row['FromId']]
             to_idx = self.nodes_mapping[row['ToId']]
             dist_matrix[from_idx][to_idx] = 1
 
-            self.graph = csr_matrix(dist_matrix)
+        self.graph = csr_matrix(dist_matrix)
 
     @property
     def display_name(self) -> str:
@@ -52,8 +54,13 @@ class ShortestPathPPI(DistanceMetric):
 
     def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
         def calc_path_distance(gene_set_a: GeneSet, gene_set_b: GeneSet):
-            indices_a = [self.nodes_mapping[gene_id] for gene_id in gene_set_a.general_info.entrez_gene_ids]
-            indices_b = [self.nodes_mapping[gene_id] for gene_id in gene_set_b.general_info.entrez_gene_ids]
+            indices_a = [self.nodes_mapping[gene_id] for gene_id in gene_set_a.general_info.entrez_gene_ids
+                         if gene_id in self.nodes_mapping]
+            indices_b = [self.nodes_mapping[gene_id] for gene_id in gene_set_b.general_info.entrez_gene_ids
+                         if gene_id in self.nodes_mapping]
+
+            if len(indices_a) == 0 or len(indices_b) == 0:
+                return np.nan
 
             dist_matrix = shortest_path(csgraph=self.graph, directed=False, indices=indices_a)
             # return median([min([row[idx_b] for idx_b in indices_b]) for row in dist_matrix])
@@ -75,10 +82,6 @@ def load_ppi_mitab(ppi_file: str, tax_id) -> DataFrame:
 
 
 PPI_DISTS = {
-    'Direct_PPI': lambda ppi_data: DirectPPIDistanceMetric(ppi_data)
+    'Direct_PPI': lambda ppi_data: DirectPPIDistanceMetric(ppi_data),
+    'Shortest_path_PPI': lambda ppi_data: ShortestPathPPI(ppi_data)
 }
-
-
-# 'Shortest_path_PPI': lambda ppi_data: ShortestPathPPI(ppi_data)
-
-PPI_DISTS_TITLES = PPI_DISTS.keys()

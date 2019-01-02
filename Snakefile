@@ -88,13 +88,13 @@ rule calc_nlp_dists:
     run:
         from gensim.models import KeyedVectors
 
-        #TODO embeddings are loaded no
-        print("loading w2v model")
+        #TODO embeddings are not downloaded automatically
+        print("Loading w2v model")
         w2v_model = KeyedVectors.load_word2vec_format("__data/nlp/PubMed-Wilbur-2018/pubmed_s100w10_min.bin",
                                                       binary=True)
 
         dist = NLP_DISTS[wildcards.metric](w2v_model)
-        print("Perform calculation for: %s" % dist.display_name)
+        print("Perform calculation for: %s / %s" % (dist.display_name, wildcards.evaluation_target))
 
         gene_sets = gsd.gene_sets.load_gene_sets(input.file)
         gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
@@ -105,12 +105,12 @@ rule calc_ppi_dists:
     run:
         from gsd.distance.ppi import load_ppi_mitab
 
-        #TODO embeddings are loaded no
-        print("loading PPI data")
+        #TODO ppi file should be downloaded automatically
+        print("Loading PPI data")
         ppi_data = load_ppi_mitab("__data/ppi/BioGrid/BIOGRID-ALL-3.5.166.mitab.txt", HUMAN_TAX_ID)
 
         dist = PPI_DISTS[wildcards.metric](ppi_data)
-        print("Perform calculation for: %s" % dist.display_name)
+        print("Perform calculation for: %s / %s" % (dist.display_name, wildcards.evaluation_target))
 
         gene_sets = gsd.gene_sets.load_gene_sets(input.file)
         gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)

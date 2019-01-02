@@ -78,8 +78,8 @@ def calc_pairwise_distances(obj_list: List[T], dist_fun: Callable[[T, T], float]
     result = np.ndarray(shape=(calc_n_comparisons(obj_list),), dtype=float)
     idx = 0
 
-    for i in tqdm(range(0, len(obj_list) - 1)):
-        for j in range(i + 1, len(obj_list)):
+    for i in tqdm(range(0, len(obj_list) - 1), desc='Outer loop', position=0):
+        for j in tqdm(range(i + 1, len(obj_list)), desc='Inner loop', position=1):
             result[idx] = dist_fun(obj_list[i], obj_list[j])
             idx += 1
     return result

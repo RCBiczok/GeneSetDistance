@@ -1,6 +1,7 @@
 import nltk
 from pandas import read_table
 from pathlib import Path
+from anytree import PostOrderIter
 
 import gsd
 import gsd.annotation
@@ -23,7 +24,7 @@ STOPWORD_FILE = "%s/nltk_data/corpora/stopwords" % str(Path.home())
 
 REACTOME_TARGETS = ['reactome/R-HSA-8982491', 'reactome/R-HSA-1474290']
 #EVALUATION_TARGETS = REACTOME_TARGETS + ['immune_cells/all']
-EVALUATION_TARGETS = REACTOME_TARGETS
+EVALUATION_TARGETS = REACTOME_TARGETS + ['immune_cells/immune_only']
 EVALUATION_DATA_DIRS = ["evaluation_data/%s" % target_name for target_name in EVALUATION_TARGETS]
 
 ## Used distances
@@ -42,12 +43,8 @@ PPI_EVALUATION_OUTPUT = expand("experiment_data/ppi/{metric}/{evaluation_target}
 
 GO_DISTS = {
     'GO_SIM_BP_Wang_BMA': {'type': gsd.annotation.GOType.BIOLOGICAL_PROCESS, 'measure': "Wang", 'combine': "BMA"}
+    #'GO_SIM_BP_Resnik_BMA': {'type': gsd.annotation.GOType.BIOLOGICAL_PROCESS, 'measure': "Resnik", 'combine': "BMA"}
 }
-
-# {
-#     'folder': "GO_SIM_BP_Resnik_BMA",
-#     'distance': GOSimDistanceMetric(GOType.BIOLOGICAL_PROCESS, "Resnik", "BMA")
-# }
 
 GO_EVALUATION_OUTPUT = expand("experiment_data/go/{metric}/{evaluation_target}.json",
                                metric=GO_DISTS.keys(),
@@ -141,7 +138,7 @@ rule calc_tree_path_dists:
         gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
 
 ###
-# Data Download & initialization
+# Data download & Data preparation
 ###
 
 rule download_stopwords:
@@ -149,33 +146,6 @@ rule download_stopwords:
         directory(STOPWORD_FILE)
     run:
         nltk.download("stopwords")
-
-rule download_reactome_sub_tree:
-    input:
-        entrezgene2go = 'annotation_data/entrezgene2go.tsv',
-        go = 'annotation_data/go.tsv'
-    output:
-        gene_set_file = "evaluation_data/reactome/{evaluation_target}/gene_sets.json",
-        tree_file = "evaluation_data/reactome/{evaluation_target}/tree.json"
-    run:
-        go_anno = gsd.annotation.read_go_anno_df(input.entrezgene2go, input.go)
-        node, gene_sets = gsd.reactome.download(HUMAN_TAX_ID, wildcards.evaluation_target, go_anno)
-        gsd.persist_reference_data(node, gene_sets, output.tree_file, output.gene_set_file)
-
-rule extract_all_immuno_cell_data:
-    input:
-        raw_data = directory("raw_data/immune_cells"),
-        entrezgene2gene_sym = "annotation_data/entrezgene2gene_sym.tsv",
-        entrezgene2go = 'annotation_data/entrezgene2go.tsv',
-        go = 'annotation_data/go.tsv'
-    output:
-        gene_set_file = "evaluation_data/immune_cells/all/gene_sets.json",
-        tree_file = "evaluation_data/immune_cells/all/tree.json"
-    run:
-        gene_sym_hsapiens = read_table(input.entrezgene2gene_sym)
-        go_anno = gsd.annotation.read_go_anno_df(input.entrezgene2go, input.go)
-        node, gene_sets = gsd.immune_cells.extract_from_raw_data(input.raw_data, gene_sym_hsapiens, go_anno)
-        gsd.persist_reference_data(node, gene_sets, output.tree_file, output.gene_set_file)
 
 rule download_entrezgene2gene_sym_anno:
     output:
@@ -204,3 +174,47 @@ rule download_go_anno:
              gsd.annotation.BIOMART_GO_LINKAGE_TYPE,
              gsd.annotation.BIOMART_GO_NAMESPACE],
             output.anno_file)
+
+rule download_reactome_sub_tree:
+    input:
+        entrezgene2go = 'annotation_data/entrezgene2go.tsv',
+        go = 'annotation_data/go.tsv'
+    output:
+        gene_set_file = "evaluation_data/reactome/{evaluation_target}/gene_sets.json",
+        tree_file = "evaluation_data/reactome/{evaluation_target}/tree.json"
+    run:
+        go_anno = gsd.annotation.read_go_anno_df(input.entrezgene2go, input.go)
+        node, gene_sets = gsd.reactome.download(HUMAN_TAX_ID, wildcards.evaluation_target, go_anno)
+        gsd.persist_reference_data(node, gene_sets, output.tree_file, output.gene_set_file)
+
+rule extract_all_immuno_cell_data:
+    input:
+        raw_data = directory("raw_data/immune_cells"),
+        entrezgene2gene_sym = "annotation_data/entrezgene2gene_sym.tsv",
+        entrezgene2go = 'annotation_data/entrezgene2go.tsv',
+        go = 'annotation_data/go.tsv'
+    output:
+        gene_set_file = "evaluation_data/immune_cells/all/gene_sets.json",
+        tree_file = "evaluation_data/immune_cells/all/tree.json"
+    run:
+        gene_sym_hsapiens = read_table(input.entrezgene2gene_sym)
+        go_anno = gsd.annotation.read_go_anno_df(input.entrezgene2go, input.go)
+        node, gene_sets = gsd.immune_cells.extract_from_raw_data(input.raw_data, gene_sym_hsapiens, go_anno)
+        gsd.persist_reference_data(node, gene_sets, output.tree_file, output.gene_set_file)
+
+rule extract_immune_cells_only:
+    input:
+        gene_set_file = "evaluation_data/immune_cells/all/gene_sets.json",
+        tree_file = "evaluation_data/immune_cells/all/tree.json"
+    output:
+        gene_set_file = "evaluation_data/immune_cells/immune_only/gene_sets.json",
+        tree_file = "evaluation_data/immune_cells/immune_only/tree.json"
+    run:
+        gene_sets = gsd.gene_sets.load_gene_sets(input.gene_set_file)
+        root = gsd.gene_sets.load_tree(input.tree_file)
+
+        filtered_root = root.children[0]
+        filtered_names = [node.name for node in PostOrderIter(filtered_root)]
+        filtered_gene_sets = [gene_set for gene_set in gene_sets if gene_set.general_info.name in filtered_names]
+
+        gsd.persist_reference_data(filtered_root, filtered_gene_sets, output.tree_file, output.gene_set_file)

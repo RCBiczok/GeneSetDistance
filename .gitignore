@@ -108,3 +108,5 @@ __data
 #Snamemake
 .snakemake
 .snakemake_timestamp
+.DS_Store
+temp-plot.html

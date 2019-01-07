@@ -20,8 +20,8 @@ class GOSimDistanceMetric(DistanceMetric):
 
     @property
     def display_name(self) -> str:
-        return "GO-based distance (go_type=%s, measure=%s, combine=%s)" \
-               % (self.go_type.name, self.measure, self.combine)
+        return "GO-distance (go_type=%s, measure=%s, combine=%s)" \
+               % (self.go_type.value, self.measure, self.combine)
 
     def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
         def calc_dist(a: GeneSet, b: GeneSet):

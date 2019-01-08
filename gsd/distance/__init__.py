@@ -4,7 +4,7 @@ import time
 import jsonpickle
 import numpy as np
 from abc import abstractmethod
-from typing import List, TypeVar, Iterable, Callable
+from typing import List, TypeVar, Iterable, Callable, Tuple
 
 from anytree import Node, PostOrderIter
 from scipy.sparse import csr_matrix
@@ -33,16 +33,18 @@ class DistanceMetric:
 
 class EvaluationResult:
     def __repr__(self):
-        return "EvaluationResult(name=%s, exec_time=%f, results=%s)" \
-               % (self.name, self.exec_time, self.results)
+        return "EvaluationResult(name=%s, exec_time=%f, results=%s, comparison_labels=%s)" \
+               % (self.name, self.exec_time, self.results, self.comparison_label)
 
     def __init__(self,
                  name: str,
                  exec_time: float,
-                 results: Iterable[float]):
+                 results: Iterable[float],
+                 comparison_label: Iterable[Tuple[str, str]]):
         self.name = name
         self.exec_time = exec_time
         self.results = results
+        self.comparison_label = comparison_label
 
 
 def to_binary_matrix(gene_sets: List[GeneSet]):
@@ -69,7 +71,12 @@ def execute_and_persist_evaluation(
     d = metric.calc(gene_sets)
     time_end = time.time()
 
-    result = EvaluationResult(metric.display_name, time_end - time_begin, d.tolist())
+    comparison_labels = []
+    for i in range(0, len(gene_sets) - 1):
+        for j in range(i + 1, len(gene_sets)):
+            comparison_labels.append((gene_sets[i].general_info.name, gene_sets[j].general_info.name))
+
+    result = EvaluationResult(metric.display_name, time_end - time_begin, d.tolist(), comparison_labels)
     with open(out_file, "w") as gene_set_file:
         gene_set_file.write(jsonpickle.encode(result))
 

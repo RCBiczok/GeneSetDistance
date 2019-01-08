@@ -27,11 +27,11 @@ def test_kappa():
 
 
 def test_overlap_coefficient():
-    assert overlap_coefficient([True, False, False], [True, True, False]) == 1
-    assert overlap_coefficient([True, True, False], [True, True, False]) == 1
-    assert overlap_coefficient([True, True, True], [True, True, False]) == 1
-    assert overlap_coefficient([False, False, True], [True, True, False]) == 0
-    assert overlap_coefficient([False, True, True], [True, True, False]) == 0.5
+    assert overlap_coefficient([True,  False, False], [True, True, False]) == 1
+    assert overlap_coefficient([True,   True, False], [True, True, False]) == 1
+    assert overlap_coefficient([True,   True,  True], [True, True, False]) == 1
+    assert overlap_coefficient([False, False,  True], [True, True, False]) == 0
+    assert overlap_coefficient([False,  True,  True], [True, True, False]) == 0.5
 
 
 def test_overlap_distance():

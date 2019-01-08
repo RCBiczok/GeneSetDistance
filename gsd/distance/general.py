@@ -42,9 +42,25 @@ class KappaDistanceMetric(DistanceMetric):
         return calc_pairwise_distances(vector_list, lambda a, b: 1 - cohen_kappa_score(a, b))
 
 
+def overlap_coefficient(list_a: List[bool], list_b: List[bool]) -> float:
+    intersection = float(sum([a * b for a, b in zip(list_a, list_b)]))
+    return intersection/min(sum(list_a), sum(list_b))
+
+
+class OverlapDistanceMetric(DistanceMetric):
+    @property
+    def display_name(self) -> str:
+        return "Overlap coefficient distance"
+
+    def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
+        vector_list = to_binary_matrix(gene_sets)
+        return calc_pairwise_distances(vector_list, lambda a, b: 1 - overlap_coefficient(a, b))
+
+
 GENERAL_DISTS = {
     'Minkowski_P1': MinkowskiNormDistanceMetric(1),
     'Minkowski_P2': MinkowskiNormDistanceMetric(2),
     'Jaccard_Distance': JaccardDistanceMetric(),
-    'Kappa_Statistic': KappaDistanceMetric()
+    'Kappa_Statistic': KappaDistanceMetric(),
+    'Overlap_Coefficient': OverlapDistanceMetric()
 }

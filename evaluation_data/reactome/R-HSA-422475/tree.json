@@ -1,0 +1,1083 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "name": "EPH receptors autophosphorylate (R-HSA-3928578)"
+        },
+        {
+          "children": [
+            {
+              "name": "ADAM10 cleaves EFNAs (R-HSA-3928660)"
+            },
+            {
+              "name": "Clathrin internalises EPH:EFN complexes (R-HSA-3928654)"
+            },
+            {
+              "name": "EPHA binds TIAM1 (R-HSA-4093327)"
+            },
+            {
+              "name": "MMP2,9 cleave EPHB (R-HSA-3928657)"
+            },
+            {
+              "name": "SFKs phosphorylate VAV2,3 (R-HSA-3928604)"
+            },
+            {
+              "name": "TIAM1 exchanges GTP for GDP on RAC1, activating it (R-HSA-3928642)"
+            },
+            {
+              "name": "VAV exchanges GTP for GDP on RAC1, activating it (R-HSA-3928628)"
+            },
+            {
+              "name": "gamma-secretase cleaves EPHB2 (R-HSA-3928656)"
+            },
+            {
+              "name": "p-EPHs bind VAV2,3 (R-HSA-3928607)"
+            }
+          ],
+          "name": "EPH-ephrin mediated repulsion of cells (R-HSA-3928665)"
+        },
+        {
+          "name": "EPH:EFN dimers tetramerise (R-HSA-3928597)"
+        },
+        {
+          "name": "EPH:EFN tetramers oligomerise (R-HSA-3928591)"
+        },
+        {
+          "children": [
+            {
+              "name": "Activated ROCK phosphorylates MRLCs (R-HSA-3928616)"
+            },
+            {
+              "name": "NGEF binds EPHA (R-HSA-3928602)"
+            },
+            {
+              "name": "NGEF exchanges GTP for GDP on RHOA (R-HSA-3928651)"
+            },
+            {
+              "name": "SFKs phosphorylate NGEF (R-HSA-3928648)"
+            }
+          ],
+          "name": "EPHA-mediated growth cone collapse (R-HSA-3928663)"
+        },
+        {
+          "name": "EPHAs bind EFNAs (R-HSA-3928646)"
+        },
+        {
+          "children": [
+            {
+              "name": "CDC42 and PIP2 bind WASL, activating it (R-HSA-3928601)"
+            },
+            {
+              "name": "EPHB binds ITSN1 (R-HSA-3928644)"
+            },
+            {
+              "name": "EPHB binds p120-RasGAP (R-HSA-4093330)"
+            },
+            {
+              "name": "EPHB phosphorylates TIAM1 (R-HSA-3928627)"
+            },
+            {
+              "name": "EPHB2 binds KALRN (R-HSA-3928617)"
+            },
+            {
+              "name": "EPHB:NMDAR binds TIAM1 (R-HSA-3928645)"
+            },
+            {
+              "name": "EPHBs bind NMDARs (R-HSA-3928623)"
+            },
+            {
+              "name": "EPHBs binds PTK2 (R-HSA-3928588)"
+            },
+            {
+              "name": "FYN phosphorylates NMDAR2B (R-HSA-3928583)"
+            },
+            {
+              "name": "ITSN1 exchanges GTP for GDP on CDC42, activating it (R-HSA-3928632)"
+            },
+            {
+              "name": "KALRN exchanges GTP for GDP on RAC1, activating it (R-HSA-3928612)"
+            },
+            {
+              "name": "LIMK phosphorylates CFL1, inactivating it (R-HSA-3928608)"
+            },
+            {
+              "name": "N-WASP binds ARP2/3 and G-actin (R-HSA-3928595)"
+            },
+            {
+              "name": "N-WASP binds ITSN1 (R-HSA-3928600)"
+            },
+            {
+              "name": "PAK1 autophosphorylates (R-HSA-3928620)"
+            },
+            {
+              "name": "PAK1 binds RAC1:GTP (R-HSA-3928619)"
+            },
+            {
+              "name": "PTK2 autophosphorylates at Y397 (R-HSA-3928610)"
+            },
+            {
+              "name": "RHOA:GTP binds ROCK, activating it (R-HSA-3928576)"
+            },
+            {
+              "name": "ROCK phosphorylates LIMK1,2 (R-HSA-3928577)"
+            },
+            {
+              "name": "Ras:GTP binds p120-RasGAP (R-HSA-4093331)"
+            },
+            {
+              "name": "Recruitment of p190RhoGEF to p-FAK (R-HSA-3928598)"
+            },
+            {
+              "name": "SDC2 multimerises (R-HSA-4093342)"
+            },
+            {
+              "name": "p-EPHB phosphorylates SDC2 (R-HSA-4093332)"
+            },
+            {
+              "name": "p-TIAM1 exchanges GTP for GDP on RAC1, activating it (R-HSA-4093336)"
+            },
+            {
+              "name": "p120-RasGAP activates GTP hydrolysis on RAS, inactivating it (R-HSA-4093339)"
+            },
+            {
+              "name": "p190RhoGEF exchanges GTP for GDP on RHOA, activating it (R-HSA-3928592)"
+            }
+          ],
+          "name": "EPHB-mediated forward signaling (R-HSA-3928662)"
+        },
+        {
+          "name": "EPHBs bind EFNBs (R-HSA-3928624)"
+        },
+        {
+          "children": [
+            {
+              "name": "EFNB:GRB4 binds GIT1 (R-HSA-3928614)"
+            },
+            {
+              "name": "EFNBs bind SDCBP (R-HSA-4093329)"
+            },
+            {
+              "name": "EFNBs bind SFKs (R-HSA-3928615)"
+            },
+            {
+              "name": "GIT1 binds bPIX (R-HSA-3928631)"
+            },
+            {
+              "name": "PAK binds RAC and bPIX (R-HSA-3928641)"
+            },
+            {
+              "name": "PAKs autophosphorylate (R-HSA-3928625)"
+            },
+            {
+              "name": "PAKs phosphorylate MLC (R-HSA-3928640)"
+            },
+            {
+              "name": "SFKs phosphorylate EFNBs (R-HSA-3928580)"
+            },
+            {
+              "name": "SFKs phosphorylate GIT1 (R-HSA-3928594)"
+            },
+            {
+              "name": "bPIX exchanges GTP for GDP on RAC, activating it (R-HSA-3928633)"
+            },
+            {
+              "name": "p-EFNB binds GRB4 (R-HSA-3928639)"
+            }
+          ],
+          "name": "Ephrin signaling (R-HSA-3928664)"
+        },
+        {
+          "name": "p-EPHs bind SRC,FYN,YES,LYN (R-HSA-3928584)"
+        }
+      ],
+      "name": "EPH-Ephrin signaling (R-HSA-2682334)"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "name": "CHL1 interacts with Ankyrin-G (R-HSA-447034)"
+            },
+            {
+              "name": "CHL1 interacts with HSP7C (R-HSA-445087)"
+            },
+            {
+              "name": "CHL1 interacts with NRP1 (R-HSA-445083)"
+            },
+            {
+              "name": "CHL1 interacts with beta1 integrins (R-HSA-445088)"
+            },
+            {
+              "name": "CHL1 interacts with contactin-6 (R-HSA-443782)"
+            }
+          ],
+          "name": "CHL1 interactions (R-HSA-447041)"
+        },
+        {
+          "name": "Cis-heterodimerization of L1 and Axonin-1 (R-HSA-374672)"
+        },
+        {
+          "name": "Cis-heterodimerization of L1 and Contactin-1/F3/F11 (R-HSA-443784)"
+        },
+        {
+          "name": "Cis-heterodimerization of L1 and DM-GRASP/ALCAM/BEN (R-HSA-443780)"
+        },
+        {
+          "name": "Heat-Stable Antigen binds L1 (R-HSA-437234)"
+        },
+        {
+          "children": [
+            {
+              "name": "Ankyrins link voltage-gated sodium and potassium channels to spectrin and L1 (R-HSA-373739)"
+            },
+            {
+              "name": "L1 dimer binds Ankyrin (R-HSA-374675)"
+            },
+            {
+              "name": "L1 linked to actin cytoskeleton by ankyrin (R-HSA-392751)"
+            },
+            {
+              "name": "Phosphorylation of Y1229 in L1 (R-HSA-445076)"
+            }
+          ],
+          "name": "Interaction between L1 and Ankyrins (R-HSA-445095)"
+        },
+        {
+          "name": "Interaction of L1 with Laminin-1 (R-HSA-443778)"
+        },
+        {
+          "name": "Interaction of L1 with Neurocan (R-HSA-374683)"
+        },
+        {
+          "name": "L1 binds RanBPM (R-HSA-374673)"
+        },
+        {
+          "name": "LYPLA2 hydrolyses PALM-C3,4-GAP43 (R-HSA-8933328)"
+        },
+        {
+          "children": [
+            {
+              "name": "Doublecortin binds phosphorylated neurofascin (R-HSA-437243)"
+            },
+            {
+              "name": "Neurofascin and NrCAM heterodimerization (R-HSA-373730)"
+            },
+            {
+              "name": "Neurofascin binds Ankyrin-G (R-HSA-373729)"
+            },
+            {
+              "name": "Neurofascin binds contactin-1:CASPR complex (R-HSA-373733)"
+            },
+            {
+              "name": "Neurofascin interacts with syntenin-1 (R-HSA-373738)"
+            },
+            {
+              "name": "Phosphorylation of Neurofascin (R-HSA-445091)"
+            },
+            {
+              "name": "Trans-homodimerization of Neurofascin (R-HSA-443774)"
+            }
+          ],
+          "name": "Neurofascin interactions (R-HSA-447043)"
+        },
+        {
+          "children": [
+            {
+              "name": "NrCAM binds Ankyrin-G (R-HSA-447030)"
+            },
+            {
+              "name": "NrCAM binds Neuropilin-2 (R-HSA-549060)"
+            },
+            {
+              "name": "NrCAM binds axonin-1 (R-HSA-445067)"
+            },
+            {
+              "name": "NrCAM binds synapse-associated proteins (R-HSA-376134)"
+            }
+          ],
+          "name": "NrCAM interactions (R-HSA-447038)"
+        },
+        {
+          "name": "Phosphorylation of L1 by EPHB2 (R-HSA-443817)"
+        },
+        {
+          "children": [
+            {
+              "name": "Dephosphorylation of pL1 (Y1176) (R-HSA-445089)"
+            },
+            {
+              "name": "Formation of clathrin coated vesicle (R-HSA-555065)"
+            },
+            {
+              "name": "Interaction of NUMB with L1 (R-HSA-443783)"
+            },
+            {
+              "name": "L1 binds ERM family members (R-HSA-374677)"
+            },
+            {
+              "name": "L1 binds to AP-2 Clathrin complex (R-HSA-392748)"
+            },
+            {
+              "name": "L1 trans-homophilic interaction (R-HSA-374680)"
+            },
+            {
+              "name": "Linkage of L1 with treadmilling F-actin (R-HSA-443779)"
+            },
+            {
+              "name": "Phosphorylation of L1 by ERK (R-HSA-445079)"
+            },
+            {
+              "name": "Phosphorylation of L1 by SRC (R-HSA-445084)"
+            },
+            {
+              "name": "Phosphorylation of L1 by p90rsk (R-HSA-374696)"
+            },
+            {
+              "name": "Reinsertion of L1 into the plasma membrane (R-HSA-445071)"
+            },
+            {
+              "name": "Shootin-1 links L1 and retrograde actin flow (R-HSA-373736)"
+            },
+            {
+              "name": "Transport of L1 from C-domain to P-domain (R-HSA-445077)"
+            },
+            {
+              "name": "Transport of L1 into endosomes (R-HSA-392749)"
+            }
+          ],
+          "name": "Recycling pathway of L1 (R-HSA-437239)"
+        },
+        {
+          "children": [
+            {
+              "name": "Activation of Rac1 by VAV2 (R-HSA-445064)"
+            },
+            {
+              "name": "Interaction of PAK1 with Rac1-GTP (R-HSA-445072)"
+            },
+            {
+              "name": "L1 and NCAM1 engaged in cis-interaction (R-HSA-374681)"
+            },
+            {
+              "name": "L1 binds NRP1 (R-HSA-374669)"
+            },
+            {
+              "name": "L1 interaction with Integrins (R-HSA-374686)"
+            },
+            {
+              "name": "L1-EGFR trans-heterodimerization (R-HSA-445069)"
+            },
+            {
+              "name": "L1-FGFR cis-heterodimerization (R-HSA-437230)"
+            },
+            {
+              "name": "MAP2K1 phosphorylates MAPK3 (R-HSA-109860)"
+            },
+            {
+              "name": "MAP2K2 phosphorylates MAPK1 (R-HSA-109862)"
+            },
+            {
+              "name": "Phosphorylation of L1 by CK-II (R-HSA-392752)"
+            },
+            {
+              "name": "Phosphorylation of VAV2 (R-HSA-445085)"
+            }
+          ],
+          "name": "Signal transduction by L1 (R-HSA-445144)"
+        }
+      ],
+      "name": "L1CAM interactions (R-HSA-373760)"
+    },
+    {
+      "children": [
+        {
+          "name": "Autophosphorylation of NCAM1 bound Fyn (R-HSA-391871)"
+        },
+        {
+          "name": "Dephosphorylation of NCAM1 bound pFyn (R-HSA-391868)"
+        },
+        {
+          "name": "ERK1/2 phosphorylates MSK1 (R-HSA-198756)"
+        },
+        {
+          "name": "Fyn binds NCAM1 (R-HSA-391867)"
+        },
+        {
+          "name": "MSK1 activates CREB (R-HSA-199935)"
+        },
+        {
+          "name": "NCAM1 binds FGFR-1 (R-HSA-419033)"
+        },
+        {
+          "name": "NCAM1 cis-homophilic interaction (R-HSA-391872)"
+        },
+        {
+          "children": [
+            {
+              "name": "Interaction of NCAM1 with GFRalpha-1 (R-HSA-375149)"
+            },
+            {
+              "name": "Interaction of NCAM1 with Major prion protein (PrP) (R-HSA-375154)"
+            },
+            {
+              "name": "Interaction of NCAM1 with Neurocan (R-HSA-375148)"
+            },
+            {
+              "name": "Interaction of NCAM1 with agrin (R-HSA-375155)"
+            },
+            {
+              "name": "Interaction of NCAM1 with collagens (R-HSA-375151)"
+            },
+            {
+              "name": "Interaction of NCAM1 with contactin-2 (R-HSA-375157)"
+            },
+            {
+              "name": "Interaction of NCAM1:GFRalpha-1 with GDNF (R-HSA-375144)"
+            },
+            {
+              "name": "NCAM1 binds to ATP (R-HSA-375160)"
+            },
+            {
+              "name": "NCAM1 interacts with T- and L-type VDCC (R-HSA-525833)"
+            },
+            {
+              "name": "Polysialylation of NCAM1 (R-HSA-422454)"
+            }
+          ],
+          "name": "NCAM1 interactions (R-HSA-419037)"
+        },
+        {
+          "name": "NCAM1 trans-homophilic interaction (R-HSA-375161)"
+        },
+        {
+          "name": "NCAM1:pFAK:Grb2:Sos-mediated nucleotide exchange of Ras (R-HSA-392054)"
+        },
+        {
+          "name": "Phosphorylation of FAK by Src kinase (R-HSA-391866)"
+        },
+        {
+          "name": "Recruitment of FAK to NCAM1:Fyn in lipid rafts (R-HSA-391865)"
+        },
+        {
+          "name": "Recruitment of Grb2 to pFAK:NCAM1 (R-HSA-392051)"
+        },
+        {
+          "name": "SOS binds Grb2 bound to pFAK:NCAM1 (R-HSA-392053)"
+        }
+      ],
+      "name": "NCAM signaling for neurite out-growth (R-HSA-375165)"
+    },
+    {
+      "children": [
+        {
+          "name": "DCC interaction with Ezrin (R-HSA-374663)"
+        },
+        {
+          "name": "DCC interaction with SIAH1 (R-HSA-374665)"
+        },
+        {
+          "name": "DCC interaction with SIAH2 (R-HSA-374667)"
+        },
+        {
+          "children": [
+            {
+              "name": "Activation of Cdc42 (R-HSA-418850)"
+            },
+            {
+              "name": "Activation of Rac1 (R-HSA-418856)"
+            },
+            {
+              "name": "DCC interacting NCK-1 (R-HSA-373716)"
+            },
+            {
+              "name": "DCC interaction with Netrin-1 (R-HSA-373711)"
+            },
+            {
+              "name": "FADK1 interaction with DCC (R-HSA-373720)"
+            },
+            {
+              "name": "Netrin-1 induced DCC clustering (R-HSA-373707)"
+            },
+            {
+              "name": "Phosphorylation of DCC by Fyn (R-HSA-374701)"
+            },
+            {
+              "name": "Phosphorylation of FADK1 (R-HSA-418872)"
+            },
+            {
+              "name": "Recruitment and activation of N-WASP by Cdc42 (R-HSA-418874)"
+            },
+            {
+              "name": "Recruitment of ABLIM to the plasma membrane (R-HSA-418865)"
+            },
+            {
+              "name": "Recruitment of Src and Fyn to DCC:FADK1 (R-HSA-418868)"
+            },
+            {
+              "name": "RhoGTPase GEF's recruited to DCC (R-HSA-418858)"
+            }
+          ],
+          "name": "DCC mediated attractive signaling (R-HSA-418885)"
+        },
+        {
+          "children": [
+            {
+              "name": "Activation of JNK by DSCAM (R-HSA-451347)"
+            },
+            {
+              "name": "Activation of p38MAPK by DSCAM (R-HSA-451366)"
+            },
+            {
+              "name": "DSCAM associates with Rac1-GTP:pPAK1 (R-HSA-376123)"
+            },
+            {
+              "name": "DSCAM binds DCC (R-HSA-451345)"
+            },
+            {
+              "name": "DSCAM binds Netrin-1 (R-HSA-376126)"
+            },
+            {
+              "name": "DSCAM/DSCAML1 homodimerization (R-HSA-376122)"
+            }
+          ],
+          "name": "DSCAM interactions (R-HSA-376172)"
+        },
+        {
+          "name": "Myosin-X binds DCC/Neogenin (R-HSA-593672)"
+        },
+        {
+          "name": "Neogenin binds Netrin-1 (R-HSA-374689)"
+        },
+        {
+          "name": "Neogenin binds repulsive guidance molecules (RGDs) (R-HSA-374692)"
+        },
+        {
+          "children": [
+            {
+              "name": "DCC heterodimerizes with UNC-5:Netrin-1 (R-HSA-373713)"
+            },
+            {
+              "name": "Phosphorylation of Unc5C (R-HSA-418859)"
+            },
+            {
+              "name": "Shp2 binds pUnc5C (R-HSA-418863)"
+            },
+            {
+              "name": "UNC-5 binds Netrin-1 (R-HSA-373751)"
+            }
+          ],
+          "name": "Netrin mediated repulsion signals (R-HSA-418886)"
+        },
+        {
+          "name": "Netrin-4 binds DCC/UNC5A (R-HSA-593685)"
+        },
+        {
+          "name": "PIKE-L interaction with UNC5B (R-HSA-622357)"
+        },
+        {
+          "name": "Phosphorylation and activation of Ezrin (R-HSA-374664)"
+        },
+        {
+          "children": [
+            {
+              "name": "Activation of TRPC channels by Netrin-1 (R-HSA-622390)"
+            },
+            {
+              "name": "PIP2 hydrolysis (R-HSA-622382)"
+            },
+            {
+              "name": "PITPalpha binds DCC (R-HSA-418866)"
+            },
+            {
+              "name": "Phosphorylation of PLCgamma by Netrin-1 (R-HSA-593690)"
+            }
+          ],
+          "name": "Role of second messengers in netrin-1 signaling (R-HSA-418890)"
+        },
+        {
+          "name": "Translocation of Ezrin to plasma membrane (R-HSA-374662)"
+        }
+      ],
+      "name": "Netrin-1 signaling (R-HSA-373752)"
+    },
+    {
+      "children": [
+        {
+          "name": "2x p-5Y-RET:GDNF:GFRA complexes bind FRS2 (R-HSA-8855564)"
+        },
+        {
+          "name": "2x p-5Y-RET:GDNF:GFRA complexes bind GRB2-1:SOS1 (R-HSA-8854899)"
+        },
+        {
+          "name": "2x p-5Y-RET:GDNF:GFRA complexes bind GRB7,10 (R-HSA-8853753)"
+        },
+        {
+          "name": "2x p-5Y-RET:GDNF:GFRA complexes bind PLCgamma1 (R-HSA-8853755)"
+        },
+        {
+          "name": "2x p-5Y-RET:GDNF:GFRA complexes bind RET interactors (R-HSA-8855915)"
+        },
+        {
+          "name": "2x p-5Y-RET:GDNF:GFRA complexes bind SHC1 (R-HSA-8853737)"
+        },
+        {
+          "name": "2x p-5Y-RET:GDNF:GFRA complexes bind SRC1, RAP1GAP (R-HSA-8855747)"
+        },
+        {
+          "name": "2x p-5Y-RET:GDNF:GFRA complexes binds DOK1,DOK2,DOK4,DOK5,DOK6 (R-HSA-8855617)"
+        },
+        {
+          "name": "2x p-5Y-RET:GDNF:GFRA complexes:p-Y349,Y350,Y427-SHC1 binds GRB2-1:SOS1 (R-HSA-8853734)"
+        },
+        {
+          "name": "ARTN binds RET:GFRA1,GFRA3 (R-HSA-8853800)"
+        },
+        {
+          "name": "GAB in p-5Y-RET:GDNF:GFRA complexes is phosphorylated (R-HSA-8853774)"
+        },
+        {
+          "name": "GDNF,NRTN bind RET:GFRA1,GFRA2 (R-HSA-8853789)"
+        },
+        {
+          "name": "PKA phosphorylates RET:GDNF:GFRA dimer (R-HSA-8854908)"
+        },
+        {
+          "name": "PSPN binds RET:GFRA4 (R-HSA-8853801)"
+        },
+        {
+          "name": "RET binds GFRA1,GFRA2 (R-HSA-8871226)"
+        },
+        {
+          "name": "RET binds GFRA1,GFRA3 (R-HSA-8853745)"
+        },
+        {
+          "name": "RET binds GFRA4 (R-HSA-8871227)"
+        },
+        {
+          "name": "RET dimerizes (R-HSA-8853762)"
+        },
+        {
+          "name": "RET tyrosine phosphorylation (R-HSA-8853792)"
+        },
+        {
+          "name": "SHC1 in the RET complex is phosphorylated (R-HSA-8854981)"
+        },
+        {
+          "name": "p-5Y-GAB in RET-GRB2-GAB complexes binds PTPN11 (R-HSA-8855508)"
+        },
+        {
+          "name": "p-5Y-GAB in the RET-GRB2-GAB complexes binds p85-PI3K (R-HSA-8854905)"
+        },
+        {
+          "name": "p-5Y-RET complexes bind GRB2 (R-HSA-8853793)"
+        },
+        {
+          "name": "p-5Y-RET-GRB2-containing complexes bind GAB1,GAB2 (R-HSA-8854897)"
+        }
+      ],
+      "name": "RET signaling (R-HSA-8853659)"
+    },
+    {
+      "children": [
+        {
+          "name": "FYN phosphorylates DAB1 in RELN:VLDLR:DAB1:SH3KBP1 (R-HSA-8855237)"
+        },
+        {
+          "name": "RELN:VLDLR binds DAB1 (R-HSA-8855232)"
+        },
+        {
+          "name": "RELN:VLDLR:DAB1 binds SH3KBP1 (R-HSA-8855259)"
+        },
+        {
+          "name": "VLDLR binds RELN (R-HSA-8854466)"
+        }
+      ],
+      "name": "Reelin signalling pathway (R-HSA-8866376)"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "name": "Activation of Fyn (R-HSA-399931)"
+            },
+            {
+              "name": "Phosphorylation of CRMPs by Cdk5 (R-HSA-399944)"
+            },
+            {
+              "name": "Phosphorylation of CRMPs by GSK3beta (R-HSA-399951)"
+            },
+            {
+              "name": "Recruitment and activation of Cdk5 (R-HSA-399946)"
+            },
+            {
+              "name": "Tyrosine phosphorylation of CRMPs by Fes (R-HSA-399947)"
+            }
+          ],
+          "name": "CRMPs in Sema3A signaling (R-HSA-399956)"
+        },
+        {
+          "children": [
+            {
+              "name": "SEMA3E binds to PLXND1 (R-HSA-416683)"
+            },
+            {
+              "name": "SEMA4A binds to PLXND1 (R-HSA-416690)"
+            },
+            {
+              "name": "SEMA4D interacts with CD45 (R-HSA-373746)"
+            },
+            {
+              "name": "SEMA4D interacts with CD72 (R-HSA-373748)"
+            },
+            {
+              "name": "SEMA5A binds to PLXNB3 (R-HSA-416698)"
+            },
+            {
+              "name": "SEMA6A binds to PLXNA2 and PLXNA4 (R-HSA-416723)"
+            },
+            {
+              "name": "SEMA6D binds to PLXNA1:TREM2:DAP12 (R-HSA-416725)"
+            },
+            {
+              "name": "SEMA7A binds to PLXNC1 (R-HSA-434989)"
+            },
+            {
+              "name": "SEMA7A binds to integrin alpha1beta1 (R-HSA-434990)"
+            }
+          ],
+          "name": "Other semaphorin interactions (R-HSA-416700)"
+        },
+        {
+          "children": [
+            {
+              "name": "Activation of Rac1 by FARP2 (R-HSA-399938)"
+            },
+            {
+              "name": "Inactivation of R-Ras by Sema3A-Plexin-A GAP activity (R-HSA-399935)"
+            },
+            {
+              "name": "Inhibition of integrin activation by sequestering PIP5KIgamma (R-HSA-399936)"
+            },
+            {
+              "name": "Phosphorylation of Plexin-A (R-HSA-399934)"
+            },
+            {
+              "name": "Plexin-A1-4 binds NRP1 (R-HSA-399942)"
+            },
+            {
+              "name": "Rac1 binds PlexinA (R-HSA-399941)"
+            },
+            {
+              "name": "Recruitment of Rnd1 to Plexin A (R-HSA-399928)"
+            },
+            {
+              "name": "Sema3A binds Nrp-1 bound to PlexinA (R-HSA-399933)"
+            }
+          ],
+          "name": "SEMA3A-Plexin repulsion signaling by inhibiting Integrin adhesion (R-HSA-399955)"
+        },
+        {
+          "children": [
+            {
+              "name": "Activation of PAK by Rac1 (R-HSA-399930)"
+            },
+            {
+              "name": "Autophosphorylation of PAK (R-HSA-399939)"
+            },
+            {
+              "name": "Dimerization of LIMK1 by Hsp90 (R-HSA-419645)"
+            },
+            {
+              "name": "Phosphorylation of LIMK-1 by PAK (R-HSA-399952)"
+            },
+            {
+              "name": "Phosphorylation of cofilin by LIMK-1 (R-HSA-399950)"
+            },
+            {
+              "name": "Transphosphorylation of pLIMK1 (R-HSA-419644)"
+            }
+          ],
+          "name": "Sema3A PAK dependent Axon repulsion (R-HSA-399954)"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "name": "Activation of Rho by LARG and PDZ-RhoGEF (R-HSA-416588)"
+                },
+                {
+                  "name": "LARG and PDZ-RhoGEF binds to Plexin-B1 (R-HSA-416594)"
+                },
+                {
+                  "name": "LIM kinase phosphorylation by ROCK (R-HSA-419087)"
+                },
+                {
+                  "name": "Myosin regulatory light chain phosphorylation by ROCK (R-HSA-419197)"
+                },
+                {
+                  "name": "ROCK activation by RHO (R-HSA-419049)"
+                },
+                {
+                  "name": "SEMA4D interacts with Plexin-B1:ErbB2 (R-HSA-373750)"
+                }
+              ],
+              "name": "Sema4D induced cell migration and growth-cone collapse (R-HSA-416572)"
+            },
+            {
+              "children": [
+                {
+                  "name": "Active Rac1 interacts with Plexin-B1:Sema4D (R-HSA-400682)"
+                },
+                {
+                  "name": "Inactivation of R-Ras by Sema4D-Plexin-B1 GAP activity (R-HSA-416546)"
+                },
+                {
+                  "name": "Inactivation of Rho-GTP by p190RhoGAP (R-HSA-416559)"
+                },
+                {
+                  "name": "Rnd1 interacts with Plexin-B1:Sema4D (R-HSA-400677)"
+                },
+                {
+                  "name": "SEMA4D interacts with Plexin-B1:Met (R-HSA-419646)"
+                },
+                {
+                  "name": "p190RhoGAP binds Plexin-B1 (R-HSA-416562)"
+                }
+              ],
+              "name": "Sema4D mediated inhibition of cell attachment and migration (R-HSA-416550)"
+            }
+          ],
+          "name": "Sema4D in semaphorin signaling (R-HSA-400685)"
+        }
+      ],
+      "name": "Semaphorin interactions (R-HSA-373755)"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "name": "Activation of RAC1 by SOS (R-HSA-428535)"
+            },
+            {
+              "name": "NCK binds ROBO1:SLIT2 (R-HSA-428511)"
+            },
+            {
+              "name": "Recruitment of PAK to NCK (R-HSA-428531)"
+            },
+            {
+              "name": "Recruitment of SOS to plasma membrane (R-HSA-428515)"
+            }
+          ],
+          "name": "Activation of RAC1 (R-HSA-428540)"
+        },
+        {
+          "name": "Ena/VASP proteins bind ROBO1:SLIT2 complex (R-HSA-376140)"
+        },
+        {
+          "name": "Glypican-1 (GPC1) binds SLIT2 (R-HSA-428518)"
+        },
+        {
+          "children": [
+            {
+              "name": "ARHGAP39 (Vilse) binds ROBO1:SLIT2 (R-HSA-428536)"
+            },
+            {
+              "name": "Inactivation of CDC42 (R-HSA-428533)"
+            },
+            {
+              "name": "Inactivation of RAC1 (R-HSA-428522)"
+            },
+            {
+              "name": "SRGAP binds ROBO1:SLIT2 (R-HSA-376145)"
+            }
+          ],
+          "name": "Inactivation of CDC42 and RAC1 (R-HSA-428543)"
+        },
+        {
+          "name": "Proteolytic processing of SLIT (R-HSA-376149)"
+        },
+        {
+          "children": [
+            {
+              "name": "AKAP5 recruits PKA to ROBO2 (R-HSA-9010641)"
+            },
+            {
+              "name": "AKAP5 recruits PKC to ROBO2 (R-HSA-9010643)"
+            },
+            {
+              "name": "AKAP5 recruits PKC to ROBO3.1 (R-HSA-9010646)"
+            },
+            {
+              "name": "AKAP5 recruits PPP3CB (PP2BB) to ROBO2 (R-HSA-9010645)"
+            },
+            {
+              "name": "PKC phosphorylates ROBO3.1 (R-HSA-9010681)"
+            },
+            {
+              "name": "ROBO2 binds AKAP5 (R-HSA-9010648)"
+            },
+            {
+              "name": "ROBO3.1 binds AKAP5 (R-HSA-9010647)"
+            }
+          ],
+          "name": "ROBO receptors bind AKAP5 (R-HSA-9010642)"
+        },
+        {
+          "name": "ROBO1 binds FLRT3 (R-HSA-9010231)"
+        },
+        {
+          "name": "ROBO1 binds NRP1 (R-HSA-9010951)"
+        },
+        {
+          "name": "ROBO1 binds SLIT2 (R-HSA-204364)"
+        },
+        {
+          "name": "ROBO1,ROBO2 bind SLIT3 (R-HSA-9014834)"
+        },
+        {
+          "name": "ROBO2 binds SLIT2 (R-HSA-9010898)"
+        },
+        {
+          "name": "ROBOs bind keratan sulfate (R-HSA-9014812)"
+        },
+        {
+          "name": "Recruitment of Profilin by Ena/VASP proteins (R-HSA-428534)"
+        },
+        {
+          "children": [
+            {
+              "name": "ROBO3 binds NELL2 (R-HSA-9010190)"
+            },
+            {
+              "name": "ROBO3.1 antagonizes ROBO1/ROBO2 to allow floor plate crossing (R-HSA-428510)"
+            },
+            {
+              "name": "ROBO3.1 binds DCC (R-HSA-9011224)"
+            },
+            {
+              "name": "SRC phosphorylates ROBO3.1 in response to NTN1 (R-HSA-9011241)"
+            }
+          ],
+          "name": "Regulation of commissural axon pathfinding by SLIT and ROBO (R-HSA-428542)"
+        },
+        {
+          "children": [
+            {
+              "name": "NCK2 binds to ROBO1,(ROBO2) (R-HSA-8985812)"
+            },
+            {
+              "name": "SLIT1 binds ROBO1,(ROBO2) (R-HSA-8985799)"
+            }
+          ],
+          "name": "Regulation of cortical dendrite branching (R-HSA-8985801)"
+        },
+        {
+          "children": [
+            {
+              "name": "HOXA2 binds ROBO2 gene promoter (R-HSA-9010503)"
+            },
+            {
+              "name": "ISL1 binds the SLIT2 gene enhancer (R-HSA-9010541)"
+            },
+            {
+              "name": "LHX2 binds to ROBO1 gene locus (R-HSA-9011074)"
+            },
+            {
+              "name": "LHX2 binds to ROBO2 gene locus (R-HSA-9011077)"
+            },
+            {
+              "name": "LHX2,(LHX9) binds the ROBO3 gene promoter (R-HSA-9011145)"
+            },
+            {
+              "name": "MSI1 binds ROBO3.1 mRNA (R-HSA-9011346)"
+            },
+            {
+              "name": "Proteasome degrades ubiquitinated ROBO3.1 (R-HSA-9011313)"
+            },
+            {
+              "name": "ROBO1 gene expression is inhibited by LHX2 (R-HSA-9011083)"
+            },
+            {
+              "name": "ROBO2 gene transcription is stimulated by HOXA2 and inhibited by LHX2 (R-HSA-9010523)"
+            },
+            {
+              "name": "ROBO3.1 expression is stimulated by LHX2,(LHX9) (R-HSA-9011143)"
+            },
+            {
+              "name": "ROBO3.1 mRNA translation is positively regulated by MSI1 (R-HSA-9011347)"
+            },
+            {
+              "name": "SLIT1 binds COL4A5 (R-HSA-9010396)"
+            },
+            {
+              "name": "SLIT2 binds Dystroglycan (R-HSA-9010872)"
+            },
+            {
+              "name": "SLIT2 gene expression is stimulated by ISL1 (R-HSA-9010539)"
+            },
+            {
+              "name": "Transcription of ROBO3.2 mRNA (R-HSA-9014587)"
+            },
+            {
+              "name": "Translation of ROBO3.2 mRNA initiates NMD (R-HSA-9014610)"
+            },
+            {
+              "name": "Translation of ROBO3.2 mRNA is negatively regulated by NMD (R-HSA-9014652)"
+            },
+            {
+              "name": "USP33 deubiquitinates ROBO1 (R-HSA-8986083)"
+            },
+            {
+              "name": "ZSWIM8 binds ROBO3.1 (R-HSA-9011289)"
+            },
+            {
+              "name": "ZSWIM8 ubiquitinates ROBO3.1 (R-HSA-9011300)"
+            }
+          ],
+          "name": "Regulation of expression of SLITs and ROBOs (R-HSA-9010553)"
+        },
+        {
+          "children": [
+            {
+              "name": "Activation of CLASP (R-HSA-428885)"
+            },
+            {
+              "name": "Interaction of ABL with ROBO1:SLIT2 (R-HSA-376141)"
+            },
+            {
+              "name": "Phosphorylation of ROBO1 by ABL kinase (R-HSA-428888)"
+            },
+            {
+              "name": "Recruitment of CAP to ABL (R-HSA-428883)"
+            }
+          ],
+          "name": "Role of ABL in ROBO-SLIT signaling (R-HSA-428890)"
+        },
+        {
+          "name": "SLIT2:ROBO1 binds CXCR4 (R-HSA-8986258)"
+        },
+        {
+          "children": [
+            {
+              "name": "MYO9B inactivates RHOA (R-HSA-8985594)"
+            },
+            {
+              "name": "SLIT2-bound ROBO1 binds MYO9B (R-HSA-8985591)"
+            }
+          ],
+          "name": "SLIT2:ROBO1 increases RHOA activity (R-HSA-8985586)"
+        },
+        {
+          "name": "SLITs bind keratan sulfate (R-HSA-9010815)"
+        }
+      ],
+      "name": "Signaling by ROBO receptors (R-HSA-376176)"
+    }
+  ],
+  "name": "Axon guidance (R-HSA-422475)"
+}

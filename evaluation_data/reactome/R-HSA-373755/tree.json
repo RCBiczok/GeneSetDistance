@@ -1,0 +1,160 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "name": "Activation of Fyn (R-HSA-399931)"
+        },
+        {
+          "name": "Phosphorylation of CRMPs by Cdk5 (R-HSA-399944)"
+        },
+        {
+          "name": "Phosphorylation of CRMPs by GSK3beta (R-HSA-399951)"
+        },
+        {
+          "name": "Recruitment and activation of Cdk5 (R-HSA-399946)"
+        },
+        {
+          "name": "Tyrosine phosphorylation of CRMPs by Fes (R-HSA-399947)"
+        }
+      ],
+      "name": "CRMPs in Sema3A signaling (R-HSA-399956)"
+    },
+    {
+      "children": [
+        {
+          "name": "SEMA3E binds to PLXND1 (R-HSA-416683)"
+        },
+        {
+          "name": "SEMA4A binds to PLXND1 (R-HSA-416690)"
+        },
+        {
+          "name": "SEMA4D interacts with CD45 (R-HSA-373746)"
+        },
+        {
+          "name": "SEMA4D interacts with CD72 (R-HSA-373748)"
+        },
+        {
+          "name": "SEMA5A binds to PLXNB3 (R-HSA-416698)"
+        },
+        {
+          "name": "SEMA6A binds to PLXNA2 and PLXNA4 (R-HSA-416723)"
+        },
+        {
+          "name": "SEMA6D binds to PLXNA1:TREM2:DAP12 (R-HSA-416725)"
+        },
+        {
+          "name": "SEMA7A binds to PLXNC1 (R-HSA-434989)"
+        },
+        {
+          "name": "SEMA7A binds to integrin alpha1beta1 (R-HSA-434990)"
+        }
+      ],
+      "name": "Other semaphorin interactions (R-HSA-416700)"
+    },
+    {
+      "children": [
+        {
+          "name": "Activation of Rac1 by FARP2 (R-HSA-399938)"
+        },
+        {
+          "name": "Inactivation of R-Ras by Sema3A-Plexin-A GAP activity (R-HSA-399935)"
+        },
+        {
+          "name": "Inhibition of integrin activation by sequestering PIP5KIgamma (R-HSA-399936)"
+        },
+        {
+          "name": "Phosphorylation of Plexin-A (R-HSA-399934)"
+        },
+        {
+          "name": "Plexin-A1-4 binds NRP1 (R-HSA-399942)"
+        },
+        {
+          "name": "Rac1 binds PlexinA (R-HSA-399941)"
+        },
+        {
+          "name": "Recruitment of Rnd1 to Plexin A (R-HSA-399928)"
+        },
+        {
+          "name": "Sema3A binds Nrp-1 bound to PlexinA (R-HSA-399933)"
+        }
+      ],
+      "name": "SEMA3A-Plexin repulsion signaling by inhibiting Integrin adhesion (R-HSA-399955)"
+    },
+    {
+      "children": [
+        {
+          "name": "Activation of PAK by Rac1 (R-HSA-399930)"
+        },
+        {
+          "name": "Autophosphorylation of PAK (R-HSA-399939)"
+        },
+        {
+          "name": "Dimerization of LIMK1 by Hsp90 (R-HSA-419645)"
+        },
+        {
+          "name": "Phosphorylation of LIMK-1 by PAK (R-HSA-399952)"
+        },
+        {
+          "name": "Phosphorylation of cofilin by LIMK-1 (R-HSA-399950)"
+        },
+        {
+          "name": "Transphosphorylation of pLIMK1 (R-HSA-419644)"
+        }
+      ],
+      "name": "Sema3A PAK dependent Axon repulsion (R-HSA-399954)"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "name": "Activation of Rho by LARG and PDZ-RhoGEF (R-HSA-416588)"
+            },
+            {
+              "name": "LARG and PDZ-RhoGEF binds to Plexin-B1 (R-HSA-416594)"
+            },
+            {
+              "name": "LIM kinase phosphorylation by ROCK (R-HSA-419087)"
+            },
+            {
+              "name": "Myosin regulatory light chain phosphorylation by ROCK (R-HSA-419197)"
+            },
+            {
+              "name": "ROCK activation by RHO (R-HSA-419049)"
+            },
+            {
+              "name": "SEMA4D interacts with Plexin-B1:ErbB2 (R-HSA-373750)"
+            }
+          ],
+          "name": "Sema4D induced cell migration and growth-cone collapse (R-HSA-416572)"
+        },
+        {
+          "children": [
+            {
+              "name": "Active Rac1 interacts with Plexin-B1:Sema4D (R-HSA-400682)"
+            },
+            {
+              "name": "Inactivation of R-Ras by Sema4D-Plexin-B1 GAP activity (R-HSA-416546)"
+            },
+            {
+              "name": "Inactivation of Rho-GTP by p190RhoGAP (R-HSA-416559)"
+            },
+            {
+              "name": "Rnd1 interacts with Plexin-B1:Sema4D (R-HSA-400677)"
+            },
+            {
+              "name": "SEMA4D interacts with Plexin-B1:Met (R-HSA-419646)"
+            },
+            {
+              "name": "p190RhoGAP binds Plexin-B1 (R-HSA-416562)"
+            }
+          ],
+          "name": "Sema4D mediated inhibition of cell attachment and migration (R-HSA-416550)"
+        }
+      ],
+      "name": "Sema4D in semaphorin signaling (R-HSA-400685)"
+    }
+  ],
+  "name": "Semaphorin interactions (R-HSA-373755)"
+}

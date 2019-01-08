@@ -5,254 +5,254 @@
         {
           "children": [
             {
-              "name": "Cleavage of collagen VII NC2 region by BMP1"
+              "name": "Cleavage of collagen VII NC2 region by BMP1 (R-HSA-2214330)"
             },
             {
-              "name": "Collagen type VII binds laminin-322 and collagen IV"
+              "name": "Collagen type VII binds laminin-322 and collagen IV (R-HSA-2396234)"
             },
             {
-              "name": "Collagen type VII dimerization"
+              "name": "Collagen type VII dimerization (R-HSA-2214324)"
             },
             {
-              "name": "Formation of anchoring fibrils"
+              "name": "Formation of anchoring fibrils (R-HSA-2213195)"
             }
           ],
-          "name": "Anchoring fibril formation"
+          "name": "Anchoring fibril formation (R-HSA-2214320)"
         },
         {
-          "name": "Collagen IX is cross-linked to the surface of collagen type II fibrils"
+          "name": "Collagen IX is cross-linked to the surface of collagen type II fibrils (R-HSA-2213210)"
         },
         {
-          "name": "Collagen XI cross-links with collagen II"
+          "name": "Collagen XI cross-links with collagen II (R-HSA-2299620)"
         },
         {
           "children": [
             {
-              "name": "Collagen type IV sulfilimine cross-linking by peroxidasin"
+              "name": "Collagen type IV sulfilimine cross-linking by peroxidasin (R-HSA-2559639)"
             },
             {
-              "name": "Formation of allysine by LOX"
+              "name": "Formation of allysine by LOX (R-HSA-2002466)"
             },
             {
-              "name": "Formation of dehydro-hydroxylysino-norleucine cross-links"
+              "name": "Formation of dehydro-hydroxylysino-norleucine cross-links (R-HSA-2395257)"
             },
             {
-              "name": "Formation of dehydro-lysinonorleucine cross-links"
+              "name": "Formation of dehydro-lysinonorleucine cross-links (R-HSA-2243931)"
             },
             {
-              "name": "Formation of histidino-hydroxylysinonorleucine cross-links"
+              "name": "Formation of histidino-hydroxylysinonorleucine cross-links (R-HSA-2243926)"
             },
             {
-              "name": "Formation of hydroxyallysine by LOX"
+              "name": "Formation of hydroxyallysine by LOX (R-HSA-2395340)"
             },
             {
-              "name": "Formation of hydroxylysino-5-ketonorleucine cross-links"
+              "name": "Formation of hydroxylysino-5-ketonorleucine cross-links (R-HSA-2395302)"
             },
             {
-              "name": "Formation of hydroxylysyl-pyridinoline cross-links"
+              "name": "Formation of hydroxylysyl-pyridinoline cross-links (R-HSA-2395223)"
             },
             {
-              "name": "Formation of hydroxylysyl-pyrrole cross-links"
+              "name": "Formation of hydroxylysyl-pyrrole cross-links (R-HSA-2395324)"
             },
             {
-              "name": "Formation of lysino-5-ketonorleucine cross-links"
+              "name": "Formation of lysino-5-ketonorleucine cross-links (R-HSA-2395314)"
             },
             {
-              "name": "Formation of lysyl-pyridinoline cross-links"
+              "name": "Formation of lysyl-pyridinoline cross-links (R-HSA-2395322)"
             },
             {
-              "name": "Formation of lysyl-pyrrole cross-links"
+              "name": "Formation of lysyl-pyrrole cross-links (R-HSA-2250301)"
             },
             {
-              "name": "Prolysyl oxidase activation"
+              "name": "Prolysyl oxidase activation (R-HSA-2022141)"
             }
           ],
-          "name": "Crosslinking of collagen fibrils"
+          "name": "Crosslinking of collagen fibrils (R-HSA-2243919)"
         },
         {
-          "name": "Formation of collagen fibres"
+          "name": "Formation of collagen fibres (R-HSA-2213201)"
         },
         {
-          "name": "Formation of collagen fibrils"
+          "name": "Formation of collagen fibrils (R-HSA-1474266)"
         },
         {
-          "name": "Formation of collagen networks"
+          "name": "Formation of collagen networks (R-HSA-2213207)"
         },
         {
-          "name": "Hemidesmosome formation"
+          "name": "Hemidesmosome formation (R-HSA-2213192)"
         },
         {
-          "name": "Release of endostatin-like peptides"
+          "name": "Release of endostatin-like peptides (R-HSA-2213200)"
         },
         {
-          "name": "Type X collagen associates with collagen type II fibrils"
+          "name": "Type X collagen associates with collagen type II fibrils (R-HSA-2213208)"
         },
         {
-          "name": "Type XII and XIV collagens associate with type I and type II fibrils."
+          "name": "Type XII and XIV collagens associate with type I and type II fibrils. (R-HSA-2213205)"
         }
       ],
-      "name": "Assembly of collagen fibrils and other multimeric structures"
+      "name": "Assembly of collagen fibrils and other multimeric structures (R-HSA-2022090)"
     },
     {
       "children": [
         {
-          "name": "COLGALT1,COLGALT2 bind Lysyl hydroxylated collagen propeptides"
+          "name": "COLGALT1,COLGALT2 bind Lysyl hydroxylated collagen propeptides (R-HSA-8948228)"
         },
         {
-          "name": "COLGALT1,COLGALT2:Galactosyl-hydroxylysyl collagen propeptides dissociates"
+          "name": "COLGALT1,COLGALT2:Galactosyl-hydroxylysyl collagen propeptides dissociates (R-HSA-8948231)"
         },
         {
           "children": [
             {
-              "name": "Association of procollagen type I"
+              "name": "Association of procollagen type I (R-HSA-8944214)"
             },
             {
-              "name": "Association of procollagen type II"
+              "name": "Association of procollagen type II (R-HSA-8944263)"
             },
             {
-              "name": "Association of procollagen type III"
+              "name": "Association of procollagen type III (R-HSA-8944240)"
             },
             {
-              "name": "Association of procollagen type IV"
+              "name": "Association of procollagen type IV (R-HSA-8944265)"
             },
             {
-              "name": "Association of procollagen type IX"
+              "name": "Association of procollagen type IX (R-HSA-8944229)"
             },
             {
-              "name": "Association of procollagen type V"
+              "name": "Association of procollagen type V (R-HSA-8944223)"
             },
             {
-              "name": "Association of procollagen type VI"
+              "name": "Association of procollagen type VI (R-HSA-8944247)"
             },
             {
-              "name": "Association of procollagen type VII"
+              "name": "Association of procollagen type VII (R-HSA-8944255)"
             },
             {
-              "name": "Association of procollagen type VIII"
+              "name": "Association of procollagen type VIII (R-HSA-8944218)"
             },
             {
-              "name": "Association of procollagen type X"
+              "name": "Association of procollagen type X (R-HSA-8944262)"
             },
             {
-              "name": "Association of procollagen type XI"
+              "name": "Association of procollagen type XI (R-HSA-8944266)"
             },
             {
-              "name": "Association of procollagen type XII"
+              "name": "Association of procollagen type XII (R-HSA-8944232)"
             },
             {
-              "name": "Association of procollagen type XIII"
+              "name": "Association of procollagen type XIII (R-HSA-8944261)"
             },
             {
-              "name": "Association of procollagen type XIV"
+              "name": "Association of procollagen type XIV (R-HSA-8944236)"
             },
             {
-              "name": "Association of procollagen type XIX"
+              "name": "Association of procollagen type XIX (R-HSA-8944233)"
             },
             {
-              "name": "Association of procollagen type XV"
+              "name": "Association of procollagen type XV (R-HSA-8944216)"
             },
             {
-              "name": "Association of procollagen type XVI"
+              "name": "Association of procollagen type XVI (R-HSA-8944219)"
             },
             {
-              "name": "Association of procollagen type XVII"
+              "name": "Association of procollagen type XVII (R-HSA-8944225)"
             },
             {
-              "name": "Association of procollagen type XVIII"
+              "name": "Association of procollagen type XVIII (R-HSA-8944230)"
             },
             {
-              "name": "Association of procollagen type XX"
+              "name": "Association of procollagen type XX (R-HSA-8944215)"
             },
             {
-              "name": "Association of procollagen type XXI"
+              "name": "Association of procollagen type XXI (R-HSA-8944246)"
             },
             {
-              "name": "Association of procollagen type XXII"
+              "name": "Association of procollagen type XXII (R-HSA-8944227)"
             },
             {
-              "name": "Association of procollagen type XXIII"
+              "name": "Association of procollagen type XXIII (R-HSA-8944220)"
             },
             {
-              "name": "Association of procollagen type XXIV"
+              "name": "Association of procollagen type XXIV (R-HSA-8944257)"
             },
             {
-              "name": "Association of procollagen type XXV"
+              "name": "Association of procollagen type XXV (R-HSA-8944250)"
             },
             {
-              "name": "Association of procollagen type XXVI"
+              "name": "Association of procollagen type XXVI (R-HSA-8944254)"
             },
             {
-              "name": "Association of procollagen type XXVII"
+              "name": "Association of procollagen type XXVII (R-HSA-8944242)"
             }
           ],
-          "name": "Collagen chain trimerization"
+          "name": "Collagen chain trimerization (R-HSA-8948216)"
         },
         {
-          "name": "Collagen prolyl 3-hydroxylase converts 4-Hyp collagen to 3,4-Hyp collagen"
+          "name": "Collagen prolyl 3-hydroxylase converts 4-Hyp collagen to 3,4-Hyp collagen (R-HSA-1980233)"
         },
         {
-          "name": "Dimerization of procollagen type VI"
+          "name": "Dimerization of procollagen type VI (R-HSA-1614460)"
         },
         {
-          "name": "Galactosylation of collagen propeptide hydroxylysines by PLOD3"
+          "name": "Galactosylation of collagen propeptide hydroxylysines by PLOD3 (R-HSA-1981128)"
         },
         {
-          "name": "Galactosylation of collagen propeptide hydroxylysines by procollagen galactosyltransferases 1, 2."
+          "name": "Galactosylation of collagen propeptide hydroxylysines by procollagen galactosyltransferases 1, 2. (R-HSA-1981120)"
         },
         {
-          "name": "Glucosylation of collagen propeptide hydroxylysines"
+          "name": "Glucosylation of collagen propeptide hydroxylysines (R-HSA-1981157)"
         },
         {
-          "name": "Lysyl hydroxylated collagen propeptides dissociate from Lysyl hydroxylases"
+          "name": "Lysyl hydroxylated collagen propeptides dissociate from Lysyl hydroxylases (R-HSA-8948232)"
         },
         {
-          "name": "P3HB binds 4-Hyp-collagen propeptides"
+          "name": "P3HB binds 4-Hyp-collagen propeptides (R-HSA-8948230)"
         },
         {
-          "name": "P4HB binds Collagen chains"
+          "name": "P4HB binds Collagen chains (R-HSA-2002460)"
         },
         {
-          "name": "P4HB:4-Hyp collagen propeptides dissociates"
+          "name": "P4HB:4-Hyp collagen propeptides dissociates (R-HSA-8948234)"
         },
         {
-          "name": "PLOD3 binds Lysyl hydroxylated collagen propeptides"
+          "name": "PLOD3 binds Lysyl hydroxylated collagen propeptides (R-HSA-8948219)"
         },
         {
-          "name": "PLOD3:Fe2+ dimer:Galactosyl-hydroxylysyl collagen propeptides dissociates"
+          "name": "PLOD3:Fe2+ dimer:Galactosyl-hydroxylysyl collagen propeptides dissociates (R-HSA-8948222)"
         },
         {
-          "name": "PLOD3:Fe2+ dimer:Glucosyl-galactosyl-hydroxylysyl collagen propeptides dissociates"
+          "name": "PLOD3:Fe2+ dimer:Glucosyl-galactosyl-hydroxylysyl collagen propeptides dissociates (R-HSA-8948224)"
         },
         {
-          "name": "Procollagen lysyl hydroxylases convert collagen lysines to 5-hydroxylysines"
+          "name": "Procollagen lysyl hydroxylases convert collagen lysines to 5-hydroxylysines (R-HSA-1981104)"
         },
         {
-          "name": "Procollagen triple helix formation"
+          "name": "Procollagen triple helix formation (R-HSA-2022073)"
         },
         {
-          "name": "Prolyl 3-hydroxylases:Fe2+:3,4-Hyp collagen propeptides dissociates"
+          "name": "Prolyl 3-hydroxylases:Fe2+:3,4-Hyp collagen propeptides dissociates (R-HSA-8948226)"
         },
         {
-          "name": "Prolyl 4-hydroxylase converts collagen prolines to 4-hydroxyprolines"
+          "name": "Prolyl 4-hydroxylase converts collagen prolines to 4-hydroxyprolines (R-HSA-1650808)"
         },
         {
-          "name": "Removal of fibrillar collagen C-propeptides"
+          "name": "Removal of fibrillar collagen C-propeptides (R-HSA-2002440)"
         },
         {
-          "name": "Removal of fibrillar collagen N-propeptides"
+          "name": "Removal of fibrillar collagen N-propeptides (R-HSA-2002428)"
         },
         {
-          "name": "Secretion of collagens"
+          "name": "Secretion of collagens (R-HSA-2089971)"
         },
         {
-          "name": "Secretion of transmembrane collagens"
+          "name": "Secretion of transmembrane collagens (R-HSA-2152276)"
         },
         {
-          "name": "Tetramerization of procollagen VI"
+          "name": "Tetramerization of procollagen VI (R-HSA-1614461)"
         }
       ],
-      "name": "Collagen biosynthesis and modifying enzymes"
+      "name": "Collagen biosynthesis and modifying enzymes (R-HSA-1650814)"
     }
   ],
-  "name": "Collagen formation"
+  "name": "Collagen formation (R-HSA-1474290)"
 }

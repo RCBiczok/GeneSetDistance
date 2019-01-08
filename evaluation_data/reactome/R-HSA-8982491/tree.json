@@ -3,124 +3,124 @@
     {
       "children": [
         {
-          "name": "((1,6)-alpha-glucosyl)poly((1,4)-alpha-glucosyl)glycogenin => poly{(1,4)-alpha-glucosyl} glycogenin + alpha-D-glucose"
+          "name": "((1,6)-alpha-glucosyl)poly((1,4)-alpha-glucosyl)glycogenin => poly{(1,4)-alpha-glucosyl} glycogenin + alpha-D-glucose (R-HSA-71593)"
         },
         {
-          "name": "GAA hydrolyzes lysosomal glycogen"
+          "name": "GAA hydrolyzes lysosomal glycogen (R-HSA-9036727)"
         },
         {
-          "name": "PGM:Mg2+ isomerise G1P to G6P"
+          "name": "PGM:Mg2+ isomerise G1P to G6P (R-HSA-70427)"
         },
         {
-          "name": "PGYB b dimer:AMP complex <=> PGYB dimer, b form + 2 AMP"
+          "name": "PGYB b dimer:AMP complex <=> PGYB dimer, b form + 2 AMP (R-HSA-453346)"
         },
         {
-          "name": "PGYB dimer, b form + 2 AMP <=> PGYB b dimer:AMP complex"
+          "name": "PGYB dimer, b form + 2 AMP <=> PGYB b dimer:AMP complex (R-HSA-453356)"
         },
         {
-          "name": "PGYM b dimer:AMP complex <=> PGYM dimer, b form + 2 AMP"
+          "name": "PGYM b dimer:AMP complex <=> PGYM dimer, b form + 2 AMP (R-HSA-453338)"
         },
         {
-          "name": "PGYM dimer, b form + 2 AMP <=> PGYM b dimer:AMP complex"
+          "name": "PGYM dimer, b form + 2 AMP <=> PGYM b dimer:AMP complex (R-HSA-453342)"
         },
         {
-          "name": "glycogen phosphorylase (PYGB) dimer b + 2 ATP => glycogen phosphorylase (PYGB) dimer a + 2 ADP"
+          "name": "glycogen phosphorylase (PYGB) dimer b + 2 ATP => glycogen phosphorylase (PYGB) dimer a + 2 ADP (R-HSA-453337)"
         },
         {
-          "name": "glycogen phosphorylase (PYGL) dimer b + 2 ATP => glycogen phosphorylase (PYGL) dimer a + 2 ADP"
+          "name": "glycogen phosphorylase (PYGL) dimer b + 2 ATP => glycogen phosphorylase (PYGL) dimer a + 2 ADP (R-HSA-71588)"
         },
         {
-          "name": "glycogen phosphorylase (PYGM) dimer b + 2 ATP => glycogen phosphorylase (PYGM) dimer a + 2 ADP"
+          "name": "glycogen phosphorylase (PYGM) dimer b + 2 ATP => glycogen phosphorylase (PYGM) dimer a + 2 ADP (R-HSA-71541)"
         },
         {
-          "name": "glycogen-glycogenin-1 + n orthophosphate => limit dextrin-glycogenin-1 + n D-glucose 1-phosphate [PYGM,PYGB]"
+          "name": "glycogen-glycogenin-1 + n orthophosphate => limit dextrin-glycogenin-1 + n D-glucose 1-phosphate [PYGM,PYGB] (R-HSA-71515)"
         },
         {
-          "name": "glycogen-glycogenin-2 + n orthophosphate => limit dextrin-glycogenin-2 + n D-glucose 1-phosphate [PYGL]"
+          "name": "glycogen-glycogenin-2 + n orthophosphate => limit dextrin-glycogenin-2 + n D-glucose 1-phosphate [PYGL] (R-HSA-71590)"
         },
         {
-          "name": "limit dextrin-glycogenin => ((1,6)-alpha-glucosyl)poly((1,4)-alpha-glucosyl) glycogenin"
+          "name": "limit dextrin-glycogenin => ((1,6)-alpha-glucosyl)poly((1,4)-alpha-glucosyl) glycogenin (R-HSA-71552)"
         },
         {
-          "name": "poly((1,4)-alpha-glucosyl) glycogenin-2 + n orthophosphate => glycogenin-2 + n D-glucose 1-phosphate [PYGL]"
+          "name": "poly((1,4)-alpha-glucosyl) glycogenin-2 + n orthophosphate => glycogenin-2 + n D-glucose 1-phosphate [PYGL] (R-HSA-453339)"
         },
         {
-          "name": "poly((1,4)-alpha-glycosyl) glycogenin-1 + n orthophosphate => glycogenin-1 + n D-glucose 1-phosphate [PYGM,PYGB]"
+          "name": "poly((1,4)-alpha-glycosyl) glycogenin-1 + n orthophosphate => glycogenin-1 + n D-glucose 1-phosphate [PYGM,PYGB] (R-HSA-453358)"
         }
       ],
-      "name": "Glycogen breakdown (glycogenolysis)"
+      "name": "Glycogen breakdown (glycogenolysis) (R-HSA-70221)"
     },
     {
       "children": [
         {
-          "name": "Autoglucosylation of GYG1 complexed with GYS1-a"
+          "name": "Autoglucosylation of GYG1 complexed with GYS1-a (R-HSA-3322025)"
         },
         {
-          "name": "Autoglucosylation of GYG1 complexed with GYS1-b"
+          "name": "Autoglucosylation of GYG1 complexed with GYS1-b (R-HSA-3322003)"
         },
         {
-          "name": "Autoglucosylation of GYG2 complexed with GYS2-a"
+          "name": "Autoglucosylation of GYG2 complexed with GYS2-a (R-HSA-3322014)"
         },
         {
-          "name": "Autoglucosylation of GYG2 complexed with GYS2-b"
+          "name": "Autoglucosylation of GYG2 complexed with GYS2-b (R-HSA-3322019)"
         },
         {
-          "name": "EPM2A dimer binds PPP1R3C:phosphoglycogen-GYG1 complex"
+          "name": "EPM2A dimer binds PPP1R3C:phosphoglycogen-GYG1 complex (R-HSA-3781001)"
         },
         {
-          "name": "EPM2A dimer binds PPP1R3C:phosphoglycogen-GYG2 complex"
+          "name": "EPM2A dimer binds PPP1R3C:phosphoglycogen-GYG2 complex (R-HSA-3781021)"
         },
         {
-          "name": "EPM2A dimer dephosphorylates phosphoglycogen-GYG1"
+          "name": "EPM2A dimer dephosphorylates phosphoglycogen-GYG1 (R-HSA-3781018)"
         },
         {
-          "name": "EPM2A dimer dephosphorylates phosphoglycogen-GYG2"
+          "name": "EPM2A dimer dephosphorylates phosphoglycogen-GYG2 (R-HSA-3781011)"
         },
         {
-          "name": "GBE1 catalyzes branch formation in polyGlc-GYG1 complexed with GYS1-a"
+          "name": "GBE1 catalyzes branch formation in polyGlc-GYG1 complexed with GYS1-a (R-HSA-3322005)"
         },
         {
-          "name": "GBE1 catalyzes branch formation in polyGlc-GYG1 complexed with GYS1-b"
+          "name": "GBE1 catalyzes branch formation in polyGlc-GYG1 complexed with GYS1-b (R-HSA-3322057)"
         },
         {
-          "name": "GBE1 catalyzes branch formation in polyGlc-GYG2 complexed with GYS2-a"
+          "name": "GBE1 catalyzes branch formation in polyGlc-GYG2 complexed with GYS2-a (R-HSA-3322016)"
         },
         {
-          "name": "GYS1 catalyzes the incorporation of phosphoglucose into glycogen-GYG1"
+          "name": "GYS1 catalyzes the incorporation of phosphoglucose into glycogen-GYG1 (R-HSA-3781024)"
         },
         {
-          "name": "GYS1 catalyzes the polyglucosylation of oligoGlc-GYG1"
+          "name": "GYS1 catalyzes the polyglucosylation of oligoGlc-GYG1 (R-HSA-3322001)"
         },
         {
-          "name": "GYS2 catalyzes the incorporation of phosphoglucose into glycogen-GYG2"
+          "name": "GYS2 catalyzes the incorporation of phosphoglucose into glycogen-GYG2 (R-HSA-3780994)"
         },
         {
-          "name": "GYS2 catalyzes the polyglucosylation of oligoGlc-GYG2"
+          "name": "GYS2 catalyzes the polyglucosylation of oligoGlc-GYG2 (R-HSA-3322009)"
         },
         {
-          "name": "NHLRC1 mediated ubiquitination of EPM2A (laforin) and PPP1RC3 (PTG) associated with glycogen-GYG2"
+          "name": "NHLRC1 mediated ubiquitination of EPM2A (laforin) and PPP1RC3 (PTG) associated with glycogen-GYG2 (R-HSA-3780995)"
         },
         {
-          "name": "NHLRC1 mediated ubiquitination of EPM2A and PPP1RC3 associated with glycogen-GYG1"
+          "name": "NHLRC1 mediated ubiquitination of EPM2A and PPP1RC3 associated with glycogen-GYG1 (R-HSA-3781009)"
         },
         {
-          "name": "PGM:Mg2+ isomerise G6P to G1P"
+          "name": "PGM:Mg2+ isomerise G6P to G1P (R-HSA-70272)"
         },
         {
-          "name": "PPP1R3C binds to glycogen:GYG1:GYS1"
+          "name": "PPP1R3C binds to glycogen:GYG1:GYS1 (R-HSA-3781023)"
         },
         {
-          "name": "PPP1R3C binds to glycogen:GYG2:GYS2"
+          "name": "PPP1R3C binds to glycogen:GYG2:GYS2 (R-HSA-3780997)"
         },
         {
-          "name": "Phosphorylated GYS1 catalyzes the polyglucosylation of oligoGlc-GYG1"
+          "name": "Phosphorylated GYS1 catalyzes the polyglucosylation of oligoGlc-GYG1 (R-HSA-3322041)"
         },
         {
-          "name": "UTP + D-glucose 1-phosphate <=> pyrophosphate + UDP-glucose"
+          "name": "UTP + D-glucose 1-phosphate <=> pyrophosphate + UDP-glucose (R-HSA-70286)"
         }
       ],
-      "name": "Glycogen synthesis"
+      "name": "Glycogen synthesis (R-HSA-3322077)"
     }
   ],
-  "name": "Glycogen metabolism"
+  "name": "Glycogen metabolism (R-HSA-8982491)"
 }

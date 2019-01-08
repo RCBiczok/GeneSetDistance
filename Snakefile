@@ -22,7 +22,10 @@ STOPWORD_FILE = "%s/nltk_data/corpora/stopwords" % str(Path.home())
 
 ## Variables for evaluation data
 
-REACTOME_TARGETS = ['reactome/R-HSA-8982491', 'reactome/R-HSA-1474290']
+REACTOME_TARGETS = ['reactome/R-HSA-8982491',
+                    'reactome/R-HSA-1474290',
+                    'reactome/R-HSA-373755',
+                    'reactome/R-HSA-422475']
 #EVALUATION_TARGETS = REACTOME_TARGETS + ['immune_cells/all']
 EVALUATION_TARGETS = REACTOME_TARGETS + ['immune_cells/immune_only']
 EVALUATION_DATA_DIRS = ["evaluation_data/%s" % target_name for target_name in EVALUATION_TARGETS]
@@ -43,7 +46,8 @@ PPI_EVALUATION_OUTPUT = expand("experiment_data/ppi/{metric}/{evaluation_target}
 
 GO_DISTS = {
     'GO_SIM_BP_Wang_BMA': {'type': gsd.annotation.GOType.BIOLOGICAL_PROCESS, 'measure': "Wang", 'combine': "BMA"},
-    'GO_SIM_BP_Resnik_BMA': {'type': gsd.annotation.GOType.BIOLOGICAL_PROCESS, 'measure': "Resnik", 'combine': "BMA"}
+    'GO_SIM_CC_Wang_BMA': {'type': gsd.annotation.GOType.CELLULAR_COMPONENT, 'measure': "Wang", 'combine': "BMA"},
+    'GO_SIM_MF_Wang_BMA': {'type': gsd.annotation.GOType.MOLECULAR_FUNCTION, 'measure': "Wang", 'combine': "BMA"}
 }
 
 GO_EVALUATION_OUTPUT = expand("experiment_data/go/{metric}/{evaluation_target}.json",

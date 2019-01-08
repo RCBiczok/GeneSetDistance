@@ -2,7 +2,7 @@ import json
 import sys
 import urllib.request
 from functools import reduce
-from typing import Tuple, List
+from typing import Tuple, List, Set
 from anytree import Node
 from pandas import DataFrame
 
@@ -44,25 +44,30 @@ def _get_node_by_reactome_id(reactome_node, reactome_id):
     return None
 
 
+def _extract_entrezgene_ident(gene_product):
+    entrezgene_prefix = "EntrezGene:"
+    if 'otherIdentifier' not in gene_product:
+        return []
+    return [int(ident[len(entrezgene_prefix):]) for ident in gene_product['otherIdentifier'] if
+            ident.startswith(entrezgene_prefix)]
+
+
 def _extract_reactome_gene_set(reactome_id) -> GeneSetInfo:
     reference_entities = _get_reactome_reference_entities(reactome_id)
 
     gene_products = [elem for elem in reference_entities if elem["className"] == "ReferenceGeneProduct"]
 
-    entrezgene_prefix = "EntrezGene:"
-    entregene_id_list = [[int(ident[len(entrezgene_prefix):]) for ident in gene_product['otherIdentifier'] if
-                          ident.startswith(entrezgene_prefix)]
-                         for gene_product in gene_products]
+    entrezgene_id_list = [_extract_entrezgene_ident(gene_product) for gene_product in gene_products]
 
     symbol_list = {gene_product["name"][0] for gene_product in gene_products}
 
-    if any([len(ids) > 1 for ids in entregene_id_list]):
-        print("%s has multiple entregene IDs for the same gene" % reactome_id, file=sys.stderr)
+    if any([len(ids) > 1 for ids in entrezgene_id_list]):
+        print("%s has multiple entrezgene IDs for the same gene" % reactome_id, file=sys.stderr)
 
-    if any([ids == [] for ids in entregene_id_list]):
-        print("%s has gene products without an entregene ID" % reactome_id, file=sys.stderr)
+    if any([ids == [] for ids in entrezgene_id_list]):
+        print("%s has gene products without an entrezgene ID" % reactome_id, file=sys.stderr)
 
-    reactome_genes = flat_list(entregene_id_list)
+    reactome_genes = flat_list(entrezgene_id_list)
 
     if len(reactome_genes) != len(set(reactome_genes)):
         print("%s contains redundant entrezegene IDs" % reactome_id, file=sys.stderr)
@@ -82,7 +87,7 @@ def _extract_reactome_gene_set(reactome_id) -> GeneSetInfo:
 
     reactome_summary = reduce(lambda a, b: a + " <br><br><br> " + b, [x['text'] for x in reactome_summation])
 
-    return GeneSetInfo(reactome_name,
+    return GeneSetInfo("%s (%s)" % (reactome_name, reactome_info['stId']),
                        reactome_info['stId'],
                        "Reactome",
                        reactome_summary,
@@ -98,11 +103,12 @@ def _dump_gene_sets(reactome_node) -> List[GeneSetInfo]:
     return gene_set + reduce(lambda a, b: a + b, [_dump_gene_sets(node) for node in reactome_node['children']])
 
 
-def _reactome_to_anytree(node, parent=None):
-    n = Node(name=node['name'], parent=parent)
+def _reactome_to_anytree(node, filters: Set[str], parent: Node = None) -> Node:
+    n = Node(name="%s (%s)" % (node['name'], node['stId']), parent=parent)
     if 'children' in node:
         for child in node['children']:
-            _reactome_to_anytree(child, n)
+            if child['stId'] not in filters:
+                _reactome_to_anytree(child, filters, n)
     return n
 
 
@@ -114,7 +120,16 @@ def download(tax_id: int, reactome_id: str, go_anno: DataFrame) -> Tuple[Node, L
     sub_tree = _get_node_by_reactome_id(reactome_pseudo_tree, reactome_id)
 
     gene_sets = _dump_gene_sets(sub_tree)
-    unique_ids = set([gene_set.external_id for gene_set in gene_sets])
-    unique_gene_sets = [gene_set for gene_set in gene_sets if gene_set.external_id in unique_ids]
+    reactome_ids = [gene_set.external_id for gene_set in gene_sets]
+    duplicated_ids = set([x for x in reactome_ids if reactome_ids.count(x) > 1])
 
-    return _reactome_to_anytree(sub_tree), annotate_with_go(unique_gene_sets, go_anno)
+    if len(duplicated_ids) > 0:
+        print("%s has %d redundant child pathways. Gene sets %s are removed from analysis" %
+              (reactome_id, len(duplicated_ids), ','.join(duplicated_ids)),
+              file=sys.stderr)
+
+    unique_gene_sets = [gene_set for gene_set in gene_sets if gene_set.external_id not in duplicated_ids]
+
+    root = _reactome_to_anytree(sub_tree, duplicated_ids)
+
+    return root, annotate_with_go(unique_gene_sets, go_anno)

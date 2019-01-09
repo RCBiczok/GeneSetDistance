@@ -84,6 +84,7 @@ rule calc_general_dists:
 
 rule calc_nlp_dists:
     input: file="evaluation_data/{target_category}/{evaluation_target}/gene_sets.json",
+           ncbi_gene_desc_file="evaluation_data/{target_category}/{evaluation_target}/ncbi_gene_desc.json",
            stopwords_file=STOPWORD_FILE
     output: file="experiment_data/nlp/{metric}/{target_category}/{evaluation_target}.json"
     run:
@@ -97,7 +98,7 @@ rule calc_nlp_dists:
         dist = NLP_DISTS[wildcards.metric](w2v_model)
         print("Perform calculation for: %s / %s" % (dist.display_name, wildcards.evaluation_target))
 
-        gene_sets = gsd.gene_sets.load_gene_sets(input.file)
+        gene_sets = gsd.gene_sets.load_gene_sets(input.file, input.ncbi_gene_desc_file)
         gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
 
 rule calc_ppi_dists:
@@ -222,3 +223,10 @@ rule extract_immune_cells_only:
         filtered_gene_sets = [gene_set for gene_set in gene_sets if gene_set.general_info.name in filtered_names]
 
         gsd.persist_reference_data(filtered_root, filtered_gene_sets, output.tree_file, output.gene_set_file)
+
+rule downlaod_ncbi_gene_desc:
+    input: gene_set_file="evaluation_data/{target_category}/{evaluation_target}/gene_sets.json"
+    output: ncbi_gene_desc_file="evaluation_data/{target_category}/{evaluation_target}/ncbi_gene_desc.json"
+    run:
+        gene_sets = gsd.gene_sets.load_gene_sets(input.gene_set_file)
+        gsd.annotation.downlaod_ncbi_gene_desc(gene_sets, output.ncbi_gene_desc_file)

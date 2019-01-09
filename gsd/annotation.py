@@ -1,8 +1,14 @@
-from typing import List, Set
+import json
+import urllib.request
+
+import jsonpickle
+from typing import List, Set, Iterable, Dict, Any
 from pandas import DataFrame, read_csv, read_table
 from pandas.compat import cStringIO
 from biomart import BiomartServer, BiomartDataset
 from enum import Enum, unique
+
+from gsd import flat_list
 
 BIOMART_GO_ID = "go_id"
 BIOMART_GO_NAME = "name_1006"
@@ -49,6 +55,17 @@ class GOType(Enum):
         return go_info.biological_process
 
 
+class NCBIGeneInfo:
+    def __init__(self,
+                 gene_set_name: str,
+                 gene_infos: Dict[str, Any]):
+        self.gene_set_name = gene_set_name
+        self.gene_infos = gene_infos
+
+    def __repr__(self):
+        return "<NCBIGeneInfo(gene_set_name='%s', gene_infos='%s')>" % (self.gene_set_name, self.gene_infos)
+
+
 def read_go_anno_df(entrezgene2go_file: str, go_file: str) -> DataFrame:
     entrezgene2go_df = read_table(entrezgene2go_file)
     go_df = read_table(go_file)
@@ -65,3 +82,32 @@ def download_biomart_anno(attributes: List[str], out_file: str):
     ds = server.datasets["hsapiens_gene_ensembl"]
     df = query_df(ds, {'attributes': attributes}).dropna()
     df.to_csv(out_file, sep="\t", index=False)
+
+
+def get_json_from(url):
+    with urllib.request.urlopen(url) as con:
+        data = json.loads(con.read().decode())
+    return data
+
+
+def _get_ncbi_gene_dscr(entrezgene_list: Iterable[int]):
+    url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=gene&id=%s&retmode=json;' % \
+          ','.join([str(x) for x in entrezgene_list])
+    return get_json_from(url)
+
+
+def create_gene_info(gene_set, data):
+    genes = {int(gene_id): entry for gene_id, entry in data.items()
+             if int(gene_id) in gene_set.general_info.entrez_gene_ids}
+
+    return NCBIGeneInfo(gene_set.general_info.name, genes)
+
+
+def downlaod_ncbi_gene_desc(gene_sets, ncbi_gene_desc_file: str):
+    target_genes = set(flat_list([gene_set.general_info.entrez_gene_ids for gene_set in gene_sets]))
+    data = _get_ncbi_gene_dscr(target_genes)['result']
+    del data['uids']
+
+    gene_info_list = [create_gene_info(gene_set, data) for gene_set in gene_sets]
+    with open(ncbi_gene_desc_file, "w") as out_file:
+        out_file.write(jsonpickle.encode(gene_info_list))

@@ -5,10 +5,13 @@ from gensim.models import KeyedVectors
 from gsd.annotation import GOType
 from gsd.distance.nlp import NLPDistance, extract_gene_symbols, \
     extract_words_from_gene_set_summary, extract_words_from_go_descriptions, cosine_distance_of, \
-    extract_words_from_go_names, extract_words_from_gene_symbols_and_summary_and_go_info, wm_distance_of
+    extract_words_from_go_names, extract_words_from_gene_symbols_and_summary_and_go_info, wm_distance_of, \
+    extract_summary_from_ncbi_descs
 from tests import has_equal_elements
 from tests.gsd.distance import gene_sets
 
+
+#TODO download this automatically somehow
 w2v_model = KeyedVectors.load_word2vec_format("../__data/nlp/PubMed-Wilbur-2018/pubmed_s100w10_min.bin", binary=True)
 
 
@@ -58,3 +61,8 @@ def test_wm_distance_over_gene_symbols():
                               lambda x: extract_gene_symbols(x, w2v_model))
     d = dist_metric.calc(gene_sets)
     assert has_equal_elements(d, [1.013, 0.458, 1.472], epsilon=0.001)
+
+
+def test_extract_summary_from_ncbi_gene_desc():
+    summary_words = extract_summary_from_ncbi_descs(gene_sets[0], w2v_model)
+    assert has_equal_elements(summary_words[:3], ['gys1', 'glycogen', 'synthase'])

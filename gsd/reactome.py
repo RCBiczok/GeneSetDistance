@@ -1,34 +1,27 @@
-import json
 import sys
-import urllib.request
 from functools import reduce
 from typing import Tuple, List, Set
 from anytree import Node
 from pandas import DataFrame
 
 from gsd import flat_list
+from gsd.annotation import get_json_from
 from gsd.gene_sets import GeneSetInfo, annotate_with_go, GeneSet
-
-
-def _get_json_from(url):
-    with urllib.request.urlopen(url) as con:
-        data = json.loads(con.read().decode())
-    return data
 
 
 def _get_event_hierarchy(tax_id):
     url = 'https://reactome.org/ContentService/data/eventsHierarchy/%s' % tax_id
-    return _get_json_from(url)
+    return get_json_from(url)
 
 
 def _get_reactome_information(reactome_id):
     url = 'https://reactome.org/ContentService/data/query/%s' % reactome_id
-    return _get_json_from(url)
+    return get_json_from(url)
 
 
 def _get_reactome_reference_entities(reactome_id):
     url = 'https://www.reactome.org/ContentService/data/participants/%s/referenceEntities' % reactome_id
-    return _get_json_from(url)
+    return get_json_from(url)
 
 
 def _get_node_by_reactome_id(reactome_node, reactome_id):

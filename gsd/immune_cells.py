@@ -50,7 +50,7 @@ def to_gene_set(generated_immune_marker_genes, cell_type) -> GeneSetInfo:
                        'Literature Review',
                        "",
                        False,
-                       set(tbl_slice['entrezgene']),
+                       set([int(x) for x in tbl_slice['entrezgene']]),
                        set(tbl_slice['gene_symbol']))
 
 

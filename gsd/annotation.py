@@ -2,11 +2,13 @@ import json
 import urllib.request
 
 import jsonpickle
-from typing import List, Set, Iterable, Dict, Any
+from typing import List, Set, Dict, Any
 from pandas import DataFrame, read_csv, read_table
 from pandas.compat import cStringIO
 from biomart import BiomartServer, BiomartDataset
 from enum import Enum, unique
+
+from tqdm import tqdm
 
 from gsd import flat_list
 
@@ -90,10 +92,26 @@ def get_json_from(url):
     return data
 
 
-def _get_ncbi_gene_dscr(entrezgene_list: Iterable[int]):
+def chunks(l: List, n: int):
+    """Yield successive n-sized chunks from l."""
+    for i in range(0, len(l), n):
+        yield l[i:i + n]
+
+
+def _get_ncbi_gene_dscr(entrezgene_list: List[int]):
     url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=gene&id=%s&retmode=json;' % \
           ','.join([str(x) for x in entrezgene_list])
     return get_json_from(url)
+
+
+def _get_all_ncbi_gene_dscr(entrezgene_list: List[int]):
+    print(entrezgene_list)
+    chunk_list = [chunk for chunk in chunks(entrezgene_list, 300)]
+    result = {}
+    for chunk in tqdm(chunk_list):
+        result = {**result, **_get_ncbi_gene_dscr(chunk)}
+    raise KeyError("AA")
+    return result
 
 
 def create_gene_info(gene_set, data):
@@ -105,7 +123,7 @@ def create_gene_info(gene_set, data):
 
 def downlaod_ncbi_gene_desc(gene_sets, ncbi_gene_desc_file: str):
     target_genes = set(flat_list([gene_set.general_info.entrez_gene_ids for gene_set in gene_sets]))
-    data = _get_ncbi_gene_dscr(target_genes)['result']
+    data = _get_all_ncbi_gene_dscr(list(target_genes))['result']
     del data['uids']
 
     gene_info_list = [create_gene_info(gene_set, data) for gene_set in gene_sets]

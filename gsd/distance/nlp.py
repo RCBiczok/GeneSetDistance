@@ -150,15 +150,15 @@ NLP_DISTS = {
                                                                  lambda x: extract_words_from_go_descriptions(
                                                                      x, w2v_model, [GOType.BIOLOGICAL_PROCESS])),
 
-    'Cosine_dist_over_go_cc_desc': lambda w2v_model: NLPDistance("Cosine distance GO CC description",
-                                                                 lambda x, y: cosine_distance_of(x, y, w2v_model),
-                                                                 lambda x: extract_words_from_go_descriptions(
-                                                                     x, w2v_model, [GOType.CELLULAR_COMPONENT])),
+    # 'Cosine_dist_over_go_cc_desc': lambda w2v_model: NLPDistance("Cosine distance GO CC description",
+    #                                                              lambda x, y: cosine_distance_of(x, y, w2v_model),
+    #                                                              lambda x: extract_words_from_go_descriptions(
+    #                                                                  x, w2v_model, [GOType.CELLULAR_COMPONENT])),
 
-    'Cosine_dist_over_go_mf_desc': lambda w2v_model: NLPDistance("Cosine distance GO MF description",
-                                                                 lambda x, y: cosine_distance_of(x, y, w2v_model),
-                                                                 lambda x: extract_words_from_go_descriptions(
-                                                                     x, w2v_model, [GOType.MOLECULAR_FUNCTION])),
+    # 'Cosine_dist_over_go_mf_desc': lambda w2v_model: NLPDistance("Cosine distance GO MF description",
+    #                                                              lambda x, y: cosine_distance_of(x, y, w2v_model),
+    #                                                              lambda x: extract_words_from_go_descriptions(
+    #                                                                  x, w2v_model, [GOType.MOLECULAR_FUNCTION])),
 
     'WM_dist_over_gene_sym': lambda w2v_model: NLPDistance("WM distance over gene symbols",
                                                            lambda x, y: wm_distance_of(x, y, w2v_model),

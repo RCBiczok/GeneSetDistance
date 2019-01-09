@@ -105,12 +105,11 @@ def _get_ncbi_gene_dscr(entrezgene_list: List[int]):
 
 
 def _get_all_ncbi_gene_dscr(entrezgene_list: List[int]):
-    print(entrezgene_list)
     chunk_list = [chunk for chunk in chunks(entrezgene_list, 300)]
     result = {}
     for chunk in tqdm(chunk_list):
-        result = {**result, **_get_ncbi_gene_dscr(chunk)}
-    raise KeyError("AA")
+        part_result = _get_ncbi_gene_dscr(chunk)['result']
+        result = {**result, **part_result}
     return result
 
 
@@ -123,7 +122,7 @@ def create_gene_info(gene_set, data):
 
 def downlaod_ncbi_gene_desc(gene_sets, ncbi_gene_desc_file: str):
     target_genes = set(flat_list([gene_set.general_info.entrez_gene_ids for gene_set in gene_sets]))
-    data = _get_all_ncbi_gene_dscr(list(target_genes))['result']
+    data = _get_all_ncbi_gene_dscr(list(target_genes))
     del data['uids']
 
     gene_info_list = [create_gene_info(gene_set, data) for gene_set in gene_sets]

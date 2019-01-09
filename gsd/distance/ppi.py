@@ -83,5 +83,6 @@ def load_ppi_mitab(ppi_file: str, tax_id) -> DataFrame:
 
 PPI_DISTS = {
     'Direct_PPI': lambda ppi_data: DirectPPIDistanceMetric(ppi_data),
-    'Shortest_path_PPI': lambda ppi_data: ShortestPathPPI(ppi_data)
+    #TODO
+    #'Shortest_path_PPI': lambda ppi_data: ShortestPathPPI(ppi_data)
 }

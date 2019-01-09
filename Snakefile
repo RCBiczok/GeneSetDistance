@@ -12,6 +12,7 @@ import gsd.annotation
 import gsd.gene_sets
 
 from gsd.distance.general import GENERAL_DISTS
+from gsd.distance.benchmark import BENCHMARK_DISTS
 from gsd.distance.nlp import NLP_DISTS
 from gsd.distance.ppi import PPI_DISTS
 
@@ -35,6 +36,10 @@ EVALUATION_DATA_DIRS = ["evaluation_data/%s" % target_name for target_name in EV
 GENERAL_EVALUATION_OUTPUT = expand("experiment_data/general/{metric}/{evaluation_target}.json",
                                    metric=GENERAL_DISTS.keys(),
                                    evaluation_target=EVALUATION_TARGETS)
+
+BENCHMARK_EVALUATION_OUTPUT = expand("experiment_data/benchmark/{metric}/{evaluation_target}.json",
+                                      metric=BENCHMARK_DISTS.keys(),
+                                      evaluation_target=EVALUATION_TARGETS)
 
 NLP_EVALUATION_OUTPUT = expand("experiment_data/nlp/{metric}/{evaluation_target}.json",
                                metric=NLP_DISTS.keys(),
@@ -65,6 +70,7 @@ TREE_PATH_OUTPUT = expand("experiment_data/tree_path/{evaluation_target}.json",
 rule all:
     input:
         GENERAL_EVALUATION_OUTPUT,
+        BENCHMARK_EVALUATION_OUTPUT,
         NLP_EVALUATION_OUTPUT,
         PPI_EVALUATION_OUTPUT,
         GO_EVALUATION_OUTPUT,
@@ -79,7 +85,16 @@ rule calc_general_dists:
     output: file="experiment_data/general/{metric}/{target_category}/{evaluation_target}.json"
     run:
         dist = GENERAL_DISTS[wildcards.metric]
-        gene_sets = gsd.gene_sets.load_gene_sets(input.file )
+        gene_sets = gsd.gene_sets.load_gene_sets(input.file)
+        gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
+
+
+rule calc_benchmark_dists:
+    input: file="evaluation_data/{target_category}/{evaluation_target}/gene_sets.json"
+    output: file="experiment_data/benchmark/{metric}/{target_category}/{evaluation_target}.json"
+    run:
+        dist = BENCHMARK_DISTS[wildcards.metric]
+        gene_sets = gsd.gene_sets.load_gene_sets(input.file)
         gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
 
 

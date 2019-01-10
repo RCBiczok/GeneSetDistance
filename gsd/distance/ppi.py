@@ -49,7 +49,7 @@ class ShortestPathPPI(DistanceMetric):
 
     @property
     def display_name(self) -> str:
-        return "Shortest Path PPI"
+        return "Median over pairwise shortest paths PPI"
 
     def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
         def calc_path_distance(gene_set_a: GeneSet, gene_set_b: GeneSet):
@@ -83,5 +83,5 @@ def load_ppi_mitab(ppi_file: str, tax_id) -> DataFrame:
 PPI_DISTS = {
     'Direct_PPI': lambda ppi_data: DirectPPIDistanceMetric(ppi_data),
     #TODO
-    #'Shortest_path_PPI AVG': lambda ppi_data: ShortestPathPPI(ppi_data)
+    #'Median_pairwise_shortest_path_PPI': lambda ppi_data: ShortestPathPPI(ppi_data)
 }

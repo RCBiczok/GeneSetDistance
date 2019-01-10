@@ -68,6 +68,17 @@ class NCBIGeneInfo:
         return "<NCBIGeneInfo(gene_set_name='%s', gene_infos='%s')>" % (self.gene_set_name, self.gene_infos)
 
 
+class GWASGeneTraitInfo:
+    def __init__(self,
+                 gene_set_name: str,
+                 gene_traits: Dict[str, List[str]]):
+        self.gene_set_name = gene_set_name
+        self.gene_traits = gene_traits
+
+    def __repr__(self):
+        return "<GWASGeneTraitInfo(gene_set_name='%s', gene_traits='%s')>" % (self.gene_set_name, self.gene_traits)
+
+
 def read_go_anno_df(entrezgene2go_file: str, go_file: str) -> DataFrame:
     entrezgene2go_df = read_table(entrezgene2go_file)
     go_df = read_table(go_file)
@@ -128,3 +139,21 @@ def downlaod_ncbi_gene_desc(gene_sets, ncbi_gene_desc_file: str):
     gene_info_list = [create_gene_info(gene_set, data) for gene_set in gene_sets]
     with open(ncbi_gene_desc_file, "w") as out_file:
         out_file.write(jsonpickle.encode(gene_info_list))
+
+
+def create_gwas_traits_info(gene_set, gwas_file: DataFrame):
+    tbl_slice = gwas_file.loc[gwas_file['MAPPED_GENE'].isin(gene_set.general_info.gene_symbols),
+                              ["DISEASE/TRAIT", 'MAPPED_GENE']]
+
+    mapping = {idx: row for idx, row in
+               tbl_slice.groupby('MAPPED_GENE')['DISEASE/TRAIT'].apply(list).iteritems()}
+
+    return GWASGeneTraitInfo(gene_set.general_info.name, mapping)
+
+
+def extract_gwas_traits(gwas_file: str, gene_sets, gwas_mapping_out: str):
+    gwas_file = read_table(gwas_file)
+    gene_traits_list = [create_gwas_traits_info(gene_set, gwas_file) for gene_set in gene_sets]
+
+    with open(gwas_mapping_out, "w") as out_file:
+        out_file.write(jsonpickle.encode(gene_traits_list))

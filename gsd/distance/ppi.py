@@ -4,16 +4,16 @@ import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import shortest_path
 from statistics import median
-import copy
 
+from scipy.spatial.distance import pdist
 from tqdm import tqdm
 
 from gsd.distance import DistanceMetric, calc_pairwise_distances
-from gsd.distance.general import JaccardDistanceMetric
+from gsd.distance.general import to_binary_matrix
 from gsd.gene_sets import GeneSet
 
 
-class DirectPPIDistanceMetric(JaccardDistanceMetric):
+class DirectPPIDistanceMetric(DistanceMetric):
     def __init__(self, ppi_data: DataFrame):
         self.ppi_data = ppi_data
 
@@ -27,12 +27,11 @@ class DirectPPIDistanceMetric(JaccardDistanceMetric):
                 self.ppi_data['FromId'].isin(gene_set.general_info.entrez_gene_ids),
                 "ToId"].tolist()
 
-            gene_set_copy = copy.deepcopy(gene_set)
-            gene_set_copy.general_info.entrez_gene_ids |= set(directly_connected_genes)
+            return gene_set.general_info.entrez_gene_ids | set(directly_connected_genes)
 
-            return gene_set_copy
+        extended_id_map = {gene_set.general_info.name: extend_gene_set(gene_set) for gene_set in gene_sets}
 
-        return super().calc([extend_gene_set(gene_set) for gene_set in gene_sets])
+        return pdist(np.array(to_binary_matrix(extended_id_map)), 'jaccard')
 
 
 class ShortestPathPPI(DistanceMetric):
@@ -84,5 +83,5 @@ def load_ppi_mitab(ppi_file: str, tax_id) -> DataFrame:
 PPI_DISTS = {
     'Direct_PPI': lambda ppi_data: DirectPPIDistanceMetric(ppi_data),
     #TODO
-    #'Shortest_path_PPI': lambda ppi_data: ShortestPathPPI(ppi_data)
+    #'Shortest_path_PPI AVG': lambda ppi_data: ShortestPathPPI(ppi_data)
 }

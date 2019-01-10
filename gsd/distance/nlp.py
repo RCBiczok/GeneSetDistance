@@ -131,44 +131,44 @@ class NLPDistance(DistanceMetric):
 
 #TODO
 NLP_DISTS = {
-    #'Cosine_dist_over_gene_sym': lambda w2v_model: NLPDistance("Cosine distance over gene symbols",
+    #'Cosine_dist_over_gene_sym': lambda w2v_model: NLPDistance("Cosine distance over gene symbols W2V",
     #                                                           lambda x, y: cosine_distance_of(x, y, w2v_model),
     #                                                           lambda x: extract_gene_symbols(x, w2v_model)),
 
-    #'Cosine_dist_over_summary': lambda w2v_model: NLPDistance("Cosine distance over over summary",
+    #'Cosine_dist_over_summary': lambda w2v_model: NLPDistance("Cosine distance over over summary W2V",
     #                                                          lambda x, y: cosine_distance_of(x, y, w2v_model),
     #                                                          lambda x: extract_words_from_gene_set_summary(
     #                                                              x, w2v_model)),
 
-    'Cosine_dist_over_ncbi_summary': lambda w2v_model: NLPDistance("Cosine distance over over NCBI summary",
-                                                                   lambda x, y: cosine_distance_of(x, y, w2v_model),
-                                                                   lambda x: extract_summary_from_ncbi_descs(
-                                                                       x, w2v_model)),
+    #'W2V_cos_dist_over_ncbi_sum': lambda w2v_model: NLPDistance("Cosine distance over over NCBI summary W2V",
+    #                                                               lambda x, y: cosine_distance_of(x, y, w2v_model),
+    #                                                               lambda x: extract_summary_from_ncbi_descs(
+    #                                                                   x, w2v_model)),
 
-    #'Cosine_dist_over_go_bp_desc': lambda w2v_model: NLPDistance("Cosine distance GO BP description",
+    #'Cosine_dist_over_go_bp_desc': lambda w2v_model: NLPDistance("Cosine distance GO BP description W2V",
     #                                                             lambda x, y: cosine_distance_of(x, y, w2v_model),
     #                                                             lambda x: extract_words_from_go_descriptions(
     #                                                                 x, w2v_model, [GOType.BIOLOGICAL_PROCESS])),
 
-    # 'Cosine_dist_over_go_cc_desc': lambda w2v_model: NLPDistance("Cosine distance GO CC description",
+    # 'Cosine_dist_over_go_cc_desc': lambda w2v_model: NLPDistance("Cosine distance GO CC description W2V",
     #                                                              lambda x, y: cosine_distance_of(x, y, w2v_model),
     #                                                              lambda x: extract_words_from_go_descriptions(
     #                                                                  x, w2v_model, [GOType.CELLULAR_COMPONENT])),
 
-    # 'Cosine_dist_over_go_mf_desc': lambda w2v_model: NLPDistance("Cosine distance GO MF description",
+    # 'Cosine_dist_over_go_mf_desc': lambda w2v_model: NLPDistance("Cosine distance GO MF description W2V",
     #                                                              lambda x, y: cosine_distance_of(x, y, w2v_model),
     #                                                              lambda x: extract_words_from_go_descriptions(
     #                                                                  x, w2v_model, [GOType.MOLECULAR_FUNCTION])),
 
-    #'WM_dist_over_gene_sym': lambda w2v_model: NLPDistance("WM distance over gene symbols",
+    #'WM_dist_over_gene_sym': lambda w2v_model: NLPDistance("WM distance over gene symbols W2V",
     #                                                       lambda x, y: wm_distance_of(x, y, w2v_model),
     #                                                       lambda x: extract_gene_symbols(x, w2v_model)),
 
-    #'WM_dist_over_summary': lambda w2v_model: NLPDistance("WM distance over summary",
+    #'WM_dist_over_summary': lambda w2v_model: NLPDistance("WM distance over summary W2V",
     #                                                      lambda x, y: wm_distance_of(x, y, w2v_model),
     #                                                      lambda x: extract_words_from_gene_set_summary(x, w2v_model)),
 
-    #'WM_dist_over_ncbi_summary': lambda w2v_model: NLPDistance("WM distance over over NCBI summary",
+    #'WM_dist_over_ncbi_summary': lambda w2v_model: NLPDistance("WM distance over over NCBI summary W2V",
     #                                                           lambda x, y: wm_distance_of(x, y, w2v_model),
     #                                                           lambda x: extract_summary_from_ncbi_descs(
     #                                                               x, w2v_model)),

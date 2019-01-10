@@ -1,6 +1,8 @@
+import urllib.parse
+
 import jsonpickle
 import os.path
-from typing import List, TypeVar
+from typing import List, TypeVar, Iterable
 
 from anytree import Node
 from anytree.exporter import JsonExporter
@@ -8,7 +10,7 @@ from anytree.exporter import JsonExporter
 T = TypeVar('T')
 
 
-def flat_list(l: List[List[T]]) -> List[T]:
+def flat_list(l: List[Iterable[T]]) -> List[T]:
     return [item for sublist in l for item in sublist]
 
 
@@ -22,3 +24,7 @@ def persist_reference_data(tree: Node, gene_sets: List, tree_out: str, gene_set_
         exporter.write(tree, filehandle=tree_file)
     with open(gene_set_out, "w") as gene_set_file:
         gene_set_file.write(jsonpickle.encode(gene_sets))
+
+
+def quote(name: str):
+    return urllib.parse.quote(name.replace(" ", "_").replace("(", "").replace(")", "").replace("=", ""))

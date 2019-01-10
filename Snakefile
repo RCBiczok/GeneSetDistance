@@ -81,11 +81,13 @@ rule all:
 ###
 
 rule calc_general_dists:
-    input: file="evaluation_data/{target_category}/{evaluation_target}/gene_sets.json"
+    input: file="evaluation_data/{target_category}/{evaluation_target}/gene_sets.json",
+           gwas_gene_traits_file="evaluation_data/{target_category}/{evaluation_target}/gwas_gene_traits.json"
     output: file="experiment_data/general/{metric}/{target_category}/{evaluation_target}.json"
     run:
         dist = GENERAL_DISTS[wildcards.metric]
-        gene_sets = gsd.gene_sets.load_gene_sets(input.file)
+        gene_sets = gsd.gene_sets.load_gene_sets(input.file,
+                                                 gwas_gene_traits_file=input.gwas_gene_traits_file)
         gsd.distance.execute_and_persist_evaluation(dist, gene_sets, output.file)
 
 
@@ -246,3 +248,13 @@ rule downlaod_ncbi_gene_desc:
     run:
         gene_sets = gsd.gene_sets.load_gene_sets(input.gene_set_file)
         gsd.annotation.downlaod_ncbi_gene_desc(gene_sets, output.ncbi_gene_desc_file)
+
+rule extract_gwas_gene_traits:
+    input: gene_set_file="evaluation_data/{target_category}/{evaluation_target}/gene_sets.json"
+    output: gwas_gene_traits_file="evaluation_data/{target_category}/{evaluation_target}/gwas_gene_traits.json"
+    run:
+        #TODO mappings are not downloaded automatically
+        gwas_gene_traigs = "__data/gwas/gwas_catalog_v1.0-associations_e93_r2018-12-21.tsv"
+
+        gene_sets = gsd.gene_sets.load_gene_sets(input.gene_set_file)
+        gsd.annotation.extract_gwas_traits(gwas_gene_traigs, gene_sets, output.gwas_gene_traits_file)

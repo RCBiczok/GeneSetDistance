@@ -5,13 +5,13 @@ from gsd.distance import PairwiseTreePathDistanceMetric
 from tests import has_equal_elements
 
 from gsd.distance.general import overlap_coefficient, to_binary_matrix, to_gene_id_map, to_gene_trait_map, \
-    MatrixBasedDistanceMetric, kappa_distance, overlap_distance
+    MatrixBasedDistanceMetric, kappa_distance, overlap_distance, to_gene_trait_freq, to_freq_matrix
 from tests.gsd.distance import gene_sets
 
 
 def test_euclidean():
     dist_metric = MatrixBasedDistanceMetric("Minkowski distance (p=2)",
-                                            to_gene_id_map,
+                                            lambda x: to_binary_matrix(to_gene_id_map(x)),
                                             lambda y: pdist(y, 'minkowski', 2))
     d = dist_metric.calc(gene_sets)
     assert has_equal_elements(d, [1.414, 1.414, 2], epsilon=0.001)
@@ -19,7 +19,7 @@ def test_euclidean():
 
 def test_jaccard():
     dist_metric = MatrixBasedDistanceMetric("Jaccard Distance",
-                                            to_gene_id_map,
+                                            lambda x: to_binary_matrix(to_gene_id_map(x)),
                                             lambda y: pdist(y, 'jaccard'))
     d = dist_metric.calc(gene_sets)
     assert has_equal_elements(d, [0.5, 0.5, 0.8], epsilon=0.001)
@@ -27,7 +27,7 @@ def test_jaccard():
 
 def test_kappa():
     dist_metric = MatrixBasedDistanceMetric("Kappa distance over genes",
-                                            to_gene_id_map,
+                                            lambda x: to_binary_matrix(to_gene_id_map(x)),
                                             kappa_distance)
     d = dist_metric.calc(gene_sets)
     assert has_equal_elements(d, [0.833, 0.833, 1.666], epsilon=0.001)
@@ -43,7 +43,7 @@ def test_overlap_coefficient():
 
 def test_overlap_distance():
     dist_metric = MatrixBasedDistanceMetric("Overlap distance over genes",
-                                            to_gene_id_map,
+                                            lambda x: to_binary_matrix(to_gene_id_map(x)),
                                             overlap_distance)
     d = dist_metric.calc(gene_sets)
     assert has_equal_elements(d, [0.333, 0.333, 0.666], epsilon=0.001)
@@ -76,8 +76,34 @@ def test_to_gene_trait_map():
                                    'Type 2 diabetes'}}
 
 
+def test_to_gene_trait_dist_freq():
+    id_mapping = to_gene_trait_freq(gene_sets)
+    assert id_mapping == {'SetA': {'Cough in response to angiotensin-converting enzyme inhibitor drugs': 1,
+                                   'Type 2 diabetes': 1},
+                          'SetB': {'Cough in response to angiotensin-converting enzyme inhibitor drugs': 1,
+                                   'Type 2 diabetes': 1},
+                          'SetC': {'Cough in response to angiotensin-converting enzyme inhibitor drugs': 1,
+                                   'Type 2 diabetes': 1}}
+
+
 def test_to_binary_matrix():
     id_mapping = to_gene_id_map(gene_sets)
     assert to_binary_matrix(id_mapping) == [[False, True, False, True, True],
                                             [True, True, False, False, True],
                                             [False, False, True, True, True]]
+
+
+def test_to_freq_matrix():
+    freqs = {
+        'SetA': {
+            'TraitA': 2,
+            'TraitB': 1,
+            'TraitC': 3
+        },
+        'SetB': {
+            'TraitB': 2,
+            'TraitD': 3
+        }
+    }
+    assert to_freq_matrix(freqs) == [[2, 1, 3, 0],
+                                     [0, 2, 0, 3]]

@@ -17,7 +17,8 @@ setup(
         'gensim',
         'pyemd',
         'nltk',
-        'tqdm'
+        'tqdm',
+        'Cython'
     ],
     setup_requires=["pytest-runner"],
     tests_require=["pytest"]

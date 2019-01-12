@@ -49,11 +49,10 @@ PPI_EVALUATION_OUTPUT = expand("experiment_data/ppi/{metric}/{evaluation_target}
                                metric=PPI_DISTS.keys(),
                                evaluation_target=EVALUATION_TARGETS)
 
-#TODO
 GO_DISTS = {
-    #'GO_SIM_BP_Wang_BMA': {'type': gsd.annotation.GOType.BIOLOGICAL_PROCESS, 'measure': "Wang", 'combine': "BMA"},
-    #'GO_SIM_CC_Wang_BMA': {'type': gsd.annotation.GOType.CELLULAR_COMPONENT, 'measure': "Wang", 'combine': "BMA"},
-    #'GO_SIM_MF_Wang_BMA': {'type': gsd.annotation.GOType.MOLECULAR_FUNCTION, 'measure': "Wang", 'combine': "BMA"}
+    'GO_SIM_BP_Wang_BMA': {'type': gsd.annotation.GOType.BIOLOGICAL_PROCESS, 'measure': "Wang", 'combine': "BMA"},
+    'GO_SIM_CC_Wang_BMA': {'type': gsd.annotation.GOType.CELLULAR_COMPONENT, 'measure': "Wang", 'combine': "BMA"},
+    'GO_SIM_MF_Wang_BMA': {'type': gsd.annotation.GOType.MOLECULAR_FUNCTION, 'measure': "Wang", 'combine': "BMA"}
 }
 
 GO_EVALUATION_OUTPUT = expand("experiment_data/go/{metric}/{evaluation_target}.json",

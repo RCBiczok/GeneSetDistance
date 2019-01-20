@@ -18,7 +18,9 @@ setup(
         'pyemd',
         'nltk',
         'tqdm',
-        'Cython'
+        'Cython',
+        'psutil',
+        'plotly'
     ],
     setup_requires=["pytest-runner"],
     tests_require=["pytest"]

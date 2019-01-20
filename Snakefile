@@ -25,8 +25,8 @@ STOPWORD_FILE = "%s/nltk_data/corpora/stopwords" % str(Path.home())
 
 REACTOME_TARGETS = ['reactome/R-HSA-8982491',
                     'reactome/R-HSA-1474290',
-                    'reactome/R-HSA-373755']
-#'reactome/R-HSA-422475'
+                    'reactome/R-HSA-373755',
+                    'reactome/R-HSA-422475']
 #EVALUATION_TARGETS = REACTOME_TARGETS + ['immune_cells/all']
 EVALUATION_TARGETS = REACTOME_TARGETS + ['immune_cells/immune_only']
 EVALUATION_DATA_DIRS = ["evaluation_data/%s" % target_name for target_name in EVALUATION_TARGETS]

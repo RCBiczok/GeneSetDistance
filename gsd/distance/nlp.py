@@ -102,6 +102,9 @@ def cosine_distance_of(words_a: List[str], words_b: List[str], w2v_model: Word2V
 
 
 def wm_distance_of(words_a: List[str], words_b: List[str], w2v_model: Word2VecKeyedVectors) -> float:
+    if len(words_a) == 0 or len(words_b) == 0:
+        return np.nan
+
     #   print("word_len: %d + %d" % (len(words_a), len(words_b)))
     return w2v_model.wmdistance(words_a, words_b)
 

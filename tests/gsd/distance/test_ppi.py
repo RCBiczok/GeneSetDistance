@@ -19,4 +19,4 @@ def test_direct_ppi():
 def test_shortest_path_ppi():
     dist_metric = ShortestPathPPI(fake_ppi_data)
     d = dist_metric.calc(gene_sets)
-    assert has_equal_elements(d, [1, 2, 1], epsilon=0.001)
+    assert has_equal_elements(d, [0.333, 0.666, 1], epsilon=0.001)

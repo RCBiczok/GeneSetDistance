@@ -3,7 +3,7 @@ from pandas import read_table, DataFrame
 import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import shortest_path
-from statistics import median
+from statistics import mean
 
 from scipy.spatial.distance import pdist
 from tqdm import tqdm
@@ -49,7 +49,7 @@ class ShortestPathPPI(DistanceMetric):
 
     @property
     def display_name(self) -> str:
-        return "Median over pairwise shortest paths PPI"
+        return "Dijkstra BMA PPI"
 
     def calc(self, gene_sets: List[GeneSet]) -> np.ndarray:
         def calc_path_distance(gene_set_a: GeneSet, gene_set_b: GeneSet):
@@ -62,10 +62,7 @@ class ShortestPathPPI(DistanceMetric):
                 return np.nan
 
             dist_matrix = shortest_path(csgraph=self.graph, directed=False, indices=indices_a)
-            # return median([min([row[idx_b] for idx_b in indices_b]) for row in dist_matrix])
-            if gene_set_a == gene_set_b:
-                return 0
-            return median([row[idx_b] for idx_b in indices_b for row in dist_matrix])
+            return mean([min([row[idx_b] for idx_b in indices_b]) for row in dist_matrix])
 
         return calc_pairwise_distances(gene_sets, calc_path_distance)
 
@@ -82,6 +79,5 @@ def load_ppi_mitab(ppi_file: str, tax_id) -> DataFrame:
 
 PPI_DISTS = {
     'Direct_PPI': lambda ppi_data: DirectPPIDistanceMetric(ppi_data),
-    #TODO
-    #'Median_pairwise_shortest_path_PPI': lambda ppi_data: ShortestPathPPI(ppi_data)
+    'Dijkstra_BMA_PPI': lambda ppi_data: ShortestPathPPI(ppi_data)
 }

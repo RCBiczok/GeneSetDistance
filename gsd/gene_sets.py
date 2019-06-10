@@ -113,7 +113,7 @@ class GeneSet:
         self.gwas_gene_traigs = gwas_gene_traigs
 
     def __repr__(self):
-        return "<AnnotatedGeneSet(general_info='%s')>" % self.general_info
+        return "<GeneSet(general_info='%s')>" % self.general_info
 
 
 def annotate_with_go(gene_set_info_list: List[GeneSetInfo], go_anno: DataFrame) -> [GeneSet]:
@@ -125,7 +125,7 @@ def annotate_with_go(gene_set_info_list: List[GeneSetInfo], go_anno: DataFrame) 
 # TODO Compose GeneSet instead of modifying GeneSet instance
 def load_gene_sets(gene_sets_file: str,
                    ncbi_gene_desc_file: str = None,
-                   gwas_gene_traits_file: str = None) -> [GeneSet]:
+                   gwas_gene_traits_file: str = None) -> List[GeneSet]:
     with open(gene_sets_file) as f:
         gene_sets = jsonpickle.decode(f.read())
 

@@ -7,9 +7,8 @@ from gensim.models.keyedvectors import Word2VecKeyedVectors
 from scipy.spatial.distance import cosine
 
 from gsd import flat_list
-from gsd.annotation import GOType
 from gsd.distance import DistanceMetric, calc_pairwise_distances
-from gsd.gene_sets import GeneSet
+from gsd.gene_sets import GeneSet, GOType
 import nltk.corpus
 
 

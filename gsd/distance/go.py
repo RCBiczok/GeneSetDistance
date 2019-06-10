@@ -1,9 +1,8 @@
 from typing import List
 import numpy as np
 
-from gsd.annotation import GOType
 from gsd.distance import DistanceMetric, calc_pairwise_distances
-from gsd.gene_sets import GeneSet
+from gsd.gene_sets import GeneSet, GOType
 
 from rpy2.robjects.packages import importr
 

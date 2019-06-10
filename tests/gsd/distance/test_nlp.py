@@ -2,7 +2,7 @@
 
 from gensim.models import KeyedVectors
 
-from gsd.annotation import GOType
+from gsd.gene_sets import GOType
 from gsd.distance.nlp import NLPDistance, extract_gene_symbols, \
     extract_words_from_gene_set_summary, extract_words_from_go_descriptions, cosine_distance_of, \
     extract_words_from_go_names, extract_words_from_gene_symbols_and_summary_and_go_info, wm_distance_of, \

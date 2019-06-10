@@ -5,8 +5,7 @@ from anytree import Node
 from pandas import DataFrame
 
 from gsd import flat_list
-from gsd.annotation import get_json_from
-from gsd.gene_sets import GeneSetInfo, annotate_with_go, GeneSet
+from gsd.gene_sets import GeneSetInfo, annotate_with_go, GeneSet, get_json_from
 
 
 def _get_event_hierarchy(tax_id):

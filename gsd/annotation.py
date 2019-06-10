@@ -109,7 +109,7 @@ def chunks(l: List, n: int):
         yield l[i:i + n]
 
 
-def _get_ncbi_gene_dscr(entrezgene_list: List[int]):
+def _get_ncbi_gene_desc(entrezgene_list: List[int]):
     url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=gene&id=%s&retmode=json;' % \
           ','.join([str(x) for x in entrezgene_list])
     return get_json_from(url)
@@ -119,7 +119,7 @@ def _get_all_ncbi_gene_dscr(entrezgene_list: List[int]):
     chunk_list = [chunk for chunk in chunks(entrezgene_list, 300)]
     result = {}
     for chunk in tqdm(chunk_list):
-        part_result = _get_ncbi_gene_dscr(chunk)['result']
+        part_result = _get_ncbi_gene_desc(chunk)['result']
         result = {**result, **part_result}
     return result
 
